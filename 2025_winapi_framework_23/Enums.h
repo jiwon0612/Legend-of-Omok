@@ -3,9 +3,12 @@ enum class Layer
 {
 	DEFAULT,
 	BACKGROUND,
+	BOARD,
+	STONE,
 	PLAYER,
 	ENEMY,
 	PROJECTILE,
+	UI,
 	END
 };
 enum class PenType

@@ -1,7 +1,8 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "SceneManager.h"
 #include "DevScene.h"
 #include "TestScene.h"
+#include "OmokScene.h"
 #include "Object.h"
 #include "Collider.h"
 void SceneManager::PhysicsSyncColliders()
@@ -23,12 +24,13 @@ void SceneManager::Init()
 {
 	m_curScene = nullptr;
 
-	// ¾À µî·Ï
+	// ì”¬ ë“±ë¡
 	RegisterScene(L"TestScene", std::make_shared<TestScene>());
 	RegisterScene(L"DevScene", std::make_shared<DevScene>());
+	RegisterScene(L"OmokScene", std::make_shared<OmokScene>());
 
-	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"DevScene");
+	// ì²« ì”¬ ì§€ì •
+	LoadScene(L"OmokScene");
 }
 void SceneManager::Update()
 {
@@ -62,7 +64,7 @@ void SceneManager::RegisterScene(const wstring& _name, std::shared_ptr<Scene> _s
 
 void SceneManager::LoadScene(const wstring& _name)
 {
-	// 2¹øÂ° load ÀÏ½Ã change ¿ªÇÒ
+	// 2ë²ˆì§¸ load ì¼ì‹œ change ì—­í• 
 	if (m_curScene != nullptr)
 	{
 		m_curScene->Release();

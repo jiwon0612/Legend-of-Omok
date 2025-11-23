@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "Card.h"
 
 class Board;
 
@@ -16,4 +17,5 @@ public:
 
 private:
 	Board* m_pBoard;
+	Card* m_testCard;
 };

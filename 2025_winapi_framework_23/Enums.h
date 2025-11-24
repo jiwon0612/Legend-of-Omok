@@ -26,3 +26,8 @@ enum class PlayMode
 {
 	Once, Loop, Counted
 };
+
+enum class CardRarity
+{
+	Normal, Rare, Unique, Legendary
+};

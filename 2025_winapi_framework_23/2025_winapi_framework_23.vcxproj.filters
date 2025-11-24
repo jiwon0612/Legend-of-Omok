@@ -47,9 +47,6 @@
     <Filter Include="Engine\02. Manager\Framework">
       <UniqueIdentifier>{3117f2d1-76b5-4d4e-9c99-0359d91c25d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Object\CardInfo">
-      <UniqueIdentifier>{37310daf-432f-40f3-808e-d0863f720163}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2025_winapi_framework_23.h">
@@ -145,11 +142,11 @@
     <ClInclude Include="Floor.h">
       <Filter>Engine\03. Object</Filter>
     </ClInclude>
-    <ClInclude Include="CardInfo.h">
-      <Filter>Engine\03. Object\CardInfo</Filter>
+    <ClInclude Include="OmokScene.h">
+      <Filter>Engine\04. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="CardUI.h">
-      <Filter>Engine\07. UI</Filter>
+    <ClInclude Include="Board.h">
+      <Filter>Engine\03. Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -238,11 +235,11 @@
     <ClCompile Include="Floor.cpp">
       <Filter>Engine\03. Object</Filter>
     </ClCompile>
-    <ClCompile Include="CardInfo.cpp">
-      <Filter>Engine\03. Object\CardInfo</Filter>
+    <ClCompile Include="OmokScene.cpp">
+      <Filter>Engine\04. Scene</Filter>
     </ClCompile>
-    <ClCompile Include="CardUI.cpp">
-      <Filter>Engine\07. UI</Filter>
+    <ClCompile Include="Board.cpp">
+      <Filter>Engine\03. Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

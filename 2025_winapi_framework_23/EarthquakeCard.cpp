@@ -2,7 +2,7 @@
 #include "EarthquakeCard.h"
 
 
-EarthquakeCard::EarthquakeCard()
+EarthquakeCard::EarthquakeCard() : isShaking(false)
 {
 }
 
@@ -11,10 +11,6 @@ EarthquakeCard::~EarthquakeCard()
 }
 
 void EarthquakeCard::Update()
-{
-}
-
-void EarthquakeCard::Render(HDC _hdc)
 {
 }
 
@@ -42,7 +38,19 @@ void ShakeWindow(HWND hWnd, int durationMs, int strength)
     SetWindowPos(hWnd, NULL, x, y, 0, 0,
         SWP_NOSIZE | SWP_NOZORDER | SWP_NOREDRAW);
 }
+
+void EarthquakeCard::Render(HDC _hdc)
+{
+    if (!isShaking) return;
+    ShakeWindow(GetActiveWindow(), 500, 50);
+}
+void EarthquakeCard::SetCard(wstring name, wstring explanation, CardType type)
+{
+    cardName = name;
+    this->explanation = explanation;
+    cardType = type;
+}
 void EarthquakeCard::CardSkill()
 {
-    ShakeWindow(GetActiveWindow(), 500, 50);
+	isShaking = true;
 }

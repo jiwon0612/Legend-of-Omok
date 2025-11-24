@@ -54,8 +54,7 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"Plane", L"Texture\\planem.bmp");
 	LoadTexture(L"Bullet", L"Texture\\Bullet.bmp");
 	LoadTexture(L"Jiwoo", L"Texture\\jiwoo.bmp");
-
-
+	LoadTexture(L"IndiaInkImage", L"Texture\\IndiaInkImage.bmp");
 }
 void ResourceManager::RegisterGDI()
 {

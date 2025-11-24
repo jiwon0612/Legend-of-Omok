@@ -21,7 +21,7 @@ public:
 public:
 	virtual void SetCard(wstring name, wstring explanation, CardType type);
 	virtual void CardSkill();
-private:
+protected:
 	wstring cardName;
 	wstring explanation;
 	CardType cardType;

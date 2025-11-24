@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Card.h"
 #include "EarthquakeCard.h"
+#include "IndiaInkCard.h"
 
 Card::Card()
 	: cardName(L""), explanation(L""), cardType(CardType::None)

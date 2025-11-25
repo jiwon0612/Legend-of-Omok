@@ -9,7 +9,7 @@
 void CardTestScene::Init()
 {
 	CardInfo* testCard1 = new CardInfo(L"TestName", L"TestDescription",
-		L"Bullet", CardRarity::Normal);
+		L"Bullet", CardRarity::Normal,nullptr);
 
 	CardUI* cardUI = Spawn<CardUI>(Layer::UI, { 200.f, 200.f }, { 100.f,150.f });
 	cardUI->Init(testCard1);

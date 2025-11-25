@@ -11,7 +11,7 @@ void CardManager::Init()
 	m_cardOffset = { 200.f, 0.f };
 
 	CardInfo* testCard1 = new CardInfo(L"TestName", L"TestDescription",
-		L"Bullet", CardRarity::Normal);
+		L"Bullet", CardRarity::Normal, nullptr);
 
 	m_cardInfoMap.insert({ testCard1->name, testCard1 });
 }

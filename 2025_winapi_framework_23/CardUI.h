@@ -19,6 +19,10 @@ private:
 	CardInfo* m_cardInfo;
 	Texture* m_cardTex;
 	Texture* m_cardIconTex;
+	Vector2 m_hoverSizeOffset;
+	Vector2 m_defultSize;
+	float m_outlineThickness;
 	bool m_isInit;
+	bool m_isHover;
 };
 

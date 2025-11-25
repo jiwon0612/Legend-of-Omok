@@ -12,6 +12,10 @@ public:
 	void MoveToPosition(const Vector2& _startPos, const Vector2& _endPos);
 	void ScaleToSize(const Vector2& _startSize, const Vector2& _endSize);
 
+public:
+	bool IsMoveTweenEnd() const { return isMoveTweenEnd; }
+	bool IsScaleTweenEnd() const { return isScaleTweenEnd; }
+
 private:
 	Vector2 startMovePosition;
 	Vector2 endMovePosition;

@@ -56,6 +56,10 @@ private:
 	void RenderHoverPreview(HDC _hdc);
 
 private:
+	static const int TIME_LIMIT = 300; // 5분
+	float playerTime[2]; // 흑, 백 시간
+	float m_elapsedTime;
+
 	static const int BOARD_SIZE = 19;
 	StoneType m_board[BOARD_SIZE][BOARD_SIZE];
 	

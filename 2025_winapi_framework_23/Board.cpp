@@ -14,6 +14,8 @@ Board::Board()
 	, m_lineColor(RGB(0, 0, 0))
 	, m_blackStoneColor(RGB(30, 30, 30))
 	, m_whiteStoneColor(RGB(245, 245, 245))
+	, playerTime{ TIME_LIMIT, TIME_LIMIT }
+	, m_elapsedTime(0.f)
 {
 	// 보드 초기화
 	for (int y = 0; y < BOARD_SIZE; ++y)
@@ -36,6 +38,21 @@ void Board::Update()
 {
 	if (m_gameState != GameState::PLAYING)
 		return;
+
+	// 시간 처리
+	m_elapsedTime += fDT;
+	if (m_elapsedTime >= 1.f)
+	{
+		m_elapsedTime = 0.f;
+		if (m_currentPlayer == StoneType::BLACK)
+			playerTime[0] -= 1.f;
+		else
+			playerTime[1] -= 1.f;
+		if (playerTime[0] <= 0.f)
+			m_gameState = GameState::WHITE_WIN;
+		else if (playerTime[1] <= 0.f)
+			m_gameState = GameState::BLACK_WIN;
+	}
 
 	POINT mousePos = GET_MOUSEPOS;
 	Vec2 mousePosVec(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
@@ -151,6 +168,8 @@ void Board::Reset()
 	m_lastMove = std::make_pair(-1, -1);
 	m_hoverPos = std::make_pair(-1, -1);
 	m_isHovering = false;
+	playerTime[0] = TIME_LIMIT;
+	playerTime[1] = TIME_LIMIT;
 }
 
 void Board::SwitchTurn()
@@ -351,6 +370,13 @@ void Board::RenderUI(HDC _hdc)
 	else if (m_gameState == GameState::WHITE_WIN)
 		turnText = L"백 승리!";
 
+	// 시간 표시
+	wstring blackTimeText = 
+		std::format(L"흑 시간: {:02}:{:02}", static_cast<int>(playerTime[0]) / 60, static_cast<int>(playerTime[0]) % 60);
+	wstring whiteTimeText = 
+		std::format(L"백 시간: {:02}:{:02}", static_cast<int>(playerTime[1]) / 60, static_cast<int>(playerTime[1]) % 60);
+	wstring timeText = blackTimeText + L"\n" + whiteTimeText;
+
 	SetBkMode(_hdc, TRANSPARENT);
 	SetTextColor(_hdc, RGB(0, 0, 0));
 
@@ -361,10 +387,13 @@ void Board::RenderUI(HDC _hdc)
 	textRect.bottom = textRect.top + 50;
 
 	DrawText(_hdc, turnText.c_str(), -1, &textRect, DT_LEFT | DT_TOP);
+	textRect.top += 50;
+	textRect.bottom += 50;
+	DrawText(_hdc, timeText.c_str(), -1, &textRect, DT_LEFT | DT_TOP);
 
 	wstring resetText = L"R: 게임 재시작";
-	textRect.top += 30;
-	textRect.bottom += 30;
+	textRect.top += 70;
+	textRect.bottom += 70;
 	DrawText(_hdc, resetText.c_str(), -1, &textRect, DT_LEFT | DT_TOP);
 }
 

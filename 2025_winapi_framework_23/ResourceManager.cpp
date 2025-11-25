@@ -11,7 +11,7 @@ bool ResourceManager::Init()
 	fs::path resourceDir = exeDir.parent_path() / L"build" / L"Resource\\"; // release����϶� build �ѹ��� ���̴°� ����
 	m_resourcePath = resourceDir.native();
 
-	if (!RegisterFontFile(L"Font\\�����ձ۾� �Ͻ��׸���.ttf"))
+	if (!RegisterFontFile(L"Font\\TestFont.ttf"))
 		return false;
 	RegisterTexture();
 	RegisterGDI();
@@ -70,7 +70,7 @@ void ResourceManager::RegisterGDI()
 	m_Pens[(UINT)PenType::GREEN] = ::CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
 
 	// ��Ʈ ���
-	RegisterFont(FontType::TITLE, L"�����ձ۾� �Ͻ��׸���", 0);
+	RegisterFont(FontType::TITLE, L"TestFont", 0);
 }
 void ResourceManager::ReleaseGDI()
 {

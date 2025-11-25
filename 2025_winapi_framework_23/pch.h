@@ -37,6 +37,7 @@ using std::vector;
 using std::list;
 using std::map;
 using std::wstring;
+using std::unordered_map;
 
 // °¢Á¾ define°ª
 #define PI 3.14159265358979f

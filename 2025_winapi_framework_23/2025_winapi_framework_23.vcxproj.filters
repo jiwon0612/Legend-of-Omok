@@ -47,8 +47,8 @@
     <Filter Include="Engine\02. Manager\Framework">
       <UniqueIdentifier>{3117f2d1-76b5-4d4e-9c99-0359d91c25d9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Object\CardInfo">
-      <UniqueIdentifier>{78c75551-6a00-4f9f-9bf5-8a6da1d08ada}</UniqueIdentifier>
+    <Filter Include="Engine\03. Object\Card">
+      <UniqueIdentifier>{77b53867-73e4-4307-b529-e2efb9ae8aa6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -151,23 +151,14 @@
     <ClInclude Include="Board.h">
       <Filter>Engine\03. Object</Filter>
     </ClInclude>
-    <ClInclude Include="CardInfo.h">
-      <Filter>Engine\03. Object\CardInfo</Filter>
+    <ClInclude Include="Card.h">
+      <Filter>Engine\03. Object\Card</Filter>
     </ClInclude>
-    <ClInclude Include="CardUI.h">
-      <Filter>Engine\03. Object\CardInfo</Filter>
+    <ClInclude Include="EarthquakeCard.h">
+      <Filter>Engine\03. Object\Card</Filter>
     </ClInclude>
-    <ClInclude Include="TweeningObject.h">
-      <Filter>Engine\03. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Mathf.h">
-      <Filter>Engine\99. Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="CardTestScene.h">
-      <Filter>Engine\04. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="CardManager.h">
-      <Filter>Engine\02. Manager</Filter>
+    <ClInclude Include="IndiaInkCard.h">
+      <Filter>Engine\03. Object\Card</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -262,20 +253,14 @@
     <ClCompile Include="Board.cpp">
       <Filter>Engine\03. Object</Filter>
     </ClCompile>
-    <ClCompile Include="CardInfo.cpp">
-      <Filter>Engine\03. Object\CardInfo</Filter>
+    <ClCompile Include="Card.cpp">
+      <Filter>Engine\03. Object\Card</Filter>
     </ClCompile>
-    <ClCompile Include="CardUI.cpp">
-      <Filter>Engine\03. Object\CardInfo</Filter>
+    <ClCompile Include="EarthquakeCard.cpp">
+      <Filter>Engine\03. Object\Card</Filter>
     </ClCompile>
-    <ClCompile Include="TweeningObject.cpp">
-      <Filter>Engine\03. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CardTestScene.cpp">
-      <Filter>Engine\04. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="CardManager.cpp">
-      <Filter>Engine\02. Manager</Filter>
+    <ClCompile Include="IndiaInkCard.cpp">
+      <Filter>Engine\03. Object\Card</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 #pragma once
 #include "Scene.h"
+#include "EarthquakeCard.h"
+#include "IndiaInkCard.h"
 
 class Board;
 
@@ -16,4 +18,6 @@ public:
 
 private:
 	Board* m_pBoard;
+	EarthquakeCard* m_testECard;
+	IndiaInkCard* m_testICard;
 };

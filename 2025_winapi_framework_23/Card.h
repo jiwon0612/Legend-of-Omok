@@ -21,8 +21,11 @@ public:
 public:
 	virtual void SetCard(wstring name, wstring explanation, CardType type);
 	virtual void CardSkill();
+	virtual void NextTurn();
 protected:
 	wstring cardName;
 	wstring explanation;
 	CardType cardType;
+protected:
+	bool isSkill;
 };

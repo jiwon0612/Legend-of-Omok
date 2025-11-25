@@ -6,7 +6,6 @@
 IndiaInkCard::IndiaInkCard() : m_Tex(nullptr), isInk(false)
 {
 	m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
-    CardSkill();
 }
 IndiaInkCard::~IndiaInkCard()
 {
@@ -31,8 +30,8 @@ void IndiaInkCard::Update()
         piece.baseCutX = xSize * ran;
         ran = (rand() % 3) + 1;
         piece.baseCutY = ySize  * ran;
-        piece.screenX = (rand() % 1280) - (ySize * 4);
-        piece.screentY = (rand() % 700) - (ySize * 4);
+        piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
+        piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
         piece.screenSize = inkSize;
         piece.alpha = 200.f;
 

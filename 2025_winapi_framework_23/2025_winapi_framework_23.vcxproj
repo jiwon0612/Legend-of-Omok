@@ -166,6 +166,10 @@
     <ClInclude Include="BaseWindow.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardInfo.h" />
+    <ClInclude Include="CardManager.h" />
+    <ClInclude Include="CardTestScene.h" />
+    <ClInclude Include="CardUI.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
@@ -180,6 +184,7 @@
     <ClInclude Include="GDISelector.h" />
     <ClInclude Include="IndiaInkCard.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Mathf.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OmokScene.h" />
     <ClInclude Include="pch.h" />
@@ -195,6 +200,7 @@
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="TweeningObject.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +209,10 @@
     <ClCompile Include="BaseWindow.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardInfo.cpp" />
+    <ClCompile Include="CardManager.cpp" />
+    <ClCompile Include="CardTestScene.cpp" />
+    <ClCompile Include="CardUI.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -227,6 +237,7 @@
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="TweeningObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2025_winapi_framework_23.rc" />

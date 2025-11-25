@@ -3,6 +3,7 @@
 #include "DevScene.h"
 #include "TestScene.h"
 #include "OmokScene.h"
+#include "CardTestScene.h"
 #include "Object.h"
 #include "Collider.h"
 void SceneManager::PhysicsSyncColliders()
@@ -28,6 +29,7 @@ void SceneManager::Init()
 	RegisterScene(L"TestScene", std::make_shared<TestScene>());
 	RegisterScene(L"DevScene", std::make_shared<DevScene>());
 	RegisterScene(L"OmokScene", std::make_shared<OmokScene>());
+	RegisterScene(L"CardTestScene", std::make_shared<CardTestScene>());
 
 	// 첫 씬 지정
 	LoadScene(L"OmokScene");

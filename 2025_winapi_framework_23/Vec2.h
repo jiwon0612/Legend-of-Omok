@@ -33,6 +33,32 @@ public:
 	{
 		return Vec2(-x, -y);
 	}
+	bool operator<(const Vec2& o) const 
+	{
+		if (x < o.x) return true;
+		if (x > o.x) return false;
+		return y < o.y;
+	}
+	bool operator<=(const Vec2& o) const
+	{
+		return (*this < o) || (*this == o);
+	}
+	bool operator>(const Vec2& o) const
+	{
+		return (o < *this);
+	}
+	bool operator>=(const Vec2& o) const
+	{
+		return !(*this < o);
+	}
+	bool operator==(const Vec2& _other) const
+	{
+		return (x == _other.x && y == _other.y);
+	}
+	bool operator!=(const Vec2& _other) const
+	{
+		return !(*this == _other);
+	}
 	// º¸·ù
 	//Vec2 operator / (const Vec2& _vOther)
 	//{
@@ -48,6 +74,11 @@ public:
 	{
 		x -= _other.x;
 		y -= _other.y;
+	}
+	void operator*=(const Vec2& _other)
+	{
+		x *= _other.x;
+		y *= _other.y;
 	}
 	float LengthSquared()
 	{

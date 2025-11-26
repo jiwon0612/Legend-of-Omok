@@ -24,7 +24,6 @@ public:
 	void CardSkill();
 private:
 	Texture* m_Tex;
-	bool isInk;
 	float inkDuration;
 	float inkElapsed;
 	const int drawCount = 4;

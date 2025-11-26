@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "IndiaInkCard.h"
 
-IndiaInkCard::IndiaInkCard() : m_Tex(nullptr), isInk(false)
+IndiaInkCard::IndiaInkCard() : m_Tex(nullptr)
 {
 	m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
 }
@@ -12,7 +12,7 @@ IndiaInkCard::~IndiaInkCard()
 }
 void IndiaInkCard::Update()
 {
-    if (!isInk) return;
+    Card::Update();
 
     inkElapsed += fDT;
     inkSpawnElapsed += fDT;
@@ -58,7 +58,7 @@ void IndiaInkCard::Update()
 
 void IndiaInkCard::Render(HDC _hdc)
 {
-    if (!isInk) return;
+    Card::Render(_hdc);
 
     HDC texDC = m_Tex->GetTextureDC();
 
@@ -86,13 +86,12 @@ void IndiaInkCard::Render(HDC _hdc)
 
 void IndiaInkCard::SetCard(wstring name, wstring explanation, CardType type)
 {
-    cardName = name;
-    this->explanation = explanation;
-    cardType = type;
+   Card::SetCard(name, explanation, type);
 }
 void IndiaInkCard::CardSkill()
 {
-    isInk = true;
+    Card::CardSkill();
+
     inkDuration = 10.f;
     inkElapsed = 0.f;
 

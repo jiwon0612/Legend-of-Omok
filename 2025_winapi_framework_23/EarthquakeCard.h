@@ -13,6 +13,4 @@ public:
 public:
 	void SetCard(wstring name, wstring explanation, CardType type) override;
 	void CardSkill();
-private:
-	bool isShaking;
 };

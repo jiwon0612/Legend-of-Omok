@@ -4,21 +4,6 @@
 
 class Texture;
 
-enum class StoneType
-{
-	NONE = 0,
-	BLACK = 1,
-	WHITE = 2
-};
-
-enum class GameState
-{
-	PLAYING,
-	BLACK_WIN,
-	WHITE_WIN,
-	DRAW
-};
-
 class Board : public Object
 {
 public:

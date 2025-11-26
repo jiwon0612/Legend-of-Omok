@@ -19,10 +19,10 @@ void CardTestScene::Init()
 void CardTestScene::Update()
 {
 	Scene::Update();
-	if (GET_KEYDOWN(KEY_TYPE::T))
+	/*if (GET_KEYDOWN(KEY_TYPE::T))
 	{
 		GET_SINGLE(CardManager)->ShowCard(5);
-	}
+	}*/
 }
 
 void CardTestScene::Render(HDC _hdc)

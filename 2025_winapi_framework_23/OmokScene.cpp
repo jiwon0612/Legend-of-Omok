@@ -37,10 +37,10 @@ void OmokScene::Init()
 void OmokScene::Update()
 {
 	Scene::Update();
-	if (GET_KEYDOWN(KEY_TYPE::T))
+	/*if (GET_KEYDOWN(KEY_TYPE::T))
 	{
 		GET_SINGLE(CardManager)->ShowCard(5);
-	}
+	}*/
 }
 
 void OmokScene::Render(HDC _hdc)

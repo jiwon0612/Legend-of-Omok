@@ -32,7 +32,7 @@ void SceneManager::Init()
 	RegisterScene(L"CardTestScene", std::make_shared<CardTestScene>());
 
 	// 첫 씬 지정
-	LoadScene(L"CardTestScene");
+	LoadScene(L"OmokScene");
 }
 void SceneManager::Update()
 {

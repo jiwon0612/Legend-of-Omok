@@ -7,12 +7,12 @@ TweeningObject::TweeningObject()
 	, endMovePosition(0, 0)
 	, startScaleSize(0, 0)
 	, endScaleSize(0, 0)
-	, animationSpeed(1)
+	, moveTweenSpeed(1)
 	, moveTweenTimer(0)
 	, scaleTweenTimer(0)
-	, isMoveTweenEnd(false)
-	, isScaleTweenEnd(false)
-	, isTweenEnd(false)
+	, isMoveTween(false)
+	, isScaleTween(false)
+	, isTween(false)
 {
 }
 
@@ -22,25 +22,25 @@ TweeningObject::~TweeningObject()
 
 void TweeningObject::Update()
 {
-	if (isMoveTweenEnd)
+	if (isMoveTween)
 	{
-		moveTweenTimer += fDT * animationSpeed;
+		moveTweenTimer += fDT * moveTweenSpeed;
 		Vector2 lerpValue = Lerp(startMovePosition, endMovePosition, moveTweenTimer);
 		SetPos(lerpValue);
 
 		if (moveTweenTimer >= 1)
 		{
-			isMoveTweenEnd = false;
+			isMoveTween = false;
 			SetPos(endMovePosition);
 		}
 	}
-	if (isScaleTweenEnd)
+	if (isScaleTween)
 	{
-		scaleTweenTimer += fDT * animationSpeed;
+		scaleTweenTimer += fDT * moveTweenSpeed;
 		SetSize(Lerp(startScaleSize, endScaleSize, scaleTweenTimer));
 		if (scaleTweenTimer >= 1)
 		{
-			isScaleTweenEnd = false;
+			isScaleTween = false;
 			SetSize(endScaleSize);
 		}
 	}
@@ -53,7 +53,7 @@ void TweeningObject::MoveToPosition(const Vector2& _startPos, const Vector2& _en
 	startMovePosition = _startPos;
 	endMovePosition = _endPos;
 	moveTweenTimer = 0.f;
-	isMoveTweenEnd = true;
+	isMoveTween = true;
 }
 
 void TweeningObject::ScaleToSize(const Vector2& _startSize, const Vector2& _endSize)
@@ -61,7 +61,7 @@ void TweeningObject::ScaleToSize(const Vector2& _startSize, const Vector2& _endS
 	startScaleSize = _startSize;
 	endScaleSize = _endSize;
 	scaleTweenTimer = 0.f;
-	isScaleTweenEnd = true;
+	isScaleTween = true;
 }
 
 

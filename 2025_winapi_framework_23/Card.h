@@ -9,8 +9,7 @@ enum class CardType
 	Active,
 };
 
-class Card : 
-	public Object
+class Card : public Object
 {
 public:
 	Card();

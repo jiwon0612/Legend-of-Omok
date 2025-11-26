@@ -4,6 +4,7 @@
 #include "SceneManager.h"
 #include "Texture.h"
 #include "CardInfo.h"
+#include "Card.h"
 #include "InputManager.h"
 
 CardUI::CardUI()
@@ -12,11 +13,13 @@ CardUI::CardUI()
 	, m_cardIconTex(nullptr)
 	, m_isInit(false)
 	, m_isHover(false)
-	, m_hoverSizeOffset({50,50})
+	, m_hoverSizeOffset({ 50,50 })
 	, m_defultSize(GetSize())
 	, m_outlineThickness(1.f)
 {
 	m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"TestCard");
+	SetScaleTweenSpeed(5);
+	SetMoveTweenSpeed(3);
 }
 
 CardUI::~CardUI()
@@ -35,31 +38,26 @@ void CardUI::Update()
 {
 	TweeningObject::Update();
 
+	if (!m_isInit)
+		return;
+
 	POINT mouse = GET_SINGLE(InputManager)->GetMousePos();
 	Vector2 mousePos = { (float)mouse.x, (float)mouse.y };
 
 	Vector2 pos = GetPos();
 	Vector2 size = GetSize();
-
-	m_isHover = mousePos.x > (pos.x - size.x / 2) &&
+	//::PtInRect()
+	SetIsHover(mousePos.x > (pos.x - size.x / 2) &&
 		mousePos.x < (pos.x + size.x / 2) &&
 		mousePos.y >(pos.y - size.y / 2) &&
-		mousePos.y < (pos.y + size.y / 2);
+		mousePos.y < (pos.y + size.y / 2));
 
 	if (m_isHover && GET_KEYDOWN(KEY_TYPE::LBUTTON))
 	{
 		cout << "카드 사용" << '\n';
+		m_cardInfo->card->CardSkill();
 		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);
 	}
-
-	if (!IsScaleTweenEnd())
-	{
-		if (m_isHover)
-			ScaleToSize(GetSize(), m_defultSize + m_hoverSizeOffset);
-		else 
-			ScaleToSize(GetSize(), m_defultSize);
-	}
-
 	//static Vector2 offset = { 0.f, 0.f };
 
 	/*if (GET_KEYDOWN(KEY_TYPE::LBUTTON))
@@ -130,4 +128,16 @@ void CardUI::Render(HDC _hdc)
 			, 0, 0, SRCCOPY);
 	}
 
+}
+
+void CardUI::SetIsHover(bool value)
+{
+	if (m_isHover != value)
+	{
+		if (value)
+			ScaleToSize(m_defultSize, m_defultSize + m_hoverSizeOffset);
+		else
+			ScaleToSize(m_defultSize + m_hoverSizeOffset, m_defultSize);
+	}
+	m_isHover = value;
 }

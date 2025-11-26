@@ -4,6 +4,9 @@
 #include "Card.h"
 #include "EarthquakeCard.h"
 #include "IndiaInkCard.h"
+#include "InputManager.h"
+#include "CardManager.h"
+#include "SubWindow.h"
 
 OmokScene::OmokScene()
 	: m_pBoard(nullptr)
@@ -17,6 +20,7 @@ OmokScene::~OmokScene()
 void OmokScene::Init()
 {
 	// 보드 생성
+	SubWindow subWindow = SubWindow(nullptr);
 	m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pBoard->SetSize(Vec2(600.f, 600.f));
@@ -33,6 +37,10 @@ void OmokScene::Init()
 void OmokScene::Update()
 {
 	Scene::Update();
+	if (GET_KEYDOWN(KEY_TYPE::T))
+	{
+		GET_SINGLE(CardManager)->ShowCard(5);
+	}
 }
 
 void OmokScene::Render(HDC _hdc)

@@ -22,8 +22,16 @@ public:
 public:
 	void SetCard(wstring name, wstring explanation, CardType type) override;
 	void CardSkill();
+	void NextTurn();
+private:
+	void ReallySkill();
+	void UpdateDoSkill();
 private:
 	Texture* m_Tex;
+
+	StoneType curPlayer;
+	bool isInk;
+
 	float inkDuration;
 	float inkElapsed;
 	const int drawCount = 4;

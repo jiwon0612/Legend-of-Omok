@@ -2,18 +2,30 @@
 #include "Texture.h"
 #include "ResourceManager.h"
 #include "IndiaInkCard.h"
+#include "Board.h"
 
-IndiaInkCard::IndiaInkCard() : m_Tex(nullptr)
+IndiaInkCard::IndiaInkCard() : 
+    m_Tex(nullptr), curPlayer(StoneType::NONE), isInk(false)
 {
 	m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
 }
 IndiaInkCard::~IndiaInkCard()
 {
 }
-void IndiaInkCard::Update()
-{
-    Card::Update();
 
+void IndiaInkCard::ReallySkill()
+{
+    isInk = true;
+
+    inkDuration = 10.f;
+    inkElapsed = 0.f;
+
+    m_inkPieces.clear();
+    inkSpawnInterval = 0.3f;
+    inkSpawnElapsed = 0.f;
+}
+void IndiaInkCard::UpdateDoSkill()
+{
     inkElapsed += fDT;
     inkSpawnElapsed += fDT;
 
@@ -29,7 +41,7 @@ void IndiaInkCard::Update()
         int ran = (rand() % 4) + 1;
         piece.baseCutX = xSize * ran;
         ran = (rand() % 3) + 1;
-        piece.baseCutY = ySize  * ran;
+        piece.baseCutY = ySize * ran;
         piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
         piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
         piece.screenSize = inkSize;
@@ -53,7 +65,27 @@ void IndiaInkCard::Update()
     );
 
     if (inkElapsed >= inkDuration && m_inkPieces.empty())
-        isInk = false;
+        isSkill = false;
+}
+void IndiaInkCard::Update()
+{
+    Card::Update();
+
+    if (!isInk && 
+        curPlayer != Board::GetInstance()->GetCurrentPlayer()) //ÅÏ ¹Ù²ñ
+    {
+        ReallySkill();
+    }
+
+    if (!isInk) return;
+
+    if (!isInk &&
+        curPlayer == Board::GetInstance()->GetCurrentPlayer()) //ÅÏ ¹Ù²ñ
+    {
+        NextTurn();
+    }
+
+    UpdateDoSkill();
 }
 
 void IndiaInkCard::Render(HDC _hdc)
@@ -91,11 +123,11 @@ void IndiaInkCard::SetCard(wstring name, wstring explanation, CardType type)
 void IndiaInkCard::CardSkill()
 {
     Card::CardSkill();
+    curPlayer = Board::GetInstance()->GetCurrentPlayer();
+}
 
-    inkDuration = 10.f;
-    inkElapsed = 0.f;
-
-    m_inkPieces.clear();
-    inkSpawnInterval = 0.3f;
-    inkSpawnElapsed = 0.f;
+void IndiaInkCard::NextTurn()
+{
+    isInk = false;
+    Card::NextTurn();
 }

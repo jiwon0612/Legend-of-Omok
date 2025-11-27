@@ -13,7 +13,6 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;
-
 public:
 	// 게임 로직
 	bool PlaceStone(int x, int y, StoneType player);
@@ -31,6 +30,8 @@ public:
 	GameState GetGameState() const { return m_gameState; }
 	StoneType GetStone(int x, int y) const;
 	const std::pair<int, int>& GetLastMove() const { return m_lastMove; }
+	//인스턴스
+	static Board* GetInstance();
 
 private:
 	bool IsInBounds(int x, int y) const;
@@ -63,4 +64,6 @@ private:
 	COLORREF m_lineColor;
 	COLORREF m_blackStoneColor;
 	COLORREF m_whiteStoneColor;
+
+	static Board* s_instance;
 };

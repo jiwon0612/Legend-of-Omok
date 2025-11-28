@@ -29,7 +29,6 @@ private:
 private:
 	Texture* m_Tex;
 
-	StoneType curPlayer;
 	bool isInk;
 
 	float inkDuration;

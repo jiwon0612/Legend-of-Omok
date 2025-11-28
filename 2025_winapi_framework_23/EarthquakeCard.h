@@ -13,4 +13,10 @@ public:
 public:
 	void SetCard(wstring name, wstring explanation, CardType type) override;
 	void CardSkill();
+	void NextTurn();
+private:
+	void ReallySkill();
+	void ShakeWindow(HWND hWnd, int durationMs, int strength);
+private:
+	bool isShake;
 };

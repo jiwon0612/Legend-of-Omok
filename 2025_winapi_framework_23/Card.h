@@ -19,4 +19,5 @@ protected:
 	CardType cardType;
 protected:
 	bool isSkill;
+	StoneType curPlayer;
 };

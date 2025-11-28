@@ -5,7 +5,7 @@
 #include "Board.h"
 
 IndiaInkCard::IndiaInkCard() : 
-    m_Tex(nullptr), curPlayer(StoneType::NONE), isInk(false)
+    m_Tex(nullptr), isInk(false)
 {
 	m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
 }
@@ -23,6 +23,11 @@ void IndiaInkCard::ReallySkill()
     m_inkPieces.clear();
     inkSpawnInterval = 0.3f;
     inkSpawnElapsed = 0.f;
+}
+void IndiaInkCard::NextTurn()
+{
+    isInk = false;
+    Card::NextTurn();
 }
 void IndiaInkCard::UpdateDoSkill()
 {
@@ -67,6 +72,7 @@ void IndiaInkCard::UpdateDoSkill()
     if (inkElapsed >= inkDuration && m_inkPieces.empty())
         isSkill = false;
 }
+
 void IndiaInkCard::Update()
 {
     Card::Update();
@@ -91,6 +97,7 @@ void IndiaInkCard::Update()
 void IndiaInkCard::Render(HDC _hdc)
 {
     Card::Render(_hdc);
+    if (!isInk) return;
 
     HDC texDC = m_Tex->GetTextureDC();
 
@@ -123,11 +130,4 @@ void IndiaInkCard::SetCard(wstring name, wstring explanation, CardType type)
 void IndiaInkCard::CardSkill()
 {
     Card::CardSkill();
-    curPlayer = Board::GetInstance()->GetCurrentPlayer();
-}
-
-void IndiaInkCard::NextTurn()
-{
-    isInk = false;
-    Card::NextTurn();
 }

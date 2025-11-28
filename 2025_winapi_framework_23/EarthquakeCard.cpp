@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "EarthquakeCard.h"
+#include "Board.h"
 
 
-EarthquakeCard::EarthquakeCard()
+EarthquakeCard::EarthquakeCard():isShake(false)
 {
 }
 
@@ -10,12 +11,36 @@ EarthquakeCard::~EarthquakeCard()
 {
 }
 
+void EarthquakeCard::ReallySkill()
+{
+    isShake = true;
+}
+void EarthquakeCard::NextTurn()
+{
+    isShake = false;
+    Card::NextTurn();
+}
+
 void EarthquakeCard::Update()
 {
     Card::Update();
+
+    if (!isShake &&
+        curPlayer != Board::GetInstance()->GetCurrentPlayer()) //≈œ πŸ≤Ò
+    {
+        ReallySkill();
+    }
+
+    if (!isShake) return;
+
+    if (!isShake &&
+        curPlayer == Board::GetInstance()->GetCurrentPlayer()) //≈œ πŸ≤Ò
+    {
+        NextTurn();
+    }
 }
 
-void ShakeWindow(HWND hWnd, int durationMs, int strength)
+void EarthquakeCard::ShakeWindow(HWND hWnd, int durationMs, int strength)
 {
     RECT rect;
     GetWindowRect(hWnd, &rect);
@@ -43,6 +68,7 @@ void ShakeWindow(HWND hWnd, int durationMs, int strength)
 void EarthquakeCard::Render(HDC _hdc)
 {
     Card::Render(_hdc);
+    if (!isShake) return;
     ShakeWindow(GetActiveWindow(), 500, 50);
 }
 void EarthquakeCard::SetCard(wstring name, wstring explanation, CardType type)

@@ -4,6 +4,7 @@
 
 Card::Card()
 	: cardName(L""), explanation(L""), cardType(CardType::None)
+	, curPlayer(StoneType::NONE), isSkill(false)
 {
 }
 
@@ -31,6 +32,7 @@ void Card::SetCard(wstring name, wstring explanation, CardType type)
 void Card::CardSkill()
 {
 	isSkill = true;
+	curPlayer = Board::GetInstance()->GetCurrentPlayer();
 }
 
 void Card::NextTurn()

@@ -39,6 +39,4 @@ private:
 	const int inkSize = 500;
 
 	std::vector<InkPiece> m_inkPieces;
-	float inkSpawnInterval;  // 생성 시간
-	float inkSpawnElapsed;   // 누적 시간
 };

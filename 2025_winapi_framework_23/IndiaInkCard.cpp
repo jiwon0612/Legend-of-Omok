@@ -21,8 +21,6 @@ void IndiaInkCard::ReallySkill()
     inkElapsed = 0.f;
 
     m_inkPieces.clear();
-    inkSpawnInterval = 0.3f;
-    inkSpawnElapsed = 0.f;
 }
 void IndiaInkCard::NextTurn()
 {
@@ -32,28 +30,22 @@ void IndiaInkCard::NextTurn()
 void IndiaInkCard::UpdateDoSkill()
 {
     inkElapsed += fDT;
-    inkSpawnElapsed += fDT;
 
     //생성
-    if (inkSpawnElapsed >= inkSpawnInterval)
-    {
-        inkSpawnElapsed = 0.f;
+    LONG texWidth = m_Tex->GetWidth();
+    LONG texHeight = m_Tex->GetHeight();
 
-        LONG texWidth = m_Tex->GetWidth();
-        LONG texHeight = m_Tex->GetHeight();
+    InkPiece piece;
+    int ran = (rand() % 4) + 1;
+    piece.baseCutX = xSize * ran;
+    ran = (rand() % 3) + 1;
+    piece.baseCutY = ySize * ran;
+    piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
+    piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
+    piece.screenSize = inkSize;
+    piece.alpha = 200.f;
 
-        InkPiece piece;
-        int ran = (rand() % 4) + 1;
-        piece.baseCutX = xSize * ran;
-        ran = (rand() % 3) + 1;
-        piece.baseCutY = ySize * ran;
-        piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
-        piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
-        piece.screenSize = inkSize;
-        piece.alpha = 200.f;
-
-        m_inkPieces.push_back(piece);
-    }
+    m_inkPieces.push_back(piece);
 
     //투명도
     for (auto& piece : m_inkPieces)

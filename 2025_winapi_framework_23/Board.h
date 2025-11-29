@@ -31,7 +31,7 @@ public:
 	StoneType GetStone(int x, int y) const;
 	const std::pair<int, int>& GetLastMove() const { return m_lastMove; }
 	//인스턴스
-	static Board* GetInstance();
+	static Board* GetInstance() { return s_instance; }
 
 private:
 	bool IsInBounds(int x, int y) const;

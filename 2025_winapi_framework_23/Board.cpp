@@ -4,6 +4,8 @@
 #include "InputManager.h"
 #include "CardManager.h"
 
+Board* Board::s_instance = nullptr;
+
 Board::Board()
 	: m_currentPlayer(StoneType::BLACK)
 	, m_gameState(GameState::PLAYING)

@@ -4,8 +4,6 @@
 #include "InputManager.h"
 #include "CardManager.h"
 
-Board* Board::s_instance = nullptr;
-
 Board::Board()
 	: m_currentPlayer(StoneType::BLACK)
 	, m_gameState(GameState::PLAYING)
@@ -20,7 +18,6 @@ Board::Board()
 	, playerTime{ TIME_LIMIT, TIME_LIMIT }
 	, m_elapsedTime(0.f)
 {
-	s_instance = this;
 
 	// 보드 초기화
 	for (int y = 0; y < BOARD_SIZE; ++y)

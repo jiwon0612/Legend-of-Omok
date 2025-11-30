@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Card.h"
-#include "Board.h"
 
 Card::Card()
 	: cardName(L""), explanation(L""), cardType(CardType::None)
@@ -32,7 +31,7 @@ void Card::SetCard(wstring name, wstring explanation, CardType type)
 void Card::CardSkill()
 {
 	isSkill = true;
-	curPlayer = Board::GetInstance()->GetCurrentPlayer();
+	curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
 }
 
 void Card::NextTurn()

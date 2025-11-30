@@ -2,7 +2,6 @@
 #include "Texture.h"
 #include "ResourceManager.h"
 #include "IndiaInkCard.h"
-#include "Board.h"
 
 IndiaInkCard::IndiaInkCard() : 
     m_Tex(nullptr), isInk(false)
@@ -70,7 +69,7 @@ void IndiaInkCard::Update()
     Card::Update();
 
     if (!isInk && 
-        curPlayer != Board::GetInstance()->GetCurrentPlayer()) //ео ╧ы╡Я
+        curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ео ╧ы╡Я
     {
         ReallySkill();
     }
@@ -78,7 +77,7 @@ void IndiaInkCard::Update()
     if (!isInk) return;
 
     if (!isInk &&
-        curPlayer == Board::GetInstance()->GetCurrentPlayer()) //ео ╧ы╡Я
+        curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ео ╧ы╡Я
     {
         NextTurn();
     }

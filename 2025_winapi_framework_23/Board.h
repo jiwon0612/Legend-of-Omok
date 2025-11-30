@@ -30,8 +30,8 @@ public:
 	GameState GetGameState() const { return m_gameState; }
 	StoneType GetStone(int x, int y) const;
 	const std::pair<int, int>& GetLastMove() const { return m_lastMove; }
-	//인스턴스
-	static Board* GetInstance() { return s_instance; }
+public :
+	float playerTime[2]; // 흑, 백 시간
 
 private:
 	bool IsInBounds(int x, int y) const;
@@ -43,7 +43,6 @@ private:
 
 private:
 	static const int TIME_LIMIT = 300; // 5분
-	float playerTime[2]; // 흑, 백 시간
 	float m_elapsedTime;
 
 	static const int BOARD_SIZE = 19;
@@ -64,6 +63,4 @@ private:
 	COLORREF m_lineColor;
 	COLORREF m_blackStoneColor;
 	COLORREF m_whiteStoneColor;
-
-	static Board* s_instance;
 };

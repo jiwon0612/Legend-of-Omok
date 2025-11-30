@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "EarthquakeCard.h"
-#include "Board.h"
 
 
 EarthquakeCard::EarthquakeCard():isShake(false)
@@ -26,7 +25,7 @@ void EarthquakeCard::Update()
     Card::Update();
 
     if (!isShake &&
-        curPlayer != Board::GetInstance()->GetCurrentPlayer()) //ео ╧ы╡Я
+        curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ео ╧ы╡Я
     {
         ReallySkill();
     }
@@ -34,7 +33,7 @@ void EarthquakeCard::Update()
     if (!isShake) return;
 
     if (!isShake &&
-        curPlayer == Board::GetInstance()->GetCurrentPlayer()) //ео ╧ы╡Я
+        curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ео ╧ы╡Я
     {
         NextTurn();
     }

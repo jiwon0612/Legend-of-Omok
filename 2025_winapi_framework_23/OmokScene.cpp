@@ -21,11 +21,6 @@ OmokScene::~OmokScene()
 void OmokScene::Init()
 {
 	SubWindow subWindow = SubWindow(nullptr);
-	m_pBoard = new Board;
-	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
-	m_pBoard->SetSize(Vec2(600.f, 600.f));
-	GET_SINGLE(BoardManager)->Init(m_pBoard);
-	AddObject(m_pBoard, Layer::BOARD);
 }
 
 void OmokScene::LateInit()
@@ -34,6 +29,7 @@ void OmokScene::LateInit()
 	m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pBoard->SetSize(Vec2(600.f, 600.f));
+	GET_SINGLE(BoardManager)->Init(m_pBoard);
 	AddObject(m_pBoard, Layer::BOARD);
 }
 

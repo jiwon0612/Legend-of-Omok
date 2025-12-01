@@ -17,5 +17,5 @@ void WindowManager::AddWindow(SubWindow* window)
 
 void WindowManager::RemoveWindow(SubWindow* window)
 {
-
+	m_windows.erase(std::remove(m_windows.begin(), m_windows.end(), window), m_windows.end());
 }

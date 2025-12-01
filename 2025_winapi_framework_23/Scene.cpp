@@ -13,6 +13,10 @@ Scene::~Scene()
 	Release();
 }
 
+void Scene::LateInit()
+{
+}
+
 void Scene::Update()
 {
 	// obj update

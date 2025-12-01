@@ -19,12 +19,8 @@ OmokScene::~OmokScene()
 
 void OmokScene::Init()
 {
-	// 보드 생성
 	SubWindow subWindow = SubWindow(nullptr);
-	m_pBoard = new Board;
-	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
-	m_pBoard->SetSize(Vec2(600.f, 600.f));
-	AddObject(m_pBoard, Layer::BOARD);
+	
 	//카드
 	m_testECard = new EarthquakeCard;
 	m_testECard->SetCard(L"지진 카드", L"페시브 형태로 상대턴에 화면을 강하게 흔든다.", CardType::Disturbanc);
@@ -32,6 +28,15 @@ void OmokScene::Init()
 	m_testICard = new IndiaInkCard;
 	m_testICard->SetCard(L"먹물 카드", L"다음 상대턴에 화면을 먹물로 가린다.", CardType::Disturbanc);
 	AddObject(m_testICard, Layer::UI);
+}
+
+void OmokScene::LateInit()
+{
+	// 보드 생성
+	m_pBoard = new Board;
+	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
+	m_pBoard->SetSize(Vec2(600.f, 600.f));
+	AddObject(m_pBoard, Layer::BOARD);
 }
 
 void OmokScene::Update()

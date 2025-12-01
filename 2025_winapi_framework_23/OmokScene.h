@@ -13,6 +13,7 @@ public:
 
 public:
 	void Init() override;
+	void LateInit() override;
 	void Update() override;
 	void Render(HDC _hdc) override;
 

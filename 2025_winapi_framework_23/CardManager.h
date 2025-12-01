@@ -8,6 +8,7 @@ class CardManager
 
 public:
 	void Init();
+	void LateInit();
 
 public:
 	CardInfo* GetCardInfo(wstring key) { return m_cardInfoMap[key]; }
@@ -19,6 +20,6 @@ private:
 	Vector2 m_cardStartPos;
 	Vector2 m_cardPos;
 	Vector2 m_cardOffset;
-	int m_showCardCnt;
+	int m_showCardCnt = 5;
 };
 

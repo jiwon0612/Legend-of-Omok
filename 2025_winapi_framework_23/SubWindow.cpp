@@ -91,7 +91,7 @@ int SubWindow::MessageLoop()
 		}
 		else
 		{
-			GET_SINGLE(Core)->GameLoop();
+			
 		}
 	}
 	GET_SINGLE(Core)->CleanUp();

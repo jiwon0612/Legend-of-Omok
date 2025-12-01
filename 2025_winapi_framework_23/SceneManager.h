@@ -6,6 +6,7 @@ class SceneManager
 	DECLARE_SINGLE(SceneManager);
 public:
 	void Init();
+	void LateInit();
 	void Update(); // LateUpdate;
 	void FixedUpdate(float _fixedDT);
 	void PhysicsSyncColliders();

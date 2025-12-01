@@ -95,7 +95,10 @@ void Board::Update()
 						m_gameState = GameState::WHITE_WIN;
 				}
 				else
-					SwitchTurn();
+				{ 
+					isPlaced = true;
+					//SwitchTurn();
+				}
 			}
 		}
 	}
@@ -183,6 +186,8 @@ void Board::Reset()
 
 void Board::SwitchTurn()
 {
+	isPlaced = false;
+
 	if (m_currentPlayer == StoneType::BLACK)
 		m_currentPlayer = StoneType::WHITE;
 	else

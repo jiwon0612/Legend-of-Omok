@@ -33,6 +33,7 @@ public:
 	const std::pair<int, int>& GetLastMove() const { return m_lastMove; }
 public :
 	float playerTime[2]; // 흑, 백 시간
+	bool isPlaced = false;
 
 private:
 	bool IsInBounds(int x, int y) const;

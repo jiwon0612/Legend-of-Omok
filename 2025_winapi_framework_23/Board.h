@@ -4,21 +4,6 @@
 
 class Texture;
 
-enum class StoneType
-{
-	NONE = 0,
-	BLACK = 1,
-	WHITE = 2
-};
-
-enum class GameState
-{
-	PLAYING,
-	BLACK_WIN,
-	WHITE_WIN,
-	DRAW
-};
-
 class Board : public Object
 {
 public:
@@ -28,7 +13,6 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;
-
 public:
 	// 게임 로직
 	bool PlaceStone(int x, int y, StoneType player);
@@ -46,6 +30,8 @@ public:
 	GameState GetGameState() const { return m_gameState; }
 	StoneType GetStone(int x, int y) const;
 	const std::pair<int, int>& GetLastMove() const { return m_lastMove; }
+public :
+	float playerTime[2]; // 흑, 백 시간
 
 private:
 	bool IsInBounds(int x, int y) const;
@@ -57,7 +43,6 @@ private:
 
 private:
 	static const int TIME_LIMIT = 300; // 5분
-	float playerTime[2]; // 흑, 백 시간
 	float m_elapsedTime;
 
 	static const int BOARD_SIZE = 19;

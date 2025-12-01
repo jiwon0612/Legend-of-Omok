@@ -2,6 +2,7 @@
 #include "Board.h"
 #include "GDISelector.h"
 #include "InputManager.h"
+#include "CardManager.h"
 
 Board::Board()
 	: m_currentPlayer(StoneType::BLACK)
@@ -17,6 +18,7 @@ Board::Board()
 	, playerTime{ TIME_LIMIT, TIME_LIMIT }
 	, m_elapsedTime(0.f)
 {
+
 	// 보드 초기화
 	for (int y = 0; y < BOARD_SIZE; ++y)
 	{
@@ -28,6 +30,8 @@ Board::Board()
 
 	m_boardStartPos = Vec2( (WINDOW_WIDTH - (BOARD_SIZE - 1) * m_cellSize) / 2.f,
 		(WINDOW_HEIGHT - (BOARD_SIZE - 1) * m_cellSize) / 2.f);
+
+	GET_SINGLE(CardManager)->ShowCard(5, StoneType::BLACK);
 }
 
 Board::~Board()
@@ -178,6 +182,7 @@ void Board::SwitchTurn()
 		m_currentPlayer = StoneType::WHITE;
 	else
 		m_currentPlayer = StoneType::BLACK;
+	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)->GetShowCardCnt(),m_currentPlayer);
 }
 
 bool Board::ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const

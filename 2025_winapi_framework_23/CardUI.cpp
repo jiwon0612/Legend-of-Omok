@@ -1,8 +1,10 @@
 #include "pch.h"
 #include "CardUI.h"
 #include "ResourceManager.h"
+#include "SceneManager.h"
 #include "Texture.h"
 #include "CardInfo.h"
+#include "Card.h"
 #include "InputManager.h"
 
 CardUI::CardUI()
@@ -10,8 +12,14 @@ CardUI::CardUI()
 	, m_cardTex(nullptr)
 	, m_cardIconTex(nullptr)
 	, m_isInit(false)
+	, m_isHover(false)
+	, m_hoverSizeOffset({ 50,50 })
+	, m_defultSize(GetSize())
+	, m_outlineThickness(1.f)
 {
 	m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"TestCard");
+	SetScaleTweenSpeed(5);
+	SetMoveTweenSpeed(3);
 }
 
 CardUI::~CardUI()
@@ -20,6 +28,7 @@ CardUI::~CardUI()
 
 void CardUI::Init(CardInfo* _cardInfo)
 {
+	m_defultSize = GetSize();
 	m_cardInfo = _cardInfo;
 	m_cardIconTex = GET_SINGLE(ResourceManager)->GetTexture(m_cardInfo->iconName);
 	m_isInit = true;
@@ -28,7 +37,28 @@ void CardUI::Init(CardInfo* _cardInfo)
 void CardUI::Update()
 {
 	TweeningObject::Update();
-	static Vector2 offset = { 0.f, 0.f };
+
+	if (!m_isInit)
+		return;
+
+	POINT mouse = GET_SINGLE(InputManager)->GetMousePos();
+	Vector2 mousePos = { (float)mouse.x, (float)mouse.y };
+
+	Vector2 pos = GetPos();
+	Vector2 size = GetSize();
+	//::PtInRect()
+	SetIsHover(mousePos.x > (pos.x - size.x / 2) &&
+		mousePos.x < (pos.x + size.x / 2) &&
+		mousePos.y >(pos.y - size.y / 2) &&
+		mousePos.y < (pos.y + size.y / 2));
+
+	if (m_isHover && GET_KEYDOWN(KEY_TYPE::LBUTTON))
+	{
+		cout << "카드 사용" << '\n';
+		m_cardInfo->card->CardSkill();
+		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);
+	}
+	//static Vector2 offset = { 0.f, 0.f };
 
 	/*if (GET_KEYDOWN(KEY_TYPE::LBUTTON))
 	{
@@ -63,13 +93,23 @@ void CardUI::Render(HDC _hdc)
 	LONG width = m_cardTex->GetWidth();
 	LONG height = m_cardTex->GetHeight();
 
-	::BitBlt(_hdc
+	/*::BitBlt(_hdc
 		, (int)(pos.x - size.x / 2)
 		, (int)(pos.y - size.y / 2)
 		, width
 		, height
 		, m_cardTex->GetTextureDC()
-		, 0, 0, SRCCOPY);
+		, 0, 0, SRCCOPY);*/
+	if (m_isHover)
+		RECT_RENDER(_hdc, pos.x, pos.y, size.x + m_outlineThickness / 2, size.y + m_outlineThickness / 2);
+
+	::StretchBlt(_hdc
+		, (int)(pos.x - size.x / 2)
+		, (int)(pos.y - size.y / 2)
+		, (int)(size.x)
+		, (int)(size.y)
+		, m_cardTex->GetTextureDC()
+		, 0, 0, width, height, SRCCOPY);
 
 	if (m_isInit)
 	{
@@ -87,4 +127,17 @@ void CardUI::Render(HDC _hdc)
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, SRCCOPY);
 	}
+
+}
+
+void CardUI::SetIsHover(bool value)
+{
+	if (m_isHover != value)
+	{
+		if (value)
+			ScaleToSize(m_defultSize, m_defultSize + m_hoverSizeOffset);
+		else
+			ScaleToSize(m_defultSize + m_hoverSizeOffset, m_defultSize);
+	}
+	m_isHover = value;
 }

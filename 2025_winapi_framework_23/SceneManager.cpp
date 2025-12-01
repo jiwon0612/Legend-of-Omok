@@ -31,8 +31,14 @@ void SceneManager::Init()
 	RegisterScene(L"OmokScene", std::make_shared<OmokScene>());
 	RegisterScene(L"CardTestScene", std::make_shared<CardTestScene>());
 
+
 	// 첫 씬 지정
 	LoadScene(L"OmokScene");
+}
+void SceneManager::LateInit()
+{
+	if (m_curScene != nullptr)
+		m_curScene->LateInit();
 }
 void SceneManager::Update()
 {

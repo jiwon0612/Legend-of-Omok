@@ -1,10 +1,9 @@
 #include "pch.h"
 #include "Card.h"
-#include "EarthquakeCard.h"
-#include "IndiaInkCard.h"
 
 Card::Card()
 	: cardName(L""), explanation(L""), cardType(CardType::None)
+	, curPlayer(StoneType::NONE), isSkill(false)
 {
 }
 
@@ -14,11 +13,12 @@ Card::~Card()
 
 void Card::Update()
 {
+	if (!isSkill) return;
 }
 
 void Card::Render(HDC _hdc)
 {
-	//카드 객체 그리기
+	if (!isSkill) return;
 }
 void Card::SetCard(wstring name, wstring explanation, CardType type)
 {
@@ -31,9 +31,9 @@ void Card::SetCard(wstring name, wstring explanation, CardType type)
 void Card::CardSkill()
 {
 	isSkill = true;
+	curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
 }
 
-//다음 턴시 카드 실행 정지 (몇 몇만)
 void Card::NextTurn()
 {
 	isSkill = false;

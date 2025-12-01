@@ -3,6 +3,8 @@
 #include "CardInfo.h"
 #include "SceneManager.h"
 #include "CardUI.h"
+#include "EarthquakeCard.h"
+#include "IndiaInkCard.h"
 
 void CardManager::Init()
 {
@@ -10,13 +12,21 @@ void CardManager::Init()
 	m_cardPos = { 200.f, 525.f };
 	m_cardOffset = { 200.f, 0.f };
 
+	Card* card = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<IndiaInkCard>(Layer::UI, m_cardStartPos, { 100.f,150.f });
 	CardInfo* testCard1 = new CardInfo(L"TestName", L"TestDescription",
-		L"Bullet", CardRarity::Normal);
-
+		L"Bullet", CardRarity::Normal, card);
 	m_cardInfoMap.insert({ testCard1->name, testCard1 });
+
+	m_showCardCnt = 5;
 }
 
-void CardManager::ShowCard(int cnt)
+void CardManager::LateInit()
+{
+	
+
+}
+
+void CardManager::ShowCard(int cnt,StoneType _curType)
 {
 	for (size_t i = 0; i < m_cardUIList.size(); i++)
 	{

@@ -2,6 +2,8 @@
 #include "BaseWindow.h"
 #include "Resource.h"
 #include "Core.h"
+#include "WindowManager.h"
+
 BaseWindow::BaseWindow()
 	: m_hInst(nullptr)
 	, m_hWnd(nullptr)
@@ -110,6 +112,7 @@ int BaseWindow::MessageLoop()
         else
         {
             GET_SINGLE(Core)->GameLoop();
+            GET_SINGLE(WindowManager)->Update();
         }
     }
     GET_SINGLE(Core)->CleanUp();

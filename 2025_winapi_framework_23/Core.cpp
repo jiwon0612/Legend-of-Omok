@@ -34,8 +34,12 @@ bool Core::Init(HWND _hWnd)
     GET_SINGLE(InputManager)->Init();
     if (!GET_SINGLE(ResourceManager)->Init())
         return false;
+
     GET_SINGLE(SceneManager)->Init();
     GET_SINGLE(CardManager)->Init();
+
+    GET_SINGLE(SceneManager)->LateInit();
+    GET_SINGLE(CardManager)->LateInit();
     return true;
 }
 

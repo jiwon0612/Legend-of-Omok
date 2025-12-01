@@ -1,16 +1,8 @@
 #pragma once
 #include "Object.h"
+#include "BoardManager.h"
 
-enum class CardType
-{
-	None = 0,
-	Disturbanc, //방해 (먹물 뿌리기...)
-	Etc, //기타 (노래변경...)
-	Active,
-};
-
-class Card : 
-	public Object
+class Card : public Object
 {
 public:
 	Card();
@@ -28,4 +20,5 @@ protected:
 	CardType cardType;
 protected:
 	bool isSkill;
+	StoneType curPlayer;
 };

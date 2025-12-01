@@ -20,12 +20,6 @@ void Card::Render(HDC _hdc)
 {
 	if (!isSkill) return;
 }
-void Card::SetCard(wstring name, wstring explanation, CardType type)
-{
-	cardName = name;
-	this->explanation = explanation;
-	cardType = type;
-}
 
 //카드 실행
 void Card::CardSkill()

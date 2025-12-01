@@ -20,7 +20,6 @@ public:
 	void Update() override;
 	void Render(HDC _hdc) override;
 public:
-	void SetCard(wstring name, wstring explanation, CardType type) override;
 	void CardSkill();
 	void NextTurn();
 private:

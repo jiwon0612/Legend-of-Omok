@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Object.h"
+#include "Stone.h"
 #include <utility>
 
 class Texture;
@@ -37,7 +38,6 @@ private:
 	bool IsInBounds(int x, int y) const;
 	int CountDirection(int x, int y, int dx, int dy, StoneType player) const;
 	void RenderBoard(HDC _hdc);
-	void RenderStones(HDC _hdc);
 	void RenderUI(HDC _hdc);
 	void RenderHoverPreview(HDC _hdc);
 
@@ -47,6 +47,7 @@ private:
 
 	static const int BOARD_SIZE = 19;
 	StoneType m_board[BOARD_SIZE][BOARD_SIZE];
+	Stone* m_stones[BOARD_SIZE][BOARD_SIZE]; // 바둑돌 객체 배열
 	
 	StoneType m_currentPlayer;
 	GameState m_gameState;
@@ -61,6 +62,4 @@ private:
 	// 색상
 	COLORREF m_boardColor;
 	COLORREF m_lineColor;
-	COLORREF m_blackStoneColor;
-	COLORREF m_whiteStoneColor;
 };

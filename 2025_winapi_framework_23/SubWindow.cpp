@@ -32,7 +32,7 @@ ATOM SubWindow::RegisterSubWindowClass()
 	wcex.lpszMenuName = nullptr;
 	wcex.lpszClassName = L"GameSub";
 	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
-	
+
 	return ::RegisterClassExW(&wcex);
 }
 
@@ -80,20 +80,18 @@ int SubWindow::MessageLoop()
 	MSG msg;
 
 	// 기본 메시지 루프입니다:
-	while (true)
+	if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 	{
-		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+		if (msg.message != WM_QUIT)
 		{
-			if (msg.message == WM_QUIT)
-				break;
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		else
-		{
-			
-		}
 	}
-	GET_SINGLE(Core)->CleanUp();
+	else
+	{
+
+	}
+	//GET_SINGLE(Core)->CleanUp();
 	return (int)msg.wParam;
 }

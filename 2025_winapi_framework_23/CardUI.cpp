@@ -6,6 +6,7 @@
 #include "CardInfo.h"
 #include "Card.h"
 #include "InputManager.h"
+#include "CardManager.h"
 
 CardUI::CardUI()
 	: m_cardInfo(nullptr)
@@ -52,10 +53,11 @@ void CardUI::Update()
 		mousePos.y >(pos.y - size.y / 2) &&
 		mousePos.y < (pos.y + size.y / 2));
 
-	if (m_isHover && GET_KEYDOWN(KEY_TYPE::LBUTTON))
+	if (m_isHover && GET_KEYDOWN(KEY_TYPE::LBUTTON) && !GetIsDead())
 	{
 		cout << "카드 사용" << '\n';
 		m_cardInfo->card->CardSkill();
+		GET_SINGLE(CardManager)->UseCard();
 		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);
 	}
 	//static Vector2 offset = { 0.f, 0.f };
@@ -100,8 +102,8 @@ void CardUI::Render(HDC _hdc)
 		, height
 		, m_cardTex->GetTextureDC()
 		, 0, 0, SRCCOPY);*/
-	if (m_isHover)
-		RECT_RENDER(_hdc, pos.x, pos.y, size.x + m_outlineThickness / 2, size.y + m_outlineThickness / 2);
+	/*if (m_isHover)
+		RECT_RENDER(_hdc, pos.x, pos.y, size.x + m_outlineThickness / 2, size.y + m_outlineThickness / 2);*/
 
 	::StretchBlt(_hdc
 		, (int)(pos.x - size.x / 2)

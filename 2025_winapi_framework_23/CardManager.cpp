@@ -31,7 +31,10 @@ void CardManager::ShowCard(int cnt,StoneType _curType)
 	for (size_t i = 0; i < m_cardUIList.size(); i++)
 	{
 		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(m_cardUIList[i]);
+		//auto& c = m_cardUIList[i];
+		//m_cardUIList.erase(std::remove(m_cardUIList.begin(), m_cardUIList.end(), m_cardUIList[i]), m_cardUIList.end());
 	}
+	m_cardUIList.clear();
 
 	for (int i = cnt - 1; i >= 0; i--)
 	{
@@ -42,4 +45,14 @@ void CardManager::ShowCard(int cnt,StoneType _curType)
 		ui->Init(GetCardInfo(L"TestName"));
 		ui->MoveToPosition(ui->GetPos(), m_cardPos + m_cardOffset * i);
 	}
+}
+
+void CardManager::UseCard()
+{
+	for (size_t i = 0; i < m_cardUIList.size(); i++)
+	{
+		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(m_cardUIList[i]);
+		//m_cardUIList.erase(std::remove(m_cardUIList.begin(), m_cardUIList.end(), m_cardUIList[i]), m_cardUIList.end());
+	}
+	m_cardUIList.clear();
 }

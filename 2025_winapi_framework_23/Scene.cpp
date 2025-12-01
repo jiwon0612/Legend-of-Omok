@@ -100,7 +100,7 @@ void Scene::FlushEvent()
 
 void Scene::RequestDestroy(Object* obj)
 {
-	if (obj == nullptr)
+	if (obj == nullptr)	
 		return;
 	if (!obj->GetIsDead())
 	{

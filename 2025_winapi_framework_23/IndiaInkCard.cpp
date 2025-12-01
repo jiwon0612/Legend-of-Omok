@@ -14,6 +14,7 @@ IndiaInkCard::~IndiaInkCard()
 
 void IndiaInkCard::ReallySkill()
 {
+    cout << ((int)curPlayer);
     isInk = true;
 
     inkDuration = 10.f;
@@ -24,7 +25,7 @@ void IndiaInkCard::ReallySkill()
 void IndiaInkCard::NextTurn()
 {
     isInk = false;
-    Card::NextTurn();
+    isSkill = false;
 }
 void IndiaInkCard::UpdateDoSkill()
 {
@@ -66,8 +67,8 @@ void IndiaInkCard::UpdateDoSkill()
 
 void IndiaInkCard::Update()
 {
-    Card::Update();
-
+    if (!isSkill) return;
+    cout <<(int) curPlayer << "\n";
     if (!isInk && 
         curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ÅÏ ¹Ù²ñ
     {
@@ -87,7 +88,7 @@ void IndiaInkCard::Update()
 
 void IndiaInkCard::Render(HDC _hdc)
 {
-    Card::Render(_hdc);
+    if (!isSkill) return;
     if (!isInk) return;
 
     HDC texDC = m_Tex->GetTextureDC();
@@ -113,12 +114,8 @@ void IndiaInkCard::Render(HDC _hdc)
     }
 }
 
-
-void IndiaInkCard::SetCard(wstring name, wstring explanation, CardType type)
-{
-   Card::SetCard(name, explanation, type);
-}
 void IndiaInkCard::CardSkill()
 {
-    Card::CardSkill();
+    isSkill = true;
+    curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
 }

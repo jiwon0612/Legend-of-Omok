@@ -18,6 +18,7 @@ Board::Board()
 	, playerTime{ TIME_LIMIT, TIME_LIMIT }
 	, m_elapsedTime(0.f)
 {
+
 	// 보드 초기화
 	for (int y = 0; y < BOARD_SIZE; ++y)
 	{

@@ -49,3 +49,11 @@ enum class GameState
 	WHITE_WIN,
 	DRAW
 };
+
+enum class CardType
+{
+	None = 0,
+	Disturbanc, //방해 (먹물 뿌리기...) //상대 턴에만
+	Passive, //패시브 (노래변경...) //게임 내에 지속
+	Active, //엑티브 (자신에게 유리) //사용 순간만 
+};

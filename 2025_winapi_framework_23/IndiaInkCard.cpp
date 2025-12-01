@@ -3,40 +3,48 @@
 #include "ResourceManager.h"
 #include "IndiaInkCard.h"
 
-IndiaInkCard::IndiaInkCard() : m_Tex(nullptr), isInk(false)
+IndiaInkCard::IndiaInkCard() : 
+    m_Tex(nullptr), isInk(false)
 {
 	m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
 }
 IndiaInkCard::~IndiaInkCard()
 {
 }
-void IndiaInkCard::Update()
-{
-    if (!isInk) return;
 
+void IndiaInkCard::ReallySkill()
+{
+    isInk = true;
+
+    inkDuration = 10.f;
+    inkElapsed = 0.f;
+
+    m_inkPieces.clear();
+}
+void IndiaInkCard::NextTurn()
+{
+    isInk = false;
+    Card::NextTurn();
+}
+void IndiaInkCard::UpdateDoSkill()
+{
     inkElapsed += fDT;
-    inkSpawnElapsed += fDT;
 
     //생성
-    if (inkSpawnElapsed >= inkSpawnInterval)
-    {
-        inkSpawnElapsed = 0.f;
+    LONG texWidth = m_Tex->GetWidth();
+    LONG texHeight = m_Tex->GetHeight();
 
-        LONG texWidth = m_Tex->GetWidth();
-        LONG texHeight = m_Tex->GetHeight();
+    InkPiece piece;
+    int ran = (rand() % 4) + 1;
+    piece.baseCutX = xSize * ran;
+    ran = (rand() % 3) + 1;
+    piece.baseCutY = ySize * ran;
+    piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
+    piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
+    piece.screenSize = inkSize;
+    piece.alpha = 200.f;
 
-        InkPiece piece;
-        int ran = (rand() % 4) + 1;
-        piece.baseCutX = xSize * ran;
-        ran = (rand() % 3) + 1;
-        piece.baseCutY = ySize  * ran;
-        piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
-        piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
-        piece.screenSize = inkSize;
-        piece.alpha = 200.f;
-
-        m_inkPieces.push_back(piece);
-    }
+    m_inkPieces.push_back(piece);
 
     //투명도
     for (auto& piece : m_inkPieces)
@@ -53,11 +61,33 @@ void IndiaInkCard::Update()
     );
 
     if (inkElapsed >= inkDuration && m_inkPieces.empty())
-        isInk = false;
+        isSkill = false;
+}
+
+void IndiaInkCard::Update()
+{
+    Card::Update();
+
+    if (!isInk && 
+        curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
+    {
+        ReallySkill();
+    }
+
+    if (!isInk) return;
+
+    if (!isInk &&
+        curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
+    {
+        NextTurn();
+    }
+
+    UpdateDoSkill();
 }
 
 void IndiaInkCard::Render(HDC _hdc)
 {
+    Card::Render(_hdc);
     if (!isInk) return;
 
     HDC texDC = m_Tex->GetTextureDC();
@@ -86,17 +116,9 @@ void IndiaInkCard::Render(HDC _hdc)
 
 void IndiaInkCard::SetCard(wstring name, wstring explanation, CardType type)
 {
-    cardName = name;
-    this->explanation = explanation;
-    cardType = type;
+   Card::SetCard(name, explanation, type);
 }
 void IndiaInkCard::CardSkill()
 {
-    isInk = true;
-    inkDuration = 10.f;
-    inkElapsed = 0.f;
-
-    m_inkPieces.clear();
-    inkSpawnInterval = 0.3f;
-    inkSpawnElapsed = 0.f;
+    Card::CardSkill();
 }

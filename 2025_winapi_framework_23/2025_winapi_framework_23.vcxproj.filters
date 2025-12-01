@@ -160,6 +160,20 @@
     <ClInclude Include="IndiaInkCard.h">
       <Filter>Engine\03. Object\Card</Filter>
     </ClInclude>
+    <ClInclude Include="CardInfo.h" />
+    <ClInclude Include="CardManager.h" />
+    <ClInclude Include="CardTestScene.h" />
+    <ClInclude Include="CardUI.h" />
+    <ClInclude Include="Mathf.h" />
+    <ClInclude Include="SubWindow.h" />
+    <ClInclude Include="TweeningObject.h" />
+    <ClInclude Include="WindowManager.h" />
+    <ClInclude Include="DeleteTimeCard.h">
+      <Filter>Engine\03. Object\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardManager.h">
+      <Filter>Engine\02. Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2025_winapi_framework_23.rc">
@@ -261,6 +275,19 @@
     </ClCompile>
     <ClCompile Include="IndiaInkCard.cpp">
       <Filter>Engine\03. Object\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="CardInfo.cpp" />
+    <ClCompile Include="CardManager.cpp" />
+    <ClCompile Include="CardTestScene.cpp" />
+    <ClCompile Include="CardUI.cpp" />
+    <ClCompile Include="SubWindow.cpp" />
+    <ClCompile Include="TweeningObject.cpp" />
+    <ClCompile Include="WindowManager.cpp" />
+    <ClCompile Include="DeleteTimeCard.cpp">
+      <Filter>Engine\03. Object\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardManager.cpp">
+      <Filter>Engine\02. Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

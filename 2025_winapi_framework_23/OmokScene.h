@@ -19,6 +19,4 @@ public:
 
 private:
 	Board* m_pBoard;
-	EarthquakeCard* m_testECard;
-	IndiaInkCard* m_testICard;
 };

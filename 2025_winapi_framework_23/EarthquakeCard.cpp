@@ -2,7 +2,7 @@
 #include "EarthquakeCard.h"
 
 
-EarthquakeCard::EarthquakeCard() : isShaking(false)
+EarthquakeCard::EarthquakeCard():isShake(false)
 {
 }
 
@@ -10,11 +10,36 @@ EarthquakeCard::~EarthquakeCard()
 {
 }
 
-void EarthquakeCard::Update()
+void EarthquakeCard::ReallySkill()
 {
+    isShake = true;
+}
+void EarthquakeCard::NextTurn()
+{
+    isShake = false;
+    Card::NextTurn();
 }
 
-void ShakeWindow(HWND hWnd, int durationMs, int strength)
+void EarthquakeCard::Update()
+{
+    Card::Update();
+
+    if (!isShake &&
+        curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ÅÏ ¹Ù²ñ
+    {
+        ReallySkill();
+    }
+
+    if (!isShake) return;
+
+    if (!isShake &&
+        curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ÅÏ ¹Ù²ñ
+    {
+        NextTurn();
+    }
+}
+
+void EarthquakeCard::ShakeWindow(HWND hWnd, int durationMs, int strength)
 {
     RECT rect;
     GetWindowRect(hWnd, &rect);
@@ -41,16 +66,15 @@ void ShakeWindow(HWND hWnd, int durationMs, int strength)
 
 void EarthquakeCard::Render(HDC _hdc)
 {
-    if (!isShaking) return;
+    Card::Render(_hdc);
+    if (!isShake) return;
     ShakeWindow(GetActiveWindow(), 500, 50);
 }
 void EarthquakeCard::SetCard(wstring name, wstring explanation, CardType type)
 {
-    cardName = name;
-    this->explanation = explanation;
-    cardType = type;
+    Card::SetCard(name, explanation, type);
 }
 void EarthquakeCard::CardSkill()
 {
-	isShaking = true;
+    Card::CardSkill();
 }

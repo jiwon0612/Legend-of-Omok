@@ -22,9 +22,15 @@ public:
 public:
 	void SetCard(wstring name, wstring explanation, CardType type) override;
 	void CardSkill();
+	void NextTurn();
+private:
+	void ReallySkill();
+	void UpdateDoSkill();
 private:
 	Texture* m_Tex;
+
 	bool isInk;
+
 	float inkDuration;
 	float inkElapsed;
 	const int drawCount = 4;
@@ -33,6 +39,4 @@ private:
 	const int inkSize = 500;
 
 	std::vector<InkPiece> m_inkPieces;
-	float inkSpawnInterval;  // 생성 시간
-	float inkSpawnElapsed;   // 누적 시간
 };

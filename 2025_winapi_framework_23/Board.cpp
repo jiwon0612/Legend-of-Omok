@@ -3,6 +3,7 @@
 #include "GDISelector.h"
 #include "InputManager.h"
 #include "CardManager.h"
+#include "SceneManager.h"
 
 Board::Board()
 	: m_currentPlayer(StoneType::BLACK)
@@ -13,8 +14,6 @@ Board::Board()
 	, m_isHovering(false)
 	, m_boardColor(RGB(220, 179, 92))
 	, m_lineColor(RGB(0, 0, 0))
-	, m_blackStoneColor(RGB(30, 30, 30))
-	, m_whiteStoneColor(RGB(245, 245, 245))
 	, playerTime{ TIME_LIMIT, TIME_LIMIT }
 	, m_elapsedTime(0.f)
 {
@@ -110,7 +109,6 @@ void Board::Update()
 void Board::Render(HDC _hdc)
 {
 	RenderBoard(_hdc);
-	RenderStones(_hdc);
 	RenderHoverPreview(_hdc);
 	RenderUI(_hdc);
 }
@@ -121,6 +119,13 @@ bool Board::PlaceStone(int x, int y, StoneType player)
 		return false;
 
 	m_board[y][x] = player;
+
+	Vec2 stonePos = BoardToScreen(x, y);
+	Stone* newStone = new Stone(player, Vec2(m_cellSize - 4.f, m_cellSize - 4.f), stonePos);
+	m_stones[y][x] = newStone;
+	
+	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(newStone, Layer::STONE);
+
 	m_lastMove = std::make_pair(x, y);
 	return true;
 }
@@ -310,56 +315,6 @@ void Board::RenderBoard(HDC _hdc)
 	DeleteObject(starBrush);
 }
 
-void Board::RenderStones(HDC _hdc)
-{
-	for (int y = 0; y < BOARD_SIZE; ++y)
-	{
-		for (int x = 0; x < BOARD_SIZE; ++x)
-		{
-			if (m_board[y][x] == StoneType::NONE)
-				continue;
-
-			Vec2 pos = BoardToScreen(x, y);
-			float stoneRadius = m_cellSize * 0.45f;
-
-			COLORREF stoneColor = (m_board[y][x] == StoneType::BLACK) ? m_blackStoneColor : m_whiteStoneColor;
-			HBRUSH stoneBrush = CreateSolidBrush(stoneColor);
-			HPEN stonePen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
-
-			HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, stoneBrush);
-			HPEN oldPen = (HPEN)SelectObject(_hdc, stonePen);
-
-			Ellipse(_hdc,
-				static_cast<int>(pos.x - stoneRadius),
-				static_cast<int>(pos.y - stoneRadius),
-				static_cast<int>(pos.x + stoneRadius),
-				static_cast<int>(pos.y + stoneRadius));
-
-			SelectObject(_hdc, oldBrush);
-			SelectObject(_hdc, oldPen);
-			DeleteObject(stoneBrush);
-			DeleteObject(stonePen);
-
-			// 마지막 수 표시
-			if (m_lastMove.first == x && m_lastMove.second == y)
-			{
-				HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-				oldPen = (HPEN)SelectObject(_hdc, redPen);
-
-				float markRadius = stoneRadius * 0.4f;
-				Ellipse(_hdc,
-					static_cast<int>(pos.x - markRadius),
-					static_cast<int>(pos.y - markRadius),
-					static_cast<int>(pos.x + markRadius),
-					static_cast<int>(pos.y + markRadius));
-
-				SelectObject(_hdc, oldPen);
-				DeleteObject(redPen);
-			}
-		}
-	}
-}
-
 void Board::RenderUI(HDC _hdc)
 {
 	wstring turnText;
@@ -410,7 +365,7 @@ void Board::RenderHoverPreview(HDC _hdc)
 	Vec2 pos = BoardToScreen(m_hoverPos.first, m_hoverPos.second);
 	float stoneRadius = m_cellSize * 0.45f;
 
-	COLORREF previewColor = (m_currentPlayer == StoneType::BLACK) ? m_blackStoneColor : m_whiteStoneColor;
+	COLORREF previewColor = (m_currentPlayer == StoneType::BLACK) ? RGB(50, 50, 50) : RGB(200, 200, 200);
 
 	HPEN previewPen = CreatePen(PS_DOT, 2, previewColor);
 	HBRUSH hollowBrush = (HBRUSH)GetStockObject(NULL_BRUSH);

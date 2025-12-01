@@ -17,12 +17,12 @@ void EarthquakeCard::ReallySkill()
 void EarthquakeCard::NextTurn()
 {
     isShake = false;
-    Card::NextTurn();
+    isSkill = false;
 }
 
 void EarthquakeCard::Update()
 {
-    Card::Update();
+    if (!isSkill) return;
 
     if (!isShake &&
         curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ÅÏ ¹Ù²ñ
@@ -66,15 +66,12 @@ void EarthquakeCard::ShakeWindow(HWND hWnd, int durationMs, int strength)
 
 void EarthquakeCard::Render(HDC _hdc)
 {
-    Card::Render(_hdc);
+    if (!isSkill) return;
     if (!isShake) return;
     ShakeWindow(GetActiveWindow(), 500, 50);
 }
-void EarthquakeCard::SetCard(wstring name, wstring explanation, CardType type)
-{
-    Card::SetCard(name, explanation, type);
-}
 void EarthquakeCard::CardSkill()
 {
-    Card::CardSkill();
+    isSkill = true;
+    curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
 }

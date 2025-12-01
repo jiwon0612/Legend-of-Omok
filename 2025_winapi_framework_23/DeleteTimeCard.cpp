@@ -10,18 +10,14 @@ DeleteTimeCard::~DeleteTimeCard()
 
 void DeleteTimeCard::Update()
 {
-    Card::Update();
+    if (!isSkill) return;
 }
 
 void DeleteTimeCard::Render(HDC _hdc)
 {
-    Card::Render(_hdc);
+    if (!isSkill) return;
 }
 
-void DeleteTimeCard::SetCard(wstring name, wstring explanation, CardType type)
-{
-    Card::SetCard(name, explanation, type);
-}
 void DeleteTimeCard::CardSkill()
 {
     Card::CardSkill();

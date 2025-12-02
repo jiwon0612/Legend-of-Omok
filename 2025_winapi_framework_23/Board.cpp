@@ -128,7 +128,7 @@ void Board::Update()
 				else
 				{ 
 					isPlaced = true;
-					//SwitchTurn();
+					SwitchTurn();
 				}
 			}
 		}

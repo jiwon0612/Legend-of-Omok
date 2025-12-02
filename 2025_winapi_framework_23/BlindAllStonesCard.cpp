@@ -10,11 +10,6 @@ BlindAllStonesCard::~BlindAllStonesCard()
 {
 }
 
-void BlindAllStonesCard::CardSkill()
-{
-	isSkill = true;
-}
-
 void BlindAllStonesCard::NextTurn()
 {
 	if (isSkill)
@@ -23,3 +18,22 @@ void BlindAllStonesCard::NextTurn()
 		isSkill = false;
 	}
 }
+
+void BlindAllStonesCard::Update()
+{
+
+    if (!isSkill) return;
+
+    if (curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
+    {
+        NextTurn();
+        return;
+    }
+}
+
+void BlindAllStonesCard::CardSkill()
+{
+	isSkill = true;
+	curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
+}
+

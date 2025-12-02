@@ -22,6 +22,6 @@ void TimeStopCard::CardSkill()
 {
     isSkill = true;
     curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
-    GET_SINGLE(BoardManager)->TimeStopSkill();
+    GET_SINGLE(BoardManager)->GetBoard()->TimeStop();
     isSkill = false;
 }

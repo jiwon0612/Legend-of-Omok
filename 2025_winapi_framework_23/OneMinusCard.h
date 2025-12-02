@@ -1,12 +1,12 @@
 #pragma once
 #include "Card.h"
 
-class PeaceCard
+class OneMinusCard
 	: public Card
 {
 public:
-	PeaceCard();
-	~PeaceCard();
+	OneMinusCard();
+	~OneMinusCard();
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;
@@ -16,5 +16,6 @@ public:
 private:
 	void ReallySkill();
 private:
-	bool isPeace;
+	bool isBlind;
 };
+

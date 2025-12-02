@@ -37,5 +37,8 @@ private:
 	const int ySize = 136;
 	const int inkSize = 500;
 
+	float spawnTimer = 0.f;
+	float spawnInterval = 0.3f;
+
 	std::vector<InkPiece> m_inkPieces;
 };

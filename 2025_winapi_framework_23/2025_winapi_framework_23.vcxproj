@@ -127,10 +127,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Output\build\Resource\Fmod\inc</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,6 +152,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Output\build\Resource\Fmod\inc</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -190,6 +192,7 @@
     <ClInclude Include="Mathf.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OmokScene.h" />
+    <ClInclude Include="OneMinusCard.h" />
     <ClInclude Include="OneMoreCard.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PeaceCard.h" />
@@ -239,9 +242,13 @@
     <ClCompile Include="GDISelector.cpp" />
     <ClCompile Include="IndiaInkCard.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OmokScene.cpp" />
+    <ClCompile Include="OneMinusCard.cpp" />
     <ClCompile Include="OneMoreCard.cpp" />
     <ClCompile Include="PeaceCard.cpp" />
     <ClCompile Include="PlaceMineCard.cpp" />

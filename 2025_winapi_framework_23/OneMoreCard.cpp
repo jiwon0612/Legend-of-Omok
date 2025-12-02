@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "OneMoreCard.h"
 
-OneMoreCard::OneMoreCard()
+OneMoreCard::OneMoreCard() : isMore(false)
 {
 }
 OneMoreCard::~OneMoreCard()

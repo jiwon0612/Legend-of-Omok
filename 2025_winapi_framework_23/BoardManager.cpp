@@ -15,3 +15,11 @@ float BoardManager::GetPlayerTime(StoneType type)
 {
 	return m_board->playerTime[(int)type - 1];
 }
+
+void BoardManager::ActivateMineSkill()
+{
+	if (m_board)
+	{
+		m_board->ActivateMineMode();
+	}
+}

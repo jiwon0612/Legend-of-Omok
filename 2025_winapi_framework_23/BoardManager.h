@@ -11,6 +11,9 @@ public:
 	StoneType GetCurrentPlayer() const { return  m_board->GetCurrentPlayer(); }
 	void SetPlayerTime(StoneType type, float time);
 	float GetPlayerTime(StoneType type);
+	
+	// 지뢰 스킬
+	void ActivateMineSkill();
 private:
 	Board* m_board = nullptr;
 private:

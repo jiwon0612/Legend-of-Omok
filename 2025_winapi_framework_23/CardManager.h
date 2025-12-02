@@ -19,6 +19,7 @@ public:
 	int GetShowCardCnt() { return m_showCardCnt; }
 	void UseCard();
 	void ShuffleCard();
+	void CardDelete();
 
 	template<typename T>
 	CardInfo* RegisterCard(wstring _name, wstring _description, wstring _icon, CardRarity _rarity)

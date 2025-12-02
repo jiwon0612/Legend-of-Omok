@@ -2,6 +2,11 @@
 #include "WindowManager.h"
 #include "SubWindow.h"
 
+void WindowManager::Init(HINSTANCE _hInst)
+{
+	m_hInst = _hInst;
+}
+
 void WindowManager::Update()
 {
 	for (size_t i = 0; i < m_windows.size(); i++)

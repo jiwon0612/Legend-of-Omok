@@ -11,5 +11,9 @@ public:
 	void Render(HDC _hdc) override;
 public:
 	void CardSkill();
+	void NextTurn();
+private:
+	void ReallySkill();
+private:
+	bool isMore;
 };
-

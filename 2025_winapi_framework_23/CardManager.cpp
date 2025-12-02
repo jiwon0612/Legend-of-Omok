@@ -9,6 +9,7 @@
 #include "DeleteTimeCard.h"
 #include "ReplaceRandomStoneSkill.h"
 #include "RerollCard.h"
+#include "BlindAllStonesCard.h"
 
 void CardManager::Init()
 {
@@ -23,13 +24,14 @@ void CardManager::Init()
 	//m_cardInfoMap[testCard1->name] = testCard1;
 	//m_cardKeyList[CardRarity::Normal].push_back(testCard1->name);
 
-	RegisterCard<IndiaInkCard>(L"TestName", L"TestDescription", L"Bullet", CardRarity::Normal);
-	RegisterCard<EarthquakeCard>(L"TestName1", L"Test1Description", L"Bullet", CardRarity::Normal);
-	RegisterCard<PlaceMineCard>(L"TestName2", L"Test2Description", L"Bullet", CardRarity::Normal);
+	RegisterCard<IndiaInkCard>(L"먹물", L"상대의 화면에 먹물을 뿌린다", L"Bullet", CardRarity::Normal);
+	RegisterCard<EarthquakeCard>(L"지진", L"상대의 화면에 지진을 이르킨다", L"Bullet", CardRarity::Normal);
+	RegisterCard<PlaceMineCard>(L"지뢰", L"지뢰를 설치한다 지뢰가 설치된 칸에는 돌을 둘수 없다", L"Bullet", CardRarity::Normal);
 	RegisterCard<TimeStopCard>(L"타이무스토뿌", L"시간을 멈춘다", L"Bullet", CardRarity::Normal);
 	RegisterCard<DeleteTimeCard>(L"시간 삭제", L"시간을 삭제한다", L"Bullet", CardRarity::Normal);
 	RegisterCard<ReplaceRandomStoneSkill>(L"돌 교체", L"돌을 교체한다", L"Bullet", CardRarity::Normal);
 	RegisterCard<RerollCard>(L"리롤", L"카드를 다시 뽑는다", L"Bullet", CardRarity::Normal);
+	RegisterCard<BlindAllStonesCard>(L"눈가리기", L"모든 돌을 블라인드 상태로 만든다", L"Bullet", CardRarity::Normal);
 
 	m_cardKeyList[CardRarity::Rare].push_back(L"test");
 	m_cardKeyList[CardRarity::Unique].push_back(L"test");

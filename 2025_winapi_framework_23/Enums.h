@@ -32,7 +32,8 @@ enum class PlayMode
 
 enum class CardRarity
 {
-	Normal, Rare, Unique, Legendary
+	Normal = 0, Rare, Unique, Legendary
+	, End
 };
 
 enum class StoneType

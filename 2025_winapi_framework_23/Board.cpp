@@ -26,7 +26,7 @@ Board::Board()
 	m_boardStartPos = Vec2( (WINDOW_WIDTH - (BOARD_SIZE - 1) * m_cellSize) / 2.f,
 		(WINDOW_HEIGHT - (BOARD_SIZE - 1) * m_cellSize) / 2.f);
 
-	GET_SINGLE(CardManager)->ShowCard(1, StoneType::BLACK);
+	GET_SINGLE(CardManager)->ShowCard(5, StoneType::BLACK);
 }
 
 Board::~Board()

@@ -1,4 +1,7 @@
 #pragma once
+#include "Card.h"
+#include "SceneManager.h"
+
 class CardInfo;
 class CardUI;
 
@@ -24,7 +27,7 @@ public:
 		
 		Card* card = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<T>(Layer::UI, m_cardStartPos, { 100.f,150.f });
 		CardInfo* cardInfo = new CardInfo(_name, _description, _icon, _rarity,card);
-		m_cardInfoMap[cardInfo->name] = card;
+		m_cardInfoMap[cardInfo->name] = cardInfo;
 		m_cardKeyList[_rarity].push_back(cardInfo->name);
 
 		return cardInfo;

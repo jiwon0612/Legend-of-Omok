@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "CardManager.h"
 #include "CardInfo.h"
-#include "SceneManager.h"
 #include "CardUI.h"
 #include "EarthquakeCard.h"
 #include "IndiaInkCard.h"
+#include "PlaceMineCard.h"
 
 void CardManager::Init()
 {
@@ -20,6 +20,8 @@ void CardManager::Init()
 	//m_cardKeyList[CardRarity::Normal].push_back(testCard1->name);
 
 	RegisterCard<IndiaInkCard>(L"TestName", L"TestDescription", L"Bullet", CardRarity::Normal);
+	RegisterCard<EarthquakeCard>(L"TestName1", L"Test1Description", L"Bullet", CardRarity::Normal);
+	RegisterCard<PlaceMineCard>(L"TestName2", L"Test2Description", L"Bullet", CardRarity::Normal);
 	
 	m_cardKeyList[CardRarity::Rare].push_back(L"test");
 	m_cardKeyList[CardRarity::Unique].push_back(L"test");

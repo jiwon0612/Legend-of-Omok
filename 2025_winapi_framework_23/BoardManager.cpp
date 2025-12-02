@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "BoardManager.h"
 
 void BoardManager::Init(Board* board)
@@ -29,5 +29,13 @@ void BoardManager::TimeStopSkill()
 	if (m_board)
 	{
 		m_board->TimeStop();
+	}
+}
+
+void BoardManager::ReplaceRandomStoneSkill()
+{
+	if (m_board)
+	{
+		m_board->ReplaceRandomStone();
 	}
 }

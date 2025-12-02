@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include"Board.h"
 
 class BoardManager
@@ -12,9 +12,10 @@ public:
 	void SetPlayerTime(StoneType type, float time);
 	float GetPlayerTime(StoneType type);
 	
-	// 지뢰 스킬
+	// 스킬 관련
 	void ActivateMineSkill();
 	void TimeStopSkill();
+	void ReplaceRandomStoneSkill();
 private:
 	Board* m_board = nullptr;
 private:

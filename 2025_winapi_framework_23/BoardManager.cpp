@@ -39,3 +39,11 @@ void BoardManager::ReplaceRandomStoneSkill()
 		m_board->ReplaceRandomStone();
 	}
 }
+
+void BoardManager::BlindAllStonesSkill()
+{
+	if (m_board)
+	{
+		m_board->SetBlindAllStones(true);
+	}
+}

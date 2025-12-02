@@ -164,6 +164,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
     <ClInclude Include="BaseWindow.h" />
+    <ClInclude Include="BlindAllStonesCard.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardManager.h" />
     <ClInclude Include="Card.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="BaseWindow.cpp" />
+    <ClCompile Include="BlindAllStonesCard.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardManager.cpp" />
     <ClCompile Include="Card.cpp" />

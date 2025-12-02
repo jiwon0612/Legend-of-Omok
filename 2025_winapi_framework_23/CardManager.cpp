@@ -5,6 +5,8 @@
 #include "EarthquakeCard.h"
 #include "IndiaInkCard.h"
 #include "PlaceMineCard.h"
+#include "TimeStopCard.h"
+#include "DeleteTimeCard.h"
 
 void CardManager::Init()
 {
@@ -22,12 +24,14 @@ void CardManager::Init()
 	RegisterCard<IndiaInkCard>(L"TestName", L"TestDescription", L"Bullet", CardRarity::Normal);
 	RegisterCard<EarthquakeCard>(L"TestName1", L"Test1Description", L"Bullet", CardRarity::Normal);
 	RegisterCard<PlaceMineCard>(L"TestName2", L"Test2Description", L"Bullet", CardRarity::Normal);
-	
+	RegisterCard<TimeStopCard>(L"타이무스토뿌", L"시간을 멈춘다", L"Bullet", CardRarity::Normal);
+	RegisterCard<DeleteTimeCard>(L"시간 삭제", L"시간을 삭제한다", L"Bullet", CardRarity::Normal);
+
 	m_cardKeyList[CardRarity::Rare].push_back(L"test");
 	m_cardKeyList[CardRarity::Unique].push_back(L"test");
 	m_cardKeyList[CardRarity::Legendary].push_back(L"test");
 
-	m_showCardCnt = 1;
+	m_showCardCnt = 5;
 }
 
 void CardManager::LateInit()

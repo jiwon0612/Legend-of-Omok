@@ -39,19 +39,8 @@ void Board::Update()
 		return;
 
 	// 시간 처리
-	m_elapsedTime += fDT;
-	if (m_elapsedTime >= 1.f)
-	{
-		m_elapsedTime = 0.f;
-		if (m_currentPlayer == StoneType::BLACK)
-			playerTime[0] -= 1.f;
-		else
-			playerTime[1] -= 1.f;
-		if (playerTime[0] <= 0.f)
-			m_gameState = GameState::WHITE_WIN;
-		else if (playerTime[1] <= 0.f)
-			m_gameState = GameState::BLACK_WIN;
-	}
+	if (!m_timeStopped)
+		TimeProcess();
 
 	if (GET_KEYDOWN(KEY_TYPE::R))
 		Reset();
@@ -143,6 +132,23 @@ void Board::Update()
 				}
 			}
 		}
+	}
+}
+
+void Board::TimeProcess()
+{
+	m_elapsedTime += fDT;
+	if (m_elapsedTime >= 1.f)
+	{
+		m_elapsedTime = 0.f;
+		if (m_currentPlayer == StoneType::BLACK)
+			playerTime[0] -= 1.f;
+		else
+			playerTime[1] -= 1.f;
+		if (playerTime[0] <= 0.f)
+			m_gameState = GameState::WHITE_WIN;
+		else if (playerTime[1] <= 0.f)
+			m_gameState = GameState::BLACK_WIN;
 	}
 }
 
@@ -252,12 +258,18 @@ void Board::Reset()
 void Board::SwitchTurn()
 {
 	isPlaced = false;
+	m_timeStopped = false;
 
 	if (m_currentPlayer == StoneType::BLACK)
 		m_currentPlayer = StoneType::WHITE;
 	else
 		m_currentPlayer = StoneType::BLACK;
 	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)->GetShowCardCnt(),m_currentPlayer);
+}
+
+void Board::TimeStop()
+{
+	m_timeStopped = true;
 }
 
 bool Board::ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const

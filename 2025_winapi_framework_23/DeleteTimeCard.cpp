@@ -20,7 +20,9 @@ void DeleteTimeCard::Render(HDC _hdc)
 
 void DeleteTimeCard::CardSkill()
 {
-    Card::CardSkill();
+    isSkill = true;
+    curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
+
     curPlayer = (curPlayer != StoneType::BLACK) ? StoneType::BLACK : StoneType::WHITE; //상대 돌로 바꾸기
 
     GET_SINGLE(BoardManager)->SetPlayerTime(curPlayer,

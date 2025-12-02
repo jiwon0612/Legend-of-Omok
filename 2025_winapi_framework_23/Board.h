@@ -26,6 +26,10 @@ public:
 	void ActivateMineMode();  // 지뢰 설치 모드 활성화
 	bool PlaceMine(int x, int y);  // 지뢰 설치
 	bool IsMineMode() const { return m_mineMode; }
+
+	// 시간 관련
+	void TimeProcess();
+	void TimeStop();
 	
 	// 좌표 변환
 	bool ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const;
@@ -61,6 +65,9 @@ private:
 	bool m_mineMode;  // 지뢰 설치 모드 여부
 	std::pair<int, int> m_mineHoverPos;  // 지뢰 설치 호버 위치
 	bool m_isMineHovering;  // 지뢰 설치 호버 중인지
+
+	// 시간
+	bool m_timeStopped = false;
 	
 	StoneType m_currentPlayer;
 	GameState m_gameState;

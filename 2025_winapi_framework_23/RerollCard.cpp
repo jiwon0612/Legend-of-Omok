@@ -22,7 +22,10 @@ void RerollCard::Render(HDC _hdc)
 
 void RerollCard::CardSkill()
 {
-	isSkill = false;
+	isSkill = true;
 	curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
-	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)->GetShowCardCnt(), curPlayer);
+
+	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)
+		->GetShowCardCnt(), curPlayer);
+	isSkill = false;
 }

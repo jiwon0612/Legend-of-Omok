@@ -14,7 +14,7 @@ void BlindAllStonesCard::NextTurn()
 {
 	if (isSkill)
 	{
-		GET_SINGLE(BoardManager)->BlindAllStonesSkill();
+		GET_SINGLE(BoardManager)->GetBoard()->SetBlindAllStones(true);
 		isSkill = false;
 	}
 }

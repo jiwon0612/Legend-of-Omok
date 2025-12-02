@@ -111,3 +111,13 @@ void CardManager::ShuffleCard()
 		}
 	}
 }
+
+void CardManager::CardDelete()
+{
+	for (size_t i = 0; i < m_cardUIList.size(); i++)
+	{
+		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(m_cardUIList[i]);
+		//m_cardUIList.erase(std::remove(m_cardUIList.begin(), m_cardUIList.end(), m_cardUIList[i]), m_cardUIList.end());
+	}
+	m_cardUIList.clear();
+}

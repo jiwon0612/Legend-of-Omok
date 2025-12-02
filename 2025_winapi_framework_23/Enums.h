@@ -58,3 +58,10 @@ enum class CardType
 	Passive, //패시브 (노래변경...) //게임 내에 지속
 	Active, //엑티브 (자신에게 유리) //사용 순간만 
 };
+
+enum class WindowType
+{
+	MainWindow,
+	SubWindow,
+	END
+};

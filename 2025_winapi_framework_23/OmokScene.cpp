@@ -8,6 +8,7 @@
 #include "CardManager.h"
 #include "SubWindow.h"
 #include "BoardManager.h"
+#include "WindowManager.h"
 
 OmokScene::OmokScene()
 	: m_pBoard(nullptr)
@@ -20,7 +21,6 @@ OmokScene::~OmokScene()
 
 void OmokScene::Init()
 {
-	SubWindow subWindow = SubWindow(nullptr);
 }
 
 void OmokScene::LateInit()
@@ -36,10 +36,10 @@ void OmokScene::LateInit()
 void OmokScene::Update()
 {
 	Scene::Update();
-	/*if (GET_KEYDOWN(KEY_TYPE::T))
+	if (GET_KEYDOWN(KEY_TYPE::T))
 	{
-		GET_SINGLE(CardManager)->ShowCard(5);
-	}*/
+		SubWindow subWindow = SubWindow(GET_SINGLE(WindowManager)->GetHInstance());
+	}
 }
 
 void OmokScene::Render(HDC _hdc)

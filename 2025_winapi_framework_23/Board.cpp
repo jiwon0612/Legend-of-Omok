@@ -26,7 +26,7 @@ Board::Board()
 	m_boardStartPos = Vec2( (WINDOW_WIDTH - (BOARD_SIZE - 1) * m_cellSize) / 2.f,
 		(WINDOW_HEIGHT - (BOARD_SIZE - 1) * m_cellSize) / 2.f);
 
-	GET_SINGLE(CardManager)->ShowCard(1, StoneType::BLACK);
+	GET_SINGLE(CardManager)->ShowCard(5, StoneType::BLACK);
 }
 
 Board::~Board()
@@ -270,6 +270,39 @@ void Board::SwitchTurn()
 void Board::TimeStop()
 {
 	m_timeStopped = true;
+}
+
+void Board::ReplaceRandomStone()
+{
+	// 랜덤한 상대돌을 내 돌로 교체
+	vector<std::pair<int, int>> opponentStones;
+	StoneType opponent = (m_currentPlayer == StoneType::BLACK) ? StoneType::WHITE : StoneType::BLACK;
+	for (int y = 0; y < BOARD_SIZE; ++y)
+	{
+		for (int x = 0; x < BOARD_SIZE; ++x)
+		{
+			if (m_board[y][x] == opponent)
+			{
+				opponentStones.push_back(std::make_pair(x, y));
+			}
+		}
+	}
+	if (opponentStones.empty())
+		return;
+	int randIndex = rand() % opponentStones.size();
+	int rx = opponentStones[randIndex].first;
+	int ry = opponentStones[randIndex].second;
+	// 돌 교체
+	m_board[ry][rx] = m_currentPlayer;
+	Stone* oldStone = m_stones[ry][rx];
+	if (oldStone)
+	{
+		oldStone->SetDead();
+	}
+	Vec2 stonePos = BoardToScreen(rx, ry);
+	Stone* newStone = new Stone(m_currentPlayer, Vec2(m_cellSize - 4.f, m_cellSize - 4.f), stonePos);
+	m_stones[ry][rx] = newStone;
+	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(newStone, Layer::STONE);
 }
 
 bool Board::ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const

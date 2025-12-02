@@ -13,5 +13,5 @@ ReplaceRandomStoneSkill::~ReplaceRandomStoneSkill()
 void ReplaceRandomStoneSkill::CardSkill()
 {
 	isSkill = true;
-	GET_SINGLE(BoardManager)->ReplaceRandomStoneSkill();
+	GET_SINGLE(BoardManager)->GetBoard()->ReplaceRandomStone();
 }

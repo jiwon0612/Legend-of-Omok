@@ -12,11 +12,8 @@ public:
 	void SetPlayerTime(StoneType type, float time);
 	float GetPlayerTime(StoneType type);
 	
+	Board* GetBoard() const { return m_board; }
 	// 스킬 관련
-	void ActivateMineSkill();
-	void TimeStopSkill();
-	void ReplaceRandomStoneSkill();
-	void BlindAllStonesSkill();
 private:
 	Board* m_board = nullptr;
 private:

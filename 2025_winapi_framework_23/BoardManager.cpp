@@ -15,35 +15,3 @@ float BoardManager::GetPlayerTime(StoneType type)
 {
 	return m_board->playerTime[(int)type - 1];
 }
-
-void BoardManager::ActivateMineSkill()
-{
-	if (m_board)
-	{
-		m_board->ActivateMineMode();
-	}
-}
-
-void BoardManager::TimeStopSkill()
-{
-	if (m_board)
-	{
-		m_board->TimeStop();
-	}
-}
-
-void BoardManager::ReplaceRandomStoneSkill()
-{
-	if (m_board)
-	{
-		m_board->ReplaceRandomStone();
-	}
-}
-
-void BoardManager::BlindAllStonesSkill()
-{
-	if (m_board)
-	{
-		m_board->SetBlindAllStones(true);
-	}
-}

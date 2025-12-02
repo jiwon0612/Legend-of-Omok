@@ -190,6 +190,7 @@
     <ClInclude Include="Mathf.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OmokScene.h" />
+    <ClInclude Include="OneMoreCard.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PlaceMineCard.h" />
     <ClInclude Include="Player.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OmokScene.cpp" />
+    <ClCompile Include="OneMoreCard.cpp" />
     <ClCompile Include="PlaceMineCard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />

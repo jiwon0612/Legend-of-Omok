@@ -22,7 +22,7 @@ void PlaceMineCard::Render(HDC _hdc)
 void PlaceMineCard::CardSkill()
 {
 	isSkill = true;
-	GET_SINGLE(BoardManager)->ActivateMineSkill();
+	GET_SINGLE(BoardManager)->GetBoard()->ActivateMineMode();
 }
 
 void PlaceMineCard::NextTurn()

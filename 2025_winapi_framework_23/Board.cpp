@@ -170,7 +170,7 @@ bool Board::PlaceStone(int x, int y, StoneType player)
 	{
 		// 지뢰 터짐! 착수 무효화
 		m_mines[y][x] = false;  // 지뢰 제거
-		isPlaced = true;  // 턴 종료
+		SwitchTurn();  // 턴 넘기기
 		return false;  // 착수 실패
 	}
 
@@ -210,10 +210,16 @@ bool Board::CheckWin(int x, int y)
 	return false;
 }
 
-bool Board::IsValidMove(int x, int y) const
+bool Board::IsValidMove(int x, int y)
 {
 	if (!IsInBounds(x, y))
 		return false;
+
+	if (m_board[y][x] != StoneType::NONE && m_blindStones)
+	{
+		SwitchTurn();
+		return false;
+	}
 
 	return m_board[y][x] == StoneType::NONE;
 }
@@ -260,6 +266,12 @@ void Board::SwitchTurn()
 	isPlaced = false;
 	m_timeStopped = false;
 
+	if (m_blindStones)
+	{
+		m_blindStones = false;
+		SetBlindAllStones(false);
+	}
+
 	if (m_currentPlayer == StoneType::BLACK)
 		m_currentPlayer = StoneType::WHITE;
 	else
@@ -303,6 +315,21 @@ void Board::ReplaceRandomStone()
 	Stone* newStone = new Stone(m_currentPlayer, Vec2(m_cellSize - 4.f, m_cellSize - 4.f), stonePos);
 	m_stones[ry][rx] = newStone;
 	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(newStone, Layer::STONE);
+}
+
+void Board::SetBlindAllStones(bool _blind)
+{
+	m_blindStones = _blind;
+	for (int y = 0; y < BOARD_SIZE; ++y)
+	{
+		for (int x = 0; x < BOARD_SIZE; ++x)
+		{
+			if (m_stones[y][x])
+			{
+				m_stones[y][x]->SetBlind(_blind);
+			}
+		}
+	}
 }
 
 bool Board::ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const

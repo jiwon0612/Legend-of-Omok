@@ -18,7 +18,7 @@ public:
 	// 게임 로직
 	bool PlaceStone(int x, int y, StoneType player);
 	bool CheckWin(int x, int y);
-	bool IsValidMove(int x, int y) const;
+	bool IsValidMove(int x, int y);
 	void Reset();
 	void SwitchTurn();
 	
@@ -35,6 +35,8 @@ public:
 
 	// 돌 교체
 	void ReplaceRandomStone();
+
+	void SetBlindAllStones(bool _blind);
 #pragma endregion
 
 	
@@ -75,6 +77,8 @@ private:
 
 	// 시간
 	bool m_timeStopped = false;
+
+	bool m_blindStones = false; // 바둑돌 블라인드 여부
 	
 	StoneType m_currentPlayer;
 	GameState m_gameState;

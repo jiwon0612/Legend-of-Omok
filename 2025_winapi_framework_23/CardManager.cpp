@@ -7,6 +7,8 @@
 #include "PlaceMineCard.h"
 #include "TimeStopCard.h"
 #include "DeleteTimeCard.h"
+#include "ReplaceRandomStoneSkill.h"
+#include "RerollCard.h"
 
 void CardManager::Init()
 {
@@ -26,6 +28,8 @@ void CardManager::Init()
 	RegisterCard<PlaceMineCard>(L"TestName2", L"Test2Description", L"Bullet", CardRarity::Normal);
 	RegisterCard<TimeStopCard>(L"타이무스토뿌", L"시간을 멈춘다", L"Bullet", CardRarity::Normal);
 	RegisterCard<DeleteTimeCard>(L"시간 삭제", L"시간을 삭제한다", L"Bullet", CardRarity::Normal);
+	RegisterCard<ReplaceRandomStoneSkill>(L"돌 교체", L"돌을 교체한다", L"Bullet", CardRarity::Normal);
+	RegisterCard<RerollCard>(L"리롤", L"카드를 다시 뽑는다", L"Bullet", CardRarity::Normal);
 
 	m_cardKeyList[CardRarity::Rare].push_back(L"test");
 	m_cardKeyList[CardRarity::Unique].push_back(L"test");

@@ -22,6 +22,8 @@ public:
 	void Reset();
 	void SwitchTurn();
 	
+#pragma region skill_related
+
 	// 지뢰 관련
 	void ActivateMineMode();  // 지뢰 설치 모드 활성화
 	bool PlaceMine(int x, int y);  // 지뢰 설치
@@ -30,6 +32,11 @@ public:
 	// 시간 관련
 	void TimeProcess();
 	void TimeStop();
+
+	// 돌 교체
+	void ReplaceRandomStone();
+#pragma endregion
+
 	
 	// 좌표 변환
 	bool ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const;

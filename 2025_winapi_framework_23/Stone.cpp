@@ -14,6 +14,7 @@ Stone::~Stone()
 
 void Stone::Render(HDC _hdc)
 {
+	if (m_blind) return;
 	// 바둑돌 색상 설정
 	COLORREF stoneColor = (m_type == StoneType::BLACK) ? RGB(30, 30, 30) : RGB(245, 245, 245);
 	HBRUSH stoneBrush = CreateSolidBrush(stoneColor);

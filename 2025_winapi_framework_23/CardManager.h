@@ -1,4 +1,7 @@
 #pragma once
+#include "Card.h"
+#include "SceneManager.h"
+
 class CardInfo;
 class CardUI;
 
@@ -15,8 +18,24 @@ public:
 	void ShowCard(int cnt, StoneType _curType);
 	int GetShowCardCnt() { return m_showCardCnt; }
 	void UseCard();
+	void ShuffleCard();
+
+	template<typename T>
+	CardInfo* RegisterCard(wstring _name, wstring _description, wstring _icon, CardRarity _rarity)
+	{
+		static_assert(std::is_base_of<Card, T>::value, "Card로부터 상속받아야 함");
+		
+		Card* card = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<T>(Layer::UI, m_cardStartPos, { 100.f,150.f });
+		CardInfo* cardInfo = new CardInfo(_name, _description, _icon, _rarity,card);
+		m_cardInfoMap[cardInfo->name] = cardInfo;
+		m_cardKeyList[_rarity].push_back(cardInfo->name);
+
+		return cardInfo;
+	}
 private:
 	unordered_map<wstring, CardInfo*> m_cardInfoMap;
+	//vector<wstring> m_cardKeyList;
+	unordered_map<CardRarity, vector<wstring>> m_cardKeyList;
 	vector<CardUI*> m_cardUIList;
 	Vector2 m_cardStartPos;
 	Vector2 m_cardPos;

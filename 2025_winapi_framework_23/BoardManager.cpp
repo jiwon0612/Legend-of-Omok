@@ -23,3 +23,11 @@ void BoardManager::ActivateMineSkill()
 		m_board->ActivateMineMode();
 	}
 }
+
+void BoardManager::TimeStopSkill()
+{
+	if (m_board)
+	{
+		m_board->TimeStop();
+	}
+}

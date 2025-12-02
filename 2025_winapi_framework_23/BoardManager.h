@@ -14,6 +14,7 @@ public:
 	
 	// 지뢰 스킬
 	void ActivateMineSkill();
+	void TimeStopSkill();
 private:
 	Board* m_board = nullptr;
 private:

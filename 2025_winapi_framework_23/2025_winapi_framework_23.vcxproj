@@ -205,6 +205,7 @@
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="TimeStopCard.h" />
     <ClInclude Include="TweeningObject.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="WindowManager.h" />
@@ -248,6 +249,7 @@
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="TimeStopCard.cpp" />
     <ClCompile Include="TweeningObject.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>

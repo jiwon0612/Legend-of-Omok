@@ -16,21 +16,17 @@ Board::Board()
 	, m_lineColor(RGB(0, 0, 0))
 	, playerTime{ TIME_LIMIT, TIME_LIMIT }
 	, m_elapsedTime(0.f)
+	, m_mines{ false }
+	, m_stones{ nullptr }
+	, m_board{ StoneType::NONE }
+	, m_mineMode(false)
+	, m_mineHoverPos(std::make_pair(-1, -1))
+	, m_isMineHovering(false)
 {
-
-	// 보드 초기화
-	for (int y = 0; y < BOARD_SIZE; ++y)
-	{
-		for (int x = 0; x < BOARD_SIZE; ++x)
-		{
-			m_board[y][x] = StoneType::NONE;
-		}
-	}
-
 	m_boardStartPos = Vec2( (WINDOW_WIDTH - (BOARD_SIZE - 1) * m_cellSize) / 2.f,
 		(WINDOW_HEIGHT - (BOARD_SIZE - 1) * m_cellSize) / 2.f);
 
-	GET_SINGLE(CardManager)->ShowCard(5, StoneType::BLACK);
+	GET_SINGLE(CardManager)->ShowCard(1, StoneType::BLACK);
 }
 
 Board::~Board()
@@ -57,8 +53,54 @@ void Board::Update()
 			m_gameState = GameState::BLACK_WIN;
 	}
 
+	if (GET_KEYDOWN(KEY_TYPE::R))
+		Reset();
+
 	POINT mousePos = GET_MOUSEPOS;
 	Vec2 mousePosVec(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
+
+	// 지뢰 모드 처리
+	if (m_mineMode)
+	{
+		// 지뢰 설치 호버 처리
+		int hoverX, hoverY;
+		if (ScreenToBoard(mousePosVec, hoverX, hoverY))
+		{
+			// 이미 돌이 있는 곳에는 설치 불가
+			if (m_board[hoverY][hoverX] == StoneType::NONE)
+			{
+				m_mineHoverPos = std::make_pair(hoverX, hoverY);
+				m_isMineHovering = true;
+			}
+			else
+			{
+				m_isMineHovering = false;
+			}
+		}
+		else
+		{
+			m_isMineHovering = false;
+		}
+
+		// 지뢰 설치 클릭 처리
+		if (GET_KEYDOWN(KEY_TYPE::LBUTTON))
+		{
+			int boardX, boardY;
+			if (ScreenToBoard(mousePosVec, boardX, boardY))
+			{
+				if (PlaceMine(boardX, boardY))
+				{
+					// 지뢰 설치 성공
+					m_mineMode = false;
+					m_isMineHovering = false;
+					// isPlaced는 그대로 유지 (착수했으면 true, 안 했으면 false)
+				}
+			}
+		}
+		return; // 지뢰 모드에서는 일반 착수 처리 안 함
+	}
+
+	if (isPlaced) return;
 
 	// 마우스 호버 처리
 	int hoverX, hoverY;
@@ -95,14 +137,12 @@ void Board::Update()
 						m_gameState = GameState::WHITE_WIN;
 				}
 				else
-					SwitchTurn();
+				{ 
+					isPlaced = true;
+					//SwitchTurn();
+				}
 			}
 		}
-	}
-
-	if (GET_KEYDOWN(KEY_TYPE::R))
-	{
-		Reset();
 	}
 }
 
@@ -110,6 +150,7 @@ void Board::Render(HDC _hdc)
 {
 	RenderBoard(_hdc);
 	RenderHoverPreview(_hdc);
+	RenderMinePreview(_hdc);
 	RenderUI(_hdc);
 }
 
@@ -117,6 +158,15 @@ bool Board::PlaceStone(int x, int y, StoneType player)
 {
 	if (!IsValidMove(x, y))
 		return false;
+
+	// 지뢰가 있는 곳인지 확인
+	if (m_mines[y][x])
+	{
+		// 지뢰 터짐! 착수 무효화
+		m_mines[y][x] = false;  // 지뢰 제거
+		isPlaced = true;  // 턴 종료
+		return false;  // 착수 실패
+	}
 
 	m_board[y][x] = player;
 
@@ -169,6 +219,18 @@ void Board::Reset()
 		for (int x = 0; x < BOARD_SIZE; ++x)
 		{
 			m_board[y][x] = StoneType::NONE;
+			m_mines[y][x] = false;  // 지뢰도 초기화
+		}
+	}
+	for (int y = 0; y < BOARD_SIZE; ++y)
+	{
+		for (int x = 0; x < BOARD_SIZE; ++x)
+		{
+			if (m_stones[y][x])
+			{
+				m_stones[y][x]->SetDead();
+				m_stones[y][x] = nullptr;
+			}
 		}
 	}
 
@@ -177,12 +239,20 @@ void Board::Reset()
 	m_lastMove = std::make_pair(-1, -1);
 	m_hoverPos = std::make_pair(-1, -1);
 	m_isHovering = false;
+	isPlaced = false;
 	playerTime[0] = TIME_LIMIT;
 	playerTime[1] = TIME_LIMIT;
+	
+	// 지뢰 모드 초기화
+	m_mineMode = false;
+	m_mineHoverPos = std::make_pair(-1, -1);
+	m_isMineHovering = false;
 }
 
 void Board::SwitchTurn()
 {
+	isPlaced = false;
+
 	if (m_currentPlayer == StoneType::BLACK)
 		m_currentPlayer = StoneType::WHITE;
 	else
@@ -359,7 +429,7 @@ void Board::RenderUI(HDC _hdc)
 
 void Board::RenderHoverPreview(HDC _hdc)
 {
-	if (!m_isHovering || m_gameState != GameState::PLAYING)
+	if (!m_isHovering || m_gameState != GameState::PLAYING || m_mineMode)
 		return;
 
 	Vec2 pos = BoardToScreen(m_hoverPos.first, m_hoverPos.second);
@@ -382,4 +452,50 @@ void Board::RenderHoverPreview(HDC _hdc)
 	SelectObject(_hdc, oldPen);
 	SelectObject(_hdc, oldBrush);
 	DeleteObject(previewPen);
+}
+
+void Board::RenderMinePreview(HDC _hdc)
+{
+	if (!m_isMineHovering || m_gameState != GameState::PLAYING || !m_mineMode)
+		return;
+
+	Vec2 pos = BoardToScreen(m_mineHoverPos.first, m_mineHoverPos.second);
+	float mineSize = m_cellSize * 0.4f;
+
+	// 빨간색 X 표시로 지뢰 프리뷰
+	HPEN minePen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
+	HPEN oldPen = (HPEN)SelectObject(_hdc, minePen);
+
+	// X 표시 그리기
+	MoveToEx(_hdc, static_cast<int>(pos.x - mineSize), static_cast<int>(pos.y - mineSize), nullptr);
+	LineTo(_hdc, static_cast<int>(pos.x + mineSize), static_cast<int>(pos.y + mineSize));
+	
+	MoveToEx(_hdc, static_cast<int>(pos.x + mineSize), static_cast<int>(pos.y - mineSize), nullptr);
+	LineTo(_hdc, static_cast<int>(pos.x - mineSize), static_cast<int>(pos.y + mineSize));
+
+	SelectObject(_hdc, oldPen);
+	DeleteObject(minePen);
+}
+
+void Board::ActivateMineMode()
+{
+	m_mineMode = true;
+	m_isMineHovering = false;
+}
+
+bool Board::PlaceMine(int x, int y)
+{
+	if (!IsInBounds(x, y))
+		return false;
+
+	// 이미 돌이 있는 곳에는 설치 불가
+	if (m_board[y][x] != StoneType::NONE)
+		return false;
+
+	// 이미 지뢰가 있는 곳에도 설치 불가
+	if (m_mines[y][x])
+		return false;
+
+	m_mines[y][x] = true;
+	return true;
 }

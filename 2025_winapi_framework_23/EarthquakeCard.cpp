@@ -32,7 +32,7 @@ void EarthquakeCard::Update()
 
     if (!isShake) return;
 
-    if (!isShake &&
+    if (isShake &&
         curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //ео ╧ы╡Я
     {
         NextTurn();

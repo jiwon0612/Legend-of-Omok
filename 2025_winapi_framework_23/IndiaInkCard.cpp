@@ -3,10 +3,10 @@
 #include "ResourceManager.h"
 #include "IndiaInkCard.h"
 
-IndiaInkCard::IndiaInkCard() : 
+IndiaInkCard::IndiaInkCard() :
     m_Tex(nullptr), isInk(false)
 {
-	m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
+    m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
 }
 IndiaInkCard::~IndiaInkCard()
 {
@@ -14,7 +14,6 @@ IndiaInkCard::~IndiaInkCard()
 
 void IndiaInkCard::ReallySkill()
 {
-    cout << ((int)curPlayer);
     isInk = true;
 
     inkDuration = 10.f;
@@ -68,8 +67,7 @@ void IndiaInkCard::UpdateDoSkill()
 void IndiaInkCard::Update()
 {
     if (!isSkill) return;
-    cout <<(int) curPlayer << "\n";
-    if (!isInk && 
+    if (!isInk &&
         curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //≈œ πŸ≤Ò
     {
         ReallySkill();
@@ -77,10 +75,11 @@ void IndiaInkCard::Update()
 
     if (!isInk) return;
 
-    if (!isInk &&
+    if (isInk &&
         curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //≈œ πŸ≤Ò
     {
         NextTurn();
+        return;
     }
 
     UpdateDoSkill();
@@ -105,7 +104,7 @@ void IndiaInkCard::Render(HDC _hdc)
         ::TransparentBlt(
             _hdc,
             piece.screenX, piece.screentY,
-            xSize *4, ySize*4,
+            xSize * 4, ySize * 4,
             texDC,
             piece.baseCutX, piece.baseCutY,
             xSize, ySize,

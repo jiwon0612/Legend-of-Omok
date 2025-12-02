@@ -22,6 +22,11 @@ public:
 	void Reset();
 	void SwitchTurn();
 	
+	// 지뢰 관련
+	void ActivateMineMode();  // 지뢰 설치 모드 활성화
+	bool PlaceMine(int x, int y);  // 지뢰 설치
+	bool IsMineMode() const { return m_mineMode; }
+	
 	// 좌표 변환
 	bool ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const;
 	Vec2 BoardToScreen(int x, int y) const;
@@ -33,6 +38,7 @@ public:
 	const std::pair<int, int>& GetLastMove() const { return m_lastMove; }
 public :
 	float playerTime[2]; // 흑, 백 시간
+	bool isPlaced = false;
 
 private:
 	bool IsInBounds(int x, int y) const;
@@ -40,14 +46,21 @@ private:
 	void RenderBoard(HDC _hdc);
 	void RenderUI(HDC _hdc);
 	void RenderHoverPreview(HDC _hdc);
+	void RenderMinePreview(HDC _hdc);  // 지뢰 프리뷰 렌더링
 
 private:
-	static const int TIME_LIMIT = 300; // 5분
+	static const int TIME_LIMIT = 180; // 3분
 	float m_elapsedTime;
 
 	static const int BOARD_SIZE = 19;
 	StoneType m_board[BOARD_SIZE][BOARD_SIZE];
 	Stone* m_stones[BOARD_SIZE][BOARD_SIZE]; // 바둑돌 객체 배열
+	bool m_mines[BOARD_SIZE][BOARD_SIZE]; // 지뢰 위치 배열
+	
+	// 지뢰 모드 관련
+	bool m_mineMode;  // 지뢰 설치 모드 여부
+	std::pair<int, int> m_mineHoverPos;  // 지뢰 설치 호버 위치
+	bool m_isMineHovering;  // 지뢰 설치 호버 중인지
 	
 	StoneType m_currentPlayer;
 	GameState m_gameState;

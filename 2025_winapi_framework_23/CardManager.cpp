@@ -10,6 +10,7 @@
 #include "ReplaceRandomStoneSkill.h"
 #include "RerollCard.h"
 #include "BlindAllStonesCard.h"
+#include "OneMoreCard.h"
 
 void CardManager::Init()
 {
@@ -32,6 +33,7 @@ void CardManager::Init()
 	RegisterCard<ReplaceRandomStoneSkill>(L"돌 교체", L"돌을 교체한다", L"Bullet", CardRarity::Normal);
 	RegisterCard<RerollCard>(L"리롤", L"카드를 다시 뽑는다", L"Bullet", CardRarity::Normal);
 	RegisterCard<BlindAllStonesCard>(L"눈가리기", L"모든 돌을 블라인드 상태로 만든다", L"Bullet", CardRarity::Normal);
+	RegisterCard<OneMoreCard>(L"한번 더!", L"한번 더 돌을 놓을 수 있다", L"Bullet", CardRarity::Normal);
 
 	m_cardKeyList[CardRarity::Rare].push_back(L"test");
 	m_cardKeyList[CardRarity::Unique].push_back(L"test");

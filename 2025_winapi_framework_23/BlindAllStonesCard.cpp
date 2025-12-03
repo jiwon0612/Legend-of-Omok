@@ -20,19 +20,17 @@ void BlindAllStonesCard::Update()
 {
     if (!isSkill) return;
 
-    if (!isBlind &&
-        curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
+    if (curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
     {
         isBlind = true;
+        GET_SINGLE(BoardManager)->GetBoard()->SetBlindAllStones(true); //가리기
     }
 
-    GET_SINGLE(BoardManager)->GetBoard()->SetBlindAllStones(true); //가리기
     if (!isBlind) return;
 
     if (curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
     {
         NextTurn();
-        return;
     }
 }
 

@@ -3,9 +3,10 @@
 #include "Resource.h"
 #include "Core.h"
 
-SubWindow::SubWindow(HINSTANCE _hInst)
+SubWindow::SubWindow(HINSTANCE _hInst, wstring type)
 {
 	m_hInst = _hInst;
+	m_type = type;
 	RegisterSubWindowClass();
 	CreateSubWindow();
 	ShowSubWindow();

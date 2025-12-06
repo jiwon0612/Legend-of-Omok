@@ -1,5 +1,6 @@
 #pragma once
 class SubWindow;
+class WindowAPIs;
 
 class WindowManager
 {
@@ -11,8 +12,16 @@ public:
 	void AddWindow(SubWindow* window);
 	void RemoveWindow(SubWindow* window);
 	HINSTANCE GetHInstance() { return m_hInst; }
+	WindowAPIs* GetWindowAPIs(wstring type)
+	{
+		auto iter = m_windowAPIs.find(type);
+		if (iter != m_windowAPIs.end())
+			return iter->second;
+		return nullptr;
+	}
 private:
 	vector<SubWindow*> m_windows;
 	HINSTANCE m_hInst;
+	unordered_map<wstring, WindowAPIs*> m_windowAPIs;
 };
 

@@ -212,6 +212,7 @@
     <ClInclude Include="TimeStopCard.h" />
     <ClInclude Include="TweeningObject.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="WindowAPIs.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +260,7 @@
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TimeStopCard.cpp" />
     <ClCompile Include="TweeningObject.cpp" />
+    <ClCompile Include="WindowAPIs.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>

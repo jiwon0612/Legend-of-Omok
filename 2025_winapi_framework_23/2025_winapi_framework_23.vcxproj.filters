@@ -185,6 +185,11 @@
     <ClInclude Include="BlindAllStonesCard.h">
       <Filter>Engine\03. Object\Card</Filter>
     </ClInclude>
+    <ClInclude Include="OneMoreCard.h" />
+    <ClInclude Include="RerollCard.h" />
+    <ClInclude Include="WindowAPIs.h">
+      <Filter>Engine\08. Module</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2025_winapi_framework_23.rc">
@@ -310,6 +315,11 @@
     <ClCompile Include="TimeStopCard.cpp" />
     <ClCompile Include="BlindAllStonesCard.cpp">
       <Filter>Engine\03. Object\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="OneMoreCard.cpp" />
+    <ClCompile Include="RerollCard.cpp" />
+    <ClCompile Include="WindowAPIs.cpp">
+      <Filter>Engine\08. Module</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

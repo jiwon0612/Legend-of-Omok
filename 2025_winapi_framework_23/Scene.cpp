@@ -3,7 +3,9 @@
 #include "Object.h"
 #include "CollisionManager.h"
 #include "Rigidbody.h"
-#include "Object.h"
+#include "WindowManager.h"
+#include "WindowAPIs.h"
+
 Scene::Scene()
 {
 }
@@ -63,8 +65,20 @@ void Scene::Render(HDC _hdc)
 	{
 		auto& vec = m_vecObj[i];
 		for (auto* obj : vec)
+		{
 			if (!obj->GetIsDead())
-				obj->Render(_hdc);
+			{
+				if (obj->GetWindowType() == L"Main")
+					obj->Render(_hdc);
+				else
+				{
+					WindowAPIs* h = GET_SINGLE(WindowManager)->GetWindowAPIs(obj->GetWindowType());
+					if (h != nullptr)
+						obj->Render(h->GetMainDC());
+				}
+			}
+
+		}
 	}
 }
 

@@ -55,10 +55,9 @@ void CardUI::Update()
 
 	if (m_isHover && GET_KEYDOWN(KEY_TYPE::LBUTTON) && !GetIsDead())
 	{
-		cout << "카드 사용" << '\n';
-		m_cardInfo->card->CardSkill();
 		GET_SINGLE(CardManager)->UseCard();
-		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);
+		m_cardInfo->card->CardSkill();
+		//GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);
 	}
 	//static Vector2 offset = { 0.f, 0.f };
 
@@ -129,7 +128,6 @@ void CardUI::Render(HDC _hdc)
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, SRCCOPY);
 	}
-
 }
 
 void CardUI::SetIsHover(bool value)

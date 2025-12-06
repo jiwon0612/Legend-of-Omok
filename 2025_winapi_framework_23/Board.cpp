@@ -26,7 +26,7 @@ Board::Board()
 	m_boardStartPos = Vec2( (WINDOW_WIDTH - (BOARD_SIZE - 1) * m_cellSize) / 2.f,
 		(WINDOW_HEIGHT - (BOARD_SIZE - 1) * m_cellSize) / 2.f);
 
-	GET_SINGLE(CardManager)->ShowCard(5, StoneType::BLACK);
+	GET_SINGLE(CardManager)->ShowCard(2, StoneType::BLACK);
 }
 
 Board::~Board()
@@ -162,8 +162,12 @@ void Board::Render(HDC _hdc)
 
 bool Board::PlaceStone(int x, int y, StoneType player)
 {
-	if (!IsValidMove(x, y))
+	if (m_board[y][x] != StoneType::NONE && m_blindStones)
+	{
+		SwitchTurn();
 		return false;
+	}
+	if (!IsValidMove(x, y))return false;
 
 	// 지뢰가 있는 곳인지 확인
 	if (m_mines[y][x])
@@ -215,11 +219,11 @@ bool Board::IsValidMove(int x, int y)
 	if (!IsInBounds(x, y))
 		return false;
 
-	if (m_board[y][x] != StoneType::NONE && m_blindStones)
-	{
-		SwitchTurn();
-		return false;
-	}
+	//if (m_board[y][x] != StoneType::NONE && m_blindStones)
+	//{
+	//	SwitchTurn();
+	//	return false;
+	//}
 
 	return m_board[y][x] == StoneType::NONE;
 }

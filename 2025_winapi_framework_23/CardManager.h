@@ -41,6 +41,6 @@ private:
 	Vector2 m_cardStartPos;
 	Vector2 m_cardPos;
 	Vector2 m_cardOffset;
-	int m_showCardCnt = 5;
+	int m_showCardCnt = 2;
 };
 

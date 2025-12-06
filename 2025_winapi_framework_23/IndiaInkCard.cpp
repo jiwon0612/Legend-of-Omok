@@ -5,6 +5,8 @@
 
 IndiaInkCard::IndiaInkCard() :
     m_Tex(nullptr), isInk(false)
+	, inkDuration(10.f), inkElapsed(0.f)
+	, spawnTimer(0.f), spawnInterval(0.1f)
 {
     m_Tex = GET_SINGLE(ResourceManager)->GetTexture(L"IndiaInkImage");
 }
@@ -28,23 +30,24 @@ void IndiaInkCard::NextTurn()
 }
 void IndiaInkCard::UpdateDoSkill()
 {
-    inkElapsed += fDT;
+    spawnTimer += fDT;
 
-    //생성
-    LONG texWidth = m_Tex->GetWidth();
-    LONG texHeight = m_Tex->GetHeight();
+    if (spawnTimer >= spawnInterval)
+    {
+        spawnTimer = 0.f;
 
-    InkPiece piece;
-    int ran = (rand() % 4) + 1;
-    piece.baseCutX = xSize * ran;
-    ran = (rand() % 3) + 1;
-    piece.baseCutY = ySize * ran;
-    piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
-    piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
-    piece.screenSize = inkSize;
-    piece.alpha = 200.f;
+        InkPiece piece;
+        int ran = (rand() % 4) + 1;
+        piece.baseCutX = xSize * ran;
+        ran = (rand() % 3) + 1;
+        piece.baseCutY = ySize * ran;
+        piece.screenX = (rand() % WINDOW_WIDTH) - (ySize * 4);
+        piece.screentY = (rand() % WINDOW_WIDTH) - (ySize * 4);
+        piece.screenSize = inkSize;
+        piece.alpha = 200.f;
 
-    m_inkPieces.push_back(piece);
+        m_inkPieces.push_back(piece);
+    }
 
     //투명도
     for (auto& piece : m_inkPieces)

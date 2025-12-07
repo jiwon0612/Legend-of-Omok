@@ -6,6 +6,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ int       nCmdShow)
 {
     BaseWindow game;
+	srand((unsigned int)time(nullptr));
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     game.Run(hInstance, nCmdShow);
     _CrtDumpMemoryLeaks();

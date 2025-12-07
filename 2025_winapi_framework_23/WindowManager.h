@@ -11,7 +11,10 @@ public:
 	void Update();
 	void AddWindow(SubWindow* window);
 	void RemoveWindow(SubWindow* window);
+	void DisplayAllDC();
+	void ClearAllDC();
 	HINSTANCE GetHInstance() { return m_hInst; }
+	POINT GetMousePoint(wstring key);
 	WindowAPIs* GetWindowAPIs(wstring type)
 	{
 		auto iter = m_windowAPIs.find(type);
@@ -23,5 +26,6 @@ private:
 	vector<SubWindow*> m_windows;
 	HINSTANCE m_hInst;
 	unordered_map<wstring, WindowAPIs*> m_windowAPIs;
+	POINT m_mousePos;
 };
 

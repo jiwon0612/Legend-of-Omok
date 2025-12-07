@@ -42,7 +42,7 @@ void SubWindow::CreateSubWindow()
 	m_hWnd = ::CreateWindowW(L"GameSub", L"SubWindow",
 		WS_POPUP | WS_BORDER | WS_CAPTION | WS_VISIBLE,
 		200, 200,
-		400, 300,
+		400, 800,
 		nullptr,
 		nullptr,
 		m_hInst,

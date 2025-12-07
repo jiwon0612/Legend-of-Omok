@@ -31,3 +31,27 @@ void WindowManager::RemoveWindow(SubWindow* window)
 	m_windowAPIs.erase(window->GetType());
 	m_windows.erase(std::remove(m_windows.begin(), m_windows.end(), window), m_windows.end());
 }
+
+void WindowManager::DisplayAllDC()
+{
+	for (auto windows : m_windowAPIs)
+	{
+		BitBlt(windows.second->GetMainDC(), 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
+			windows.second->GetBackDC(), 0, 0, SRCCOPY);
+	}
+}
+
+void WindowManager::ClearAllDC()
+{
+	for (auto windows : m_windowAPIs)
+	{
+		PatBlt(windows.second->GetBackDC(), 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, WHITENESS);
+	}
+}
+
+POINT WindowManager::GetMousePoint(wstring key)
+{
+	::GetCursorPos(&m_mousePos);
+	::ScreenToClient(m_windowAPIs[key]->GetHwnd(), &m_mousePos);
+	return m_mousePos;
+}

@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "EarthquakeCard.h"
-
+#include "Core.h"
 
 EarthquakeCard::EarthquakeCard():isShake(false)
 {
@@ -68,7 +68,7 @@ void EarthquakeCard::Render(HDC _hdc)
 {
     if (!isSkill) return;
     if (!isShake) return;
-    ShakeWindow(GetActiveWindow(), 500, 50);
+    ShakeWindow(GET_SINGLE(Core)->GetHwnd(), 500, 50);
 }
 void EarthquakeCard::CardSkill()
 {

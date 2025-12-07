@@ -74,7 +74,7 @@ void Scene::Render(HDC _hdc)
 				{
 					WindowAPIs* h = GET_SINGLE(WindowManager)->GetWindowAPIs(obj->GetWindowType());
 					if (h != nullptr)
-						obj->Render(h->GetMainDC());
+						obj->Render(h->GetBackDC());
 				}
 			}
 

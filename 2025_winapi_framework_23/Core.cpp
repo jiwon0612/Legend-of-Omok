@@ -6,6 +6,7 @@
 #include "ResourceManager.h"
 #include "CollisionManager.h"
 #include "CardManager.h"
+#include "WindowManager.h"
 
 bool Core::Init(HWND _hWnd)
 {
@@ -92,6 +93,7 @@ void Core::MainRender()
     
     // clear
     ::PatBlt(m_hBackDC, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, WHITENESS);
+	GET_SINGLE(WindowManager)->ClearAllDC();
     
     // render or draw
     GET_SINGLE(SceneManager)->Render(m_hBackDC);
@@ -101,6 +103,7 @@ void Core::MainRender()
     //                 , size.x, size.y);
     
     // display
+    GET_SINGLE(WindowManager)->DisplayAllDC();
     ::BitBlt(m_hDC, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, m_hBackDC, 0, 0, SRCCOPY);
 }
 

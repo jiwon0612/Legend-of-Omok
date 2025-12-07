@@ -16,9 +16,9 @@
 
 void CardManager::Init()
 {
-	m_cardStartPos = { 1150.f, 525.f };
-	m_cardPos = { 200.f, 525.f };
-	m_cardOffset = { 200.f, 0.f };
+	m_cardStartPos = { 500, 500 };
+	m_cardPos = { 150, 150 };
+	m_cardOffset = { 0, 150 };
 
 	//Card* card = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<IndiaInkCard>(Layer::UI, m_cardStartPos, { 100.f,150.f });
 	//CardInfo* testCard1 = new CardInfo(L"TestName", L"TestDescription",
@@ -83,6 +83,7 @@ void CardManager::ShowCard(int cnt,StoneType _curType)
 			m_cardStartPos,
 			{ 100.f,150.f });
 		m_cardUIList.push_back(ui);
+		ui->SetWindowType(L"Sub");
 		ui->Init(GetCardInfo(m_cardKeyList[rarity][i]));
 		ui->MoveToPosition(ui->GetPos(), m_cardPos + m_cardOffset * i);
 	}

@@ -34,8 +34,8 @@ void OmokScene::LateInit()
 	m_pBoard->SetSize(Vec2(600.f, 600.f));
 	GET_SINGLE(BoardManager)->Init(m_pBoard);
 	AddObject(m_pBoard, Layer::BOARD);
-	auto testCard = Spawn<CardUI>(Layer::UI, Vec2(50, 50), Vec2(100.f, 150.f));
-	testCard->SetWindowType(L"Sub");
+	/*auto testCard = Spawn<CardUI>(Layer::UI, Vec2(50, 50), Vec2(100.f, 150.f));
+	testCard->SetWindowType(L"Sub");*/
 }
 
 void OmokScene::Update()

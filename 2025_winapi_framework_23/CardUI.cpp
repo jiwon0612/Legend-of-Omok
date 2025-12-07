@@ -7,6 +7,7 @@
 #include "Card.h"
 #include "InputManager.h"
 #include "CardManager.h"
+#include "WindowManager.h"
 
 CardUI::CardUI()
 	: m_cardInfo(nullptr)
@@ -42,7 +43,8 @@ void CardUI::Update()
 	if (!m_isInit)
 		return;
 
-	POINT mouse = GET_SINGLE(InputManager)->GetMousePos();
+	//POINT mouse = GET_SINGLE(InputManager)->GetMousePos();
+	POINT mouse = GET_SINGLE(WindowManager)->GetMousePoint(GetWindowType());
 	Vector2 mousePos = { (float)mouse.x, (float)mouse.y };
 
 	Vector2 pos = GetPos();

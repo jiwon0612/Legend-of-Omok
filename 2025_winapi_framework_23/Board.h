@@ -4,6 +4,8 @@
 #include <utility>
 
 class Texture;
+class OmokTimer;
+class BoardUI;
 
 class Board : public Object
 {
@@ -29,10 +31,6 @@ public:
 	bool PlaceMine(int x, int y);  // 지뢰 설치
 	bool IsMineMode() const { return m_mineMode; }
 
-	// 시간 관련
-	void TimeProcess();
-	void TimeStop();
-
 	// 돌 교체
 	void ReplaceRandomStone();
 
@@ -49,22 +47,18 @@ public:
 	GameState GetGameState() const { return m_gameState; }
 	StoneType GetStone(int x, int y) const;
 	const std::pair<int, int>& GetLastMove() const { return m_lastMove; }
+	OmokTimer* GetTimer() const { return m_timer; }
 public :
-	float playerTime[2]; // 흑, 백 시간
 	bool isPlaced = false;
 
 private:
 	bool IsInBounds(int x, int y) const;
 	int CountDirection(int x, int y, int dx, int dy, StoneType player) const;
 	void RenderBoard(HDC _hdc);
-	void RenderUI(HDC _hdc);
 	void RenderHoverPreview(HDC _hdc);
 	void RenderMinePreview(HDC _hdc);  // 지뢰 프리뷰 렌더링
 
 private:
-	static const int TIME_LIMIT = 180; // 3분
-	float m_elapsedTime;
-
 	static const int BOARD_SIZE = 19;
 	StoneType m_board[BOARD_SIZE][BOARD_SIZE];
 	Stone* m_stones[BOARD_SIZE][BOARD_SIZE]; // 바둑돌 객체 배열
@@ -76,7 +70,8 @@ private:
 	bool m_isMineHovering;  // 지뢰 설치 호버 중인지
 
 	// 시간
-	bool m_timeStopped = false;
+	OmokTimer* m_timer;
+	BoardUI* m_boardUI;
 
 	bool m_blindStones = false; // 바둑돌 블라인드 여부
 	

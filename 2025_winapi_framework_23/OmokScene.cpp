@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "OmokScene.h"
 #include "Board.h"
 #include "Card.h"
@@ -32,6 +32,8 @@ void OmokScene::LateInit()
 	// 보드 생성
 	SubWindow subWindow = SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub");
 	GET_SINGLE(WindowManager)->AddWindow(&subWindow);
+	SubWindow uiWindow = SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI");
+	GET_SINGLE(WindowManager)->AddWindow(&uiWindow);
 	m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pBoard->SetSize(Vec2(600.f, 600.f));

@@ -210,4 +210,8 @@ void ResourceManager::RegisterSound()
 {
 	LoadSound(L"BGM",L"Sound\\Retro_bgm.wav",true);
 	LoadSound(L"Shoot",L"Sound\\laserShoot.wav",false);
+
+
+	LoadSound(L"BGM_01",L"Sound\\RBGM_01.mp3",true);
+	LoadSound(L"BGM_02",L"Sound\\RBGM_02.mp3",true);
 }

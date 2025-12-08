@@ -32,6 +32,20 @@ void WindowManager::RemoveWindow(SubWindow* window)
 	m_windows.erase(std::remove(m_windows.begin(), m_windows.end(), window), m_windows.end());
 }
 
+void WindowManager::RemoveAllWindow()
+{
+	/*for (auto& window : m_windows)
+	{
+		SAFE_DELETE(window);
+	}*/
+	for (auto& window : m_windowAPIs)
+	{
+		SAFE_DELETE(window.second);
+	}
+	m_windowAPIs.clear();
+	m_windows.clear();
+}
+
 void WindowManager::DisplayAllDC()
 {
 	for (auto windows : m_windowAPIs)

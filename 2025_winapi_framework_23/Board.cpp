@@ -263,6 +263,8 @@ void Board::Reset()
 	m_mineMode = false;
 	m_mineHoverPos = std::make_pair(-1, -1);
 	m_isMineHovering = false;
+
+	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)->GetShowCardCnt(), StoneType::BLACK);
 }
 
 void Board::SwitchTurn()

@@ -27,6 +27,9 @@ int BaseWindow::Run(HINSTANCE hInstance, int nCmdShow)
     // Core ÃÊ±âÈ­
     if (!GET_SINGLE(Core)->Init(m_hWnd))
         MessageBox(m_hWnd, L"Core Init Error", L"ERROR", MB_OK);
+
+	GET_SINGLE(WindowManager)->Init(hInstance);
+
     return this->MessageLoop();
 }
 

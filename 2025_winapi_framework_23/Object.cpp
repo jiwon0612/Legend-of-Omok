@@ -6,6 +6,7 @@ Object::Object()
 	: m_pos{}
 	, m_size{}
 	, m_isDie(false)
+	, m_windowType(L"Main")
 {
 
 }

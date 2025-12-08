@@ -7,6 +7,7 @@
 #include "Card.h"
 #include "InputManager.h"
 #include "CardManager.h"
+#include "WindowManager.h"
 
 CardUI::CardUI()
 	: m_cardInfo(nullptr)
@@ -42,7 +43,8 @@ void CardUI::Update()
 	if (!m_isInit)
 		return;
 
-	POINT mouse = GET_SINGLE(InputManager)->GetMousePos();
+	//POINT mouse = GET_SINGLE(InputManager)->GetMousePos();
+	POINT mouse = GET_SINGLE(WindowManager)->GetMousePoint(GetWindowType());
 	Vector2 mousePos = { (float)mouse.x, (float)mouse.y };
 
 	Vector2 pos = GetPos();
@@ -55,10 +57,9 @@ void CardUI::Update()
 
 	if (m_isHover && GET_KEYDOWN(KEY_TYPE::LBUTTON) && !GetIsDead())
 	{
-		cout << "카드 사용" << '\n';
-		m_cardInfo->card->CardSkill();
 		GET_SINGLE(CardManager)->UseCard();
-		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);
+		m_cardInfo->card->CardSkill();
+		//GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);
 	}
 	//static Vector2 offset = { 0.f, 0.f };
 
@@ -129,7 +130,6 @@ void CardUI::Render(HDC _hdc)
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, SRCCOPY);
 	}
-
 }
 
 void CardUI::SetIsHover(bool value)

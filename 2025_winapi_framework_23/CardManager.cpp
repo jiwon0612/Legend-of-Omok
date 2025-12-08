@@ -11,12 +11,14 @@
 #include "RerollCard.h"
 #include "BlindAllStonesCard.h"
 #include "OneMoreCard.h"
+#include "PeaceCard.h"
+#include "OneMinusCard.h"
 
 void CardManager::Init()
 {
-	m_cardStartPos = { 1150.f, 525.f };
-	m_cardPos = { 200.f, 525.f };
-	m_cardOffset = { 200.f, 0.f };
+	m_cardStartPos = { 500, 500 };
+	m_cardPos = { 150, 150 };
+	m_cardOffset = { 0, 150 };
 
 	//Card* card = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<IndiaInkCard>(Layer::UI, m_cardStartPos, { 100.f,150.f });
 	//CardInfo* testCard1 = new CardInfo(L"TestName", L"TestDescription",
@@ -34,12 +36,14 @@ void CardManager::Init()
 	RegisterCard<RerollCard>(L"리롤", L"카드를 다시 뽑는다", L"Bullet", CardRarity::Normal);
 	RegisterCard<BlindAllStonesCard>(L"눈가리기", L"모든 돌을 블라인드 상태로 만든다", L"Bullet", CardRarity::Normal);
 	RegisterCard<OneMoreCard>(L"한번 더!", L"한번 더 돌을 놓을 수 있다", L"Bullet", CardRarity::Normal);
+	RegisterCard< PeaceCard>(L"평화의 시간", L"이번 턴 후 상대 턴과 내 턴 각 한 번 씩 카드가 생성되지 않는다.", L"Bullet", CardRarity::Normal);
+	RegisterCard< OneMinusCard>(L"카드 뺏기!", L"", L"Bullet", CardRarity::Normal);
 
 	m_cardKeyList[CardRarity::Rare].push_back(L"test");
 	m_cardKeyList[CardRarity::Unique].push_back(L"test");
 	m_cardKeyList[CardRarity::Legendary].push_back(L"test");
 
-	m_showCardCnt = 5;
+	m_showCardCnt = 2;
 }
 
 void CardManager::LateInit()
@@ -79,6 +83,7 @@ void CardManager::ShowCard(int cnt,StoneType _curType)
 			m_cardStartPos,
 			{ 100.f,150.f });
 		m_cardUIList.push_back(ui);
+		ui->SetWindowType(L"Sub");
 		ui->Init(GetCardInfo(m_cardKeyList[rarity][i]));
 		ui->MoveToPosition(ui->GetPos(), m_cardPos + m_cardOffset * i);
 	}
@@ -110,4 +115,14 @@ void CardManager::ShuffleCard()
 			m_cardKeyList[(CardRarity)i][idx2] = temp;
 		}
 	}
+}
+
+void CardManager::CardDelete()
+{
+	for (size_t i = 0; i < m_cardUIList.size(); i++)
+	{
+		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(m_cardUIList[i]);
+		//m_cardUIList.erase(std::remove(m_cardUIList.begin(), m_cardUIList.end(), m_cardUIList[i]), m_cardUIList.end());
+	}
+	m_cardUIList.clear();
 }

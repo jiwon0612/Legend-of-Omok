@@ -19,6 +19,7 @@ public:
 	int GetShowCardCnt() { return m_showCardCnt; }
 	void UseCard();
 	void ShuffleCard();
+	void CardDelete();
 
 	template<typename T>
 	CardInfo* RegisterCard(wstring _name, wstring _description, wstring _icon, CardRarity _rarity)
@@ -40,6 +41,6 @@ private:
 	Vector2 m_cardStartPos;
 	Vector2 m_cardPos;
 	Vector2 m_cardOffset;
-	int m_showCardCnt = 5;
+	int m_showCardCnt = 2;
 };
 

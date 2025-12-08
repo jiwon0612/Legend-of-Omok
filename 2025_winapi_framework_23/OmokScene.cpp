@@ -2,12 +2,14 @@
 #include "OmokScene.h"
 #include "Board.h"
 #include "Card.h"
+#include "CardUI.h"
 #include "EarthquakeCard.h"
 #include "IndiaInkCard.h"
 #include "InputManager.h"
 #include "CardManager.h"
 #include "SubWindow.h"
 #include "BoardManager.h"
+#include "WindowManager.h"
 #include "ResultWindow.h"
 
 OmokScene::OmokScene()
@@ -22,12 +24,13 @@ OmokScene::~OmokScene()
 
 void OmokScene::Init()
 {
-	SubWindow subWindow = SubWindow(nullptr);
 }
 
 void OmokScene::LateInit()
 {
 	// 보드 생성
+	SubWindow subWindow = SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub");
+	GET_SINGLE(WindowManager)->AddWindow(&subWindow);
 	m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pBoard->SetSize(Vec2(600.f, 600.f));

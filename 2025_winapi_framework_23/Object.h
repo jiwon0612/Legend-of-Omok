@@ -35,6 +35,8 @@ public:
 	const Vec2& GetSize()const { return m_size; }
 	bool GetIsDead() const { return m_isDie; }
 	void SetDead() { m_isDie = true; }
+	void SetWindowType(wstring _type) { m_windowType = _type; }
+	wstring GetWindowType() const { return m_windowType; }
 public:
 	template<typename T>
 	T* AddComponent()
@@ -63,5 +65,6 @@ private:
 	Vec2 m_size;
 	vector<Component*> m_vecComponents;
 	bool m_isDie;
+	wstring m_windowType;
 };
 

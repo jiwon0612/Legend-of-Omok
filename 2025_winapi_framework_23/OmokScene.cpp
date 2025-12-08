@@ -24,6 +24,7 @@ OmokScene::~OmokScene()
 
 void OmokScene::Init()
 {
+	GET_SINGLE(CardManager)->RegisterCards();
 }
 
 void OmokScene::LateInit()

@@ -20,6 +20,7 @@ public:
 	void UseCard();
 	void ShuffleCard();
 	void CardDelete();
+	void RegisterCards();
 	void UnRegisterCard();
 
 	template<typename T>

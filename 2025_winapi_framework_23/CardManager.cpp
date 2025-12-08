@@ -129,7 +129,7 @@ void CardManager::CardDelete()
 
 void CardManager::UnRegisterCard()
 {
-	CardDelete();
+	//CardDelete();
 	for (auto& pair : m_cardInfoMap)
 	{
 		SAFE_DELETE(pair.second);

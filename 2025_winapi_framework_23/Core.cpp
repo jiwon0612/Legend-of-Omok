@@ -50,7 +50,8 @@ void Core::CleanUp()
     ::DeleteObject(m_hBackBit);
     ::ReleaseDC(m_hWnd, m_hDC);
     GET_SINGLE(ResourceManager)->Release();
-	//GET_SINGLE(CardManager)->UnRegisterCard();
+	GET_SINGLE(CardManager)->UnRegisterCard();
+    GET_SINGLE(WindowManager)->RemoveAllWindow();
 }
 
 

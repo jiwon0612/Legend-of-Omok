@@ -12,5 +12,5 @@ CardInfo::CardInfo(wstring _name, wstring _description, wstring _iconName, CardR
 
 CardInfo::~CardInfo()
 {
-	SAFE_DELETE(card);
+	//SAFE_DELETE(card);
 }

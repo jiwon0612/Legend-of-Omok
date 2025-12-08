@@ -14,6 +14,8 @@ SubWindow::SubWindow(HINSTANCE _hInst, wstring type)
 
 SubWindow::~SubWindow()
 {
+	//exit(0);
+	//PostQuitMessage(0);
 }
 
 ATOM SubWindow::RegisterSubWindowClass()

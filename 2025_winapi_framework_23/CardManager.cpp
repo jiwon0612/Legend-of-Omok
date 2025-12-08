@@ -126,3 +126,14 @@ void CardManager::CardDelete()
 	}
 	m_cardUIList.clear();
 }
+
+void CardManager::UnRegisterCard()
+{
+	CardDelete();
+	for (auto& pair : m_cardInfoMap)
+	{
+		SAFE_DELETE(pair.second);
+	}
+	m_cardInfoMap.clear();
+	m_cardKeyList.clear();
+}

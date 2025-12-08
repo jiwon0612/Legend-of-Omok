@@ -20,6 +20,7 @@ public:
 	void UseCard();
 	void ShuffleCard();
 	void CardDelete();
+	void UnRegisterCard();
 
 	template<typename T>
 	CardInfo* RegisterCard(wstring _name, wstring _description, wstring _icon, CardRarity _rarity)

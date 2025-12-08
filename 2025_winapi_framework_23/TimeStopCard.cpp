@@ -1,5 +1,6 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "TimeStopCard.h"
+#include "OmokTimer.h"
 
 TimeStopCard::TimeStopCard()
 {
@@ -22,6 +23,6 @@ void TimeStopCard::CardSkill()
 {
     isSkill = true;
     curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
-    GET_SINGLE(BoardManager)->GetBoard()->TimeStop();
+	GET_SINGLE(BoardManager)->GetBoard()->GetTimer()->SetTimeStopped(true);
     isSkill = false;
 }

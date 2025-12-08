@@ -4,6 +4,8 @@
 #include "InputManager.h"
 #include "CardManager.h"
 #include "SceneManager.h"
+#include "OmokTimer.h"
+#include "BoardUI.h"
 
 Board::Board()
 	: m_currentPlayer(StoneType::BLACK)
@@ -14,8 +16,6 @@ Board::Board()
 	, m_isHovering(false)
 	, m_boardColor(RGB(220, 179, 92))
 	, m_lineColor(RGB(0, 0, 0))
-	, playerTime{ TIME_LIMIT, TIME_LIMIT }
-	, m_elapsedTime(0.f)
 	, m_mines{ false }
 	, m_stones{ nullptr }
 	, m_board{ StoneType::NONE }
@@ -27,6 +27,12 @@ Board::Board()
 		(WINDOW_HEIGHT - (BOARD_SIZE - 1) * m_cellSize) / 2.f);
 
 	GET_SINGLE(CardManager)->ShowCard(2, StoneType::BLACK);
+	m_timer = new OmokTimer();
+	m_timer->SetWindowType(L"UI");
+	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(m_timer, Layer::UI);
+	m_boardUI = new BoardUI();
+	m_boardUI->SetWindowType(L"UI");
+	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(m_boardUI, Layer::UI);
 }
 
 Board::~Board()
@@ -37,10 +43,6 @@ void Board::Update()
 {
 	if (m_gameState != GameState::PLAYING)
 		return;
-
-	// 시간 처리
-	if (!m_timeStopped)
-		TimeProcess();
 
 	if (GET_KEYDOWN(KEY_TYPE::R))
 		Reset();
@@ -121,9 +123,17 @@ void Board::Update()
 				if (CheckWin(boardX, boardY))
 				{
 					if (m_currentPlayer == StoneType::BLACK)
+					{
 						m_gameState = GameState::BLACK_WIN;
+						m_timer->SetGameState(m_gameState);
+						m_boardUI->SetGameState(m_gameState);
+					}
 					else
+					{
 						m_gameState = GameState::WHITE_WIN;
+						m_timer->SetGameState(m_gameState);
+						m_boardUI->SetGameState(m_gameState);
+					}
 				}
 				else
 				{ 
@@ -135,29 +145,11 @@ void Board::Update()
 	}
 }
 
-void Board::TimeProcess()
-{
-	m_elapsedTime += fDT;
-	if (m_elapsedTime >= 1.f)
-	{
-		m_elapsedTime = 0.f;
-		if (m_currentPlayer == StoneType::BLACK)
-			playerTime[0] -= 1.f;
-		else
-			playerTime[1] -= 1.f;
-		if (playerTime[0] <= 0.f)
-			m_gameState = GameState::WHITE_WIN;
-		else if (playerTime[1] <= 0.f)
-			m_gameState = GameState::BLACK_WIN;
-	}
-}
-
 void Board::Render(HDC _hdc)
 {
 	RenderBoard(_hdc);
 	RenderHoverPreview(_hdc);
 	RenderMinePreview(_hdc);
-	RenderUI(_hdc);
 }
 
 bool Board::PlaceStone(int x, int y, StoneType player)
@@ -256,19 +248,23 @@ void Board::Reset()
 	m_hoverPos = std::make_pair(-1, -1);
 	m_isHovering = false;
 	isPlaced = false;
-	playerTime[0] = TIME_LIMIT;
-	playerTime[1] = TIME_LIMIT;
+	m_timer->ResetTimer();
+	m_timer->SetGameState(m_gameState);
+	m_boardUI->SetGameState(m_gameState);
+	m_boardUI->SetCurrentPlayer(m_currentPlayer);
 	
 	// 지뢰 모드 초기화
 	m_mineMode = false;
 	m_mineHoverPos = std::make_pair(-1, -1);
 	m_isMineHovering = false;
+
+	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)->GetShowCardCnt(), StoneType::BLACK);
 }
 
 void Board::SwitchTurn()
 {
 	isPlaced = false;
-	m_timeStopped = false;
+	m_timer->SetTimeStopped(false);
 
 	if (m_blindStones)
 	{
@@ -281,11 +277,8 @@ void Board::SwitchTurn()
 	else
 		m_currentPlayer = StoneType::BLACK;
 	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)->GetShowCardCnt(),m_currentPlayer);
-}
-
-void Board::TimeStop()
-{
-	m_timeStopped = true;
+	m_timer->SetCurrentPlayer(m_currentPlayer);
+	m_boardUI->SetCurrentPlayer(m_currentPlayer);
 }
 
 void Board::ReplaceRandomStone()
@@ -459,48 +452,6 @@ void Board::RenderBoard(HDC _hdc)
 	SelectObject(_hdc, oldPen);
 	DeleteObject(linePen);
 	DeleteObject(starBrush);
-}
-
-void Board::RenderUI(HDC _hdc)
-{
-	wstring turnText;
-	if (m_gameState == GameState::PLAYING)
-	{
-		if (m_currentPlayer == StoneType::BLACK)
-			turnText = L"현재 턴: 흑";
-		else
-			turnText = L"현재 턴: 백";
-	}
-	else if (m_gameState == GameState::BLACK_WIN)
-		turnText = L"흑 승리!";
-	else if (m_gameState == GameState::WHITE_WIN)
-		turnText = L"백 승리!";
-
-	// 시간 표시
-	wstring blackTimeText = 
-		std::format(L"흑 시간: {:02}:{:02}", static_cast<int>(playerTime[0]) / 60, static_cast<int>(playerTime[0]) % 60);
-	wstring whiteTimeText = 
-		std::format(L"백 시간: {:02}:{:02}", static_cast<int>(playerTime[1]) / 60, static_cast<int>(playerTime[1]) % 60);
-	wstring timeText = blackTimeText + L"\n" + whiteTimeText;
-
-	SetBkMode(_hdc, TRANSPARENT);
-	SetTextColor(_hdc, RGB(0, 0, 0));
-
-	RECT textRect;
-	textRect.left = static_cast<int>(m_boardStartPos.x + (BOARD_SIZE - 1) * m_cellSize + 40.f);
-	textRect.top = static_cast<int>(m_boardStartPos.y);
-	textRect.right = textRect.left + 200;
-	textRect.bottom = textRect.top + 50;
-
-	DrawText(_hdc, turnText.c_str(), -1, &textRect, DT_LEFT | DT_TOP);
-	textRect.top += 50;
-	textRect.bottom += 50;
-	DrawText(_hdc, timeText.c_str(), -1, &textRect, DT_LEFT | DT_TOP);
-
-	wstring resetText = L"R: 게임 재시작";
-	textRect.top += 70;
-	textRect.bottom += 70;
-	DrawText(_hdc, resetText.c_str(), -1, &textRect, DT_LEFT | DT_TOP);
 }
 
 void Board::RenderHoverPreview(HDC _hdc)

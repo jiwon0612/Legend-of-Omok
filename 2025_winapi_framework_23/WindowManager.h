@@ -11,6 +11,7 @@ public:
 	void Update();
 	void AddWindow(SubWindow* window);
 	void RemoveWindow(SubWindow* window);
+	void RemoveAllWindow();
 	void DisplayAllDC();
 	void ClearAllDC();
 	HINSTANCE GetHInstance() { return m_hInst; }

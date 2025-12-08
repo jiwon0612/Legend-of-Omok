@@ -193,6 +193,15 @@
     <ClInclude Include="ResultWindow.h">
       <Filter>Engine\04. Scene</Filter>
     </ClInclude>
+    <ClInclude Include="OneMinusCard.h" />
+    <ClInclude Include="PeaceCard.h" />
+    <ClInclude Include="WindowAPIs.h" />
+    <ClInclude Include="OmokTimer.h">
+      <Filter>Engine\03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardUI.h">
+      <Filter>Engine\03. Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2025_winapi_framework_23.rc">
@@ -326,6 +335,15 @@
     </ClCompile>
     <ClCompile Include="ResultWindow.cpp">
       <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="OneMinusCard.cpp" />
+    <ClCompile Include="PeaceCard.cpp" />
+    <ClCompile Include="WindowAPIs.cpp" />
+    <ClCompile Include="OmokTimer.cpp">
+      <Filter>Engine\03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardUI.cpp">
+      <Filter>Engine\03. Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

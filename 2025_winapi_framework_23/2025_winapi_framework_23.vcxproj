@@ -169,6 +169,7 @@
     <ClInclude Include="BlindAllStonesCard.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardManager.h" />
+    <ClInclude Include="BoardUI.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardInfo.h" />
     <ClInclude Include="CardManager.h" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Mathf.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OmokScene.h" />
+    <ClInclude Include="OmokTimer.h" />
     <ClInclude Include="OneMinusCard.h" />
     <ClInclude Include="OneMoreCard.h" />
     <ClInclude Include="pch.h" />
@@ -231,6 +233,7 @@
     <ClCompile Include="BlindAllStonesCard.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardManager.cpp" />
+    <ClCompile Include="BoardUI.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardInfo.cpp" />
     <ClCompile Include="CardManager.cpp" />
@@ -255,6 +258,7 @@
     </ClCompile>
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OmokScene.cpp" />
+    <ClCompile Include="OmokTimer.cpp" />
     <ClCompile Include="OneMinusCard.cpp" />
     <ClCompile Include="OneMoreCard.cpp" />
     <ClCompile Include="PeaceCard.cpp" />

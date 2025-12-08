@@ -4,6 +4,7 @@
 #include "IndiaInkCard.h"
 
 class Board;
+class ResultWindow;
 
 class OmokScene : public Scene
 {
@@ -19,4 +20,5 @@ public:
 
 private:
 	Board* m_pBoard;
+	ResultWindow* m_pResultWindow;
 };

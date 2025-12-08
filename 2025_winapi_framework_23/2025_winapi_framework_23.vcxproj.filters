@@ -187,8 +187,11 @@
     </ClInclude>
     <ClInclude Include="OneMoreCard.h" />
     <ClInclude Include="RerollCard.h" />
-    <ClInclude Include="WindowAPIs.h">
-      <Filter>Engine\08. Module</Filter>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Engine\04. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultWindow.h">
+      <Filter>Engine\04. Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -318,8 +321,11 @@
     </ClCompile>
     <ClCompile Include="OneMoreCard.cpp" />
     <ClCompile Include="RerollCard.cpp" />
-    <ClCompile Include="WindowAPIs.cpp">
-      <Filter>Engine\08. Module</Filter>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Engine\04. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultWindow.cpp">
+      <Filter>Engine\04. Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

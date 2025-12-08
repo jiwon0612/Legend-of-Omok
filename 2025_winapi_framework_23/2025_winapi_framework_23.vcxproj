@@ -204,6 +204,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceBase.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ResultWindow.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TimeStopCard.h" />
+    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TweeningObject.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="WindowAPIs.h" />
@@ -259,6 +261,7 @@
     <ClCompile Include="RerollCard.cpp" />
     <ClCompile Include="ResourceBase.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ResultWindow.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -268,6 +271,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TimeStopCard.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TweeningObject.cpp" />
     <ClCompile Include="WindowAPIs.cpp" />
     <ClCompile Include="WindowManager.cpp" />

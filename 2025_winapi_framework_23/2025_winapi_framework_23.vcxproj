@@ -216,6 +216,7 @@
     <ClInclude Include="SayHiCard.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShakeCursorCard.h" />
     <ClInclude Include="SoundChange.h" />
     <ClInclude Include="SpamCard.h" />
     <ClInclude Include="Stone.h" />
@@ -284,6 +285,7 @@
     <ClCompile Include="SayHiCard.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShakeCursorCard.cpp" />
     <ClCompile Include="SoundChange.cpp" />
     <ClCompile Include="SpamCard.cpp" />
     <ClCompile Include="Stone.cpp" />

@@ -35,10 +35,16 @@ void OmokScene::Init()
 
 void OmokScene::LateInit()
 {
+	//현 바둑판 창 위치
+	int screenX = ::GetSystemMetrics(SM_CXSCREEN);
+	int screenY = ::GetSystemMetrics(SM_CYSCREEN);
+	int winposx = (screenX - WINDOW_WIDTH) / 2 + 100;
+	int winposy = (screenY - WINDOW_HEIGHT) / 2 + 100;
+
 	// 보드 생성
-	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{200,200},{350,500});
+	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{ winposx - 350 + 15,winposy},{350,WINDOW_HEIGHT + 40});
 	GET_SINGLE(WindowManager)->AddWindow(subWindow);
-	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { 800,200 }, { 400,400 });
+	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { winposx + 580,winposy }, { 400,400 });
 	GET_SINGLE(WindowManager)->AddWindow(uiWindow);
 	m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));

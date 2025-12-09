@@ -11,6 +11,7 @@ public:
 	StoneType GetCurrentPlayer() const { return  m_board->GetCurrentPlayer(); }
 	void SetPlayerTime(StoneType type, float time);
 	float GetPlayerTime(StoneType type);
+	void ResetGame() { m_board->Reset(); }
 	
 	Board* GetBoard() const { return m_board; }
 	// 스킬 관련

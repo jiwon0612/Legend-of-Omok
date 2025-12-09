@@ -34,10 +34,10 @@ void WindowManager::RemoveWindow(SubWindow* window)
 
 void WindowManager::RemoveAllWindow()
 {
-	/*for (auto& window : m_windows)
+	for (auto& window : m_windows)
 	{
 		SAFE_DELETE(window);
-	}*/
+	}
 	for (auto& window : m_windowAPIs)
 	{
 		SAFE_DELETE(window.second);

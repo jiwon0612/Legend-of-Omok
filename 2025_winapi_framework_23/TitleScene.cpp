@@ -2,6 +2,7 @@
 #include "TitleScene.h"
 #include "InputManager.h"
 #include "SceneManager.h"
+#include "ResourceManager.h"
 #include "Core.h"
 
 TitleScene::TitleScene()
@@ -16,6 +17,10 @@ TitleScene::~TitleScene()
 
 void TitleScene::Init()
 {
+	GET_SINGLE(ResourceManager)->Stop(SOUND_CHANNEL::BGM);
+
+	GET_SINGLE(ResourceManager)->Play(L"BGM_01");
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::BGM, 1.0);
 }
 
 void TitleScene::Update()

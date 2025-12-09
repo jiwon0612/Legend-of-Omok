@@ -205,6 +205,16 @@
     <ClInclude Include="RestCard.h">
       <Filter>Engine\03. Object\Card</Filter>
     </ClInclude>
+    <ClInclude Include="BlameCard.h" />
+    <ClInclude Include="CheeringCard.h" />
+    <ClInclude Include="ClapCard.h" />
+    <ClInclude Include="DummyCard.h" />
+    <ClInclude Include="SayHiCard.h" />
+    <ClInclude Include="SoundChange.h" />
+    <ClInclude Include="StopMusicCard.h" />
+    <ClInclude Include="SpamCard.h">
+      <Filter>Engine\03. Object\Card</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2025_winapi_framework_23.rc">
@@ -349,6 +359,16 @@
       <Filter>Engine\03. Object</Filter>
     </ClCompile>
     <ClCompile Include="RestCard.cpp">
+      <Filter>Engine\03. Object\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="BlameCard.cpp" />
+    <ClCompile Include="CheeringCard.cpp" />
+    <ClCompile Include="ClapCard.cpp" />
+    <ClCompile Include="DummyCard.cpp" />
+    <ClCompile Include="SayHiCard.cpp" />
+    <ClCompile Include="SoundChange.cpp" />
+    <ClCompile Include="StopMusicCard.cpp" />
+    <ClCompile Include="SpamCard.cpp">
       <Filter>Engine\03. Object\Card</Filter>
     </ClCompile>
   </ItemGroup>

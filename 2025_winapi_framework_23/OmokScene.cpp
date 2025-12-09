@@ -61,8 +61,8 @@ void OmokScene::Update()
 	{
 		//::SendMessage(GET_SINGLE(WindowManager)->GetWindowAPIs(L"Sub")->GetHwnd(), WM_CLOSE, 0, 0);
 		//GET_SINGLE(WindowManager)->RemoveWindow(GET_SINGLE(WindowManager)->GetWindowAPIs(L"Sub"));
-		cout << GET_SINGLE(WindowManager)->m_windowAPIs.size() << '\n';
-		cout << GET_SINGLE(WindowManager)->m_windows.size() << '\n';
+		/*cout << GET_SINGLE(WindowManager)->m_windowAPIs.size() << '\n';
+		cout << GET_SINGLE(WindowManager)->m_windows.size() << '\n';*/
 	}
 	
 	// 게임이 끝났는지 체크

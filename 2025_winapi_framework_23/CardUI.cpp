@@ -19,7 +19,7 @@ CardUI::CardUI()
 	, m_defultSize(GetSize())
 	, m_outlineThickness(1.f)
 {
-	m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"TestCard");
+	m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"CardImage");
 	SetScaleTweenSpeed(5);
 	SetMoveTweenSpeed(3);
 }
@@ -117,6 +117,9 @@ void CardUI::Render(HDC _hdc)
 	if (m_isInit)
 	{
 		TextOut(_hdc, pos.x, pos.y, m_cardInfo->name.c_str(), m_cardInfo->name.length());
+		/*DrawText(_hdc, m_cardInfo->name.c_str(), m_cardInfo->name.length(),
+			,
+			DT_CENTER | DT_VCENTER | DT_SINGLELINE);*/
 		TextOut(_hdc, pos.x, pos.y + 20, m_cardInfo->description.c_str(), m_cardInfo->description.length());
 
 		width = m_cardIconTex->GetWidth();

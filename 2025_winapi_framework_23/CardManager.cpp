@@ -21,6 +21,7 @@
 #include "SayHiCard.h"
 #include "CheeringCard.h"
 #include "BlameCard.h"
+#include "RestCard.h"
 #pragma endregion
 
 void CardManager::Init()
@@ -143,6 +144,7 @@ void CardManager::RegisterCards()
 	RegisterCard< SayHiCard>(L"바른 예의", L"안녕하세요!!!", L"Bullet", CardRarity::Normal);
 	RegisterCard< CheeringCard>(L"응원!", L"상대방에게 응원을 합니다.", L"Bullet", CardRarity::Normal);
 	RegisterCard< BlameCard>(L"비난", L"자신에게 비난을 합니다.", L"Bullet", CardRarity::Normal);
+	RegisterCard< RestCard>(L"휴식", L"게임을 초기화 합니다.", L"Bullet", CardRarity::Normal);
 }
 
 void CardManager::UnRegisterCard()

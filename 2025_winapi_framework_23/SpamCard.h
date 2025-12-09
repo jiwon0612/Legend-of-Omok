@@ -11,5 +11,9 @@ class SpamCard :
     public:
     virtual void CardSkill() override;
 	virtual void NextTurn() override;
+
+private:
+	StoneType curPlayer;
+	bool spamUsed;
 };
 

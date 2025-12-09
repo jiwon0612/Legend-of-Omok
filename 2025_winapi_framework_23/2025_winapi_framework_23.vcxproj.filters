@@ -215,6 +215,9 @@
     <ClInclude Include="SpamCard.h">
       <Filter>Engine\03. Object\Card</Filter>
     </ClInclude>
+    <ClInclude Include="SpamImage.h" />
+    <ClInclude Include="SpamWindow.h" />
+    <ClInclude Include="SpamCloseButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2025_winapi_framework_23.rc">
@@ -371,5 +374,8 @@
     <ClCompile Include="SpamCard.cpp">
       <Filter>Engine\03. Object\Card</Filter>
     </ClCompile>
+    <ClCompile Include="SpamImage.cpp" />
+    <ClCompile Include="SpamWindow.cpp" />
+    <ClCompile Include="SpamCloseButton.cpp" />
   </ItemGroup>
 </Project>

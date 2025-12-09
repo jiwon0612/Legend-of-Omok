@@ -11,6 +11,7 @@
 #include "BoardManager.h"
 #include "WindowManager.h"
 #include "ResultWindow.h"
+#include "ResourceManager.h"
 
 OmokScene::OmokScene()
 	: m_pBoard(nullptr)
@@ -25,6 +26,10 @@ OmokScene::~OmokScene()
 void OmokScene::Init()
 {
 	GET_SINGLE(CardManager)->RegisterCards();
+	GET_SINGLE(ResourceManager)->Stop(SOUND_CHANNEL::BGM);
+
+	GET_SINGLE(ResourceManager)->Play(L"BGM_02");
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::BGM, 1.0);
 }
 
 void OmokScene::LateInit()

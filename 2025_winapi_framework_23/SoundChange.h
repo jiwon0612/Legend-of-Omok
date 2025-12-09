@@ -9,5 +9,7 @@ public:
 	~SoundChange();
 public:
 	void CardSkill();
+private:
+	int soundNum = 3;
 };
 

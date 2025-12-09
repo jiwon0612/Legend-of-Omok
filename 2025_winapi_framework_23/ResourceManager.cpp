@@ -212,6 +212,8 @@ void ResourceManager::RegisterSound()
 	LoadSound(L"Shoot",L"Sound\\laserShoot.wav",false);
 
 
-	LoadSound(L"BGM_01",L"Sound\\RBGM_01.mp3",true);
-	LoadSound(L"BGM_02",L"Sound\\RBGM_02.mp3",true);
+	LoadSound(L"BGM_01",L"Sound\\BGM_01.wav",true);
+	LoadSound(L"BGM_02",L"Sound\\BGM_02.wav",true);
+	LoadSound(L"BGM_03",L"Sound\\BGM_03.wav",true);
+	LoadSound(L"ClapEffect",L"Sound\\ClapEffect.wav",false);
 }

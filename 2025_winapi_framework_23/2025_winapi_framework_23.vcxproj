@@ -218,6 +218,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SoundChange.h" />
     <ClInclude Include="SpamCard.h" />
+    <ClInclude Include="SpamImage.h" />
     <ClInclude Include="Stone.h" />
     <ClInclude Include="StopMusicCard.h" />
     <ClInclude Include="SubWindow.h" />
@@ -286,6 +287,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SoundChange.cpp" />
     <ClCompile Include="SpamCard.cpp" />
+    <ClCompile Include="SpamImage.cpp" />
     <ClCompile Include="Stone.cpp" />
     <ClCompile Include="StopMusicCard.cpp" />
     <ClCompile Include="SubWindow.cpp" />

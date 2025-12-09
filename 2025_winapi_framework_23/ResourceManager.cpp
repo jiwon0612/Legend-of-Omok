@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "ResourceManager.h"
 #include "Texture.h"
 bool ResourceManager::Init()
@@ -56,7 +56,7 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"Jiwoo", L"Texture\\jiwoo.bmp");
 	LoadTexture(L"IndiaInkImage", L"Texture\\IndiaInkImage.bmp");
 	LoadTexture(L"TestCard", L"Texture\\TestCard.bmp");
-
+	
 }
 void ResourceManager::RegisterGDI()
 {
@@ -170,6 +170,11 @@ void ResourceManager::Pause(SOUND_CHANNEL _channel, bool _ispause)
 {
 	m_pChannel[(UINT)_channel]->setPaused(_ispause);
 }
+void ResourceManager::LoadSpamTextures()
+{
+	LoadTexture(L"Spam_0", L"Texture\\Spam\\spam_0.bmp");
+	m_vecSpamTextures.push_back(L"Spam_0");
+}
 SoundInfo* ResourceManager::FindSound(const wstring& _key)
 {
 	std::unordered_map<wstring, SoundInfo*>::iterator iter = m_mapSounds.find(_key);
@@ -216,4 +221,10 @@ void ResourceManager::RegisterSound()
 	LoadSound(L"BGM_02",L"Sound\\BGM_02.wav",true);
 	LoadSound(L"BGM_03",L"Sound\\BGM_03.wav",true);
 	LoadSound(L"ClapEffect",L"Sound\\ClapEffect.wav",false);
+}
+
+wstring ResourceManager::GetSpamTexture()
+{
+	int randIndex = rand() % m_vecSpamTextures.size();
+	return m_vecSpamTextures[randIndex];
 }

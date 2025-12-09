@@ -36,6 +36,6 @@ void BlindAllStonesCard::Update()
 
 void BlindAllStonesCard::CardSkill()
 {
-	isSkill = true;
 	curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
+	isSkill = true;
 }

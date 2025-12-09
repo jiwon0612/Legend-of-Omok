@@ -1,14 +1,14 @@
-#pragma once
+ï»¿#pragma once
 #include "fmod.hpp"
 #pragma comment(lib, "fmod_vc")
-enum class SOUND_CHANNEL //»ç¿îµå¸¶´Ù Ã¤³Î
+enum class SOUND_CHANNEL //ì‚¬ìš´ë“œë§ˆë‹¤ ì±„ë„
 {
 	BGM, EFFECT, END
 };
 struct SoundInfo
 {
-	FMOD::Sound* pSound; // ½ÇÁ¦ »ç¿îµå ¸Ş¸ğ¸®
-	bool IsLoop;        // »ç¿îµå¸¶´Ù ·çÇÁÇÒÁö¸»Áö
+	FMOD::Sound* pSound; // ì‹¤ì œ ì‚¬ìš´ë“œ ë©”ëª¨ë¦¬
+	bool IsLoop;        // ì‚¬ìš´ë“œë§ˆë‹¤ ë£¨í”„í• ì§€ë§ì§€
 };
 class Texture;
 class ResourceManager
@@ -37,6 +37,7 @@ public:
 	void LoadTexture(const wstring& _key, const wstring& _path);
 	Texture* GetTexture(const wstring& _key);
 private:
+	void LoadSpamTextures();
 	SoundInfo* FindSound(const wstring& _key);
 	void RegisterSound();
 public:
@@ -56,15 +57,17 @@ public:
 	{
 		return m_resourcePath.native();
 	}
+	wstring GetSpamTexture();
 private:
 	fs::path m_resourcePath;
 	std::unordered_map<wstring, Texture*> m_mapTextures;
+	vector<wstring> m_vecSpamTextures;
 	HBRUSH m_Brushs[(UINT)BrushType::END] = {};
 	HPEN m_Pens[(UINT)PenType::END] = {};
 	HFONT m_Fonts[(UINT)FontType::END] = {};
 	vector<wstring> m_vecFontFiles;
 	std::unordered_map<wstring, SoundInfo*> m_mapSounds;
-	FMOD::System* m_pSoundSystem; // »ç¿îµå ½Ã½ºÅÛ
-	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // ¿Àµğ¿À Ã¤³Î
+	FMOD::System* m_pSoundSystem; // ì‚¬ìš´ë“œ ì‹œìŠ¤í…œ
+	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // ì˜¤ë””ì˜¤ ì±„ë„
 };
 

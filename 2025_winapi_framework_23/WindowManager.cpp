@@ -37,8 +37,8 @@ void WindowManager::RemoveWindow(SubWindow* window)
 
 	m_windowAPIs.erase(window->GetType());
 
-	SAFE_DELETE(window);
 	m_windows.erase(window->GetType());
+	SAFE_DELETE(window);
 }
 
 void WindowManager::RemoveAllWindow()

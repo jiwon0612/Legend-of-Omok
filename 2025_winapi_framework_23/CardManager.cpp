@@ -1,3 +1,4 @@
+#pragma region include
 #include "pch.h"
 #include "CardManager.h"
 #include "CardInfo.h"
@@ -13,6 +14,14 @@
 #include "OneMoreCard.h"
 #include "PeaceCard.h"
 #include "OneMinusCard.h"
+#include "SoundChange.h"
+#include "StopMusicCard.h"
+#include "ClapCard.h"
+#include "DummyCard.h"
+#include "SayHiCard.h"
+#include "CheeringCard.h"
+#include "BlameCard.h"
+#pragma endregion
 
 void CardManager::Init()
 {
@@ -126,7 +135,14 @@ void CardManager::RegisterCards()
 	RegisterCard<BlindAllStonesCard>(L"눈가리기", L"모든 돌을 블라인드 상태로 만든다", L"Bullet", CardRarity::Normal);
 	RegisterCard<OneMoreCard>(L"한번 더!", L"한번 더 돌을 놓을 수 있다", L"Bullet", CardRarity::Normal);
 	RegisterCard< PeaceCard>(L"평화의 시간", L"이번 턴 후 상대 턴과 내 턴 각 한 번 씩 카드가 생성되지 않는다.", L"Bullet", CardRarity::Normal);
-	RegisterCard< OneMinusCard>(L"카드 뺏기!", L"", L"Bullet", CardRarity::Normal);
+	RegisterCard< OneMinusCard>(L"카드 뺏기!", L"상대의 카드를 하나 뺏는다", L"Bullet", CardRarity::Normal);
+	RegisterCard< SoundChange>(L"음악 변경!", L"랜덤으로 음악을 변경한다.", L"Bullet", CardRarity::Normal);
+	RegisterCard< StopMusicCard>(L"고독한 시간", L"모든 음악을 멈춘다.", L"Bullet", CardRarity::Normal);
+	RegisterCard< ClapCard>(L"매우 축하!", L"박수소리를!", L"Bullet", CardRarity::Normal);
+	RegisterCard< DummyCard>(L"더미 카드!", L"놀랍게도 아무것도 안 합니다!", L"Bullet", CardRarity::Normal);
+	RegisterCard< SayHiCard>(L"바른 예의", L"안녕하세요!!!", L"Bullet", CardRarity::Normal);
+	RegisterCard< CheeringCard>(L"응원!", L"상대방에게 응원을 합니다.", L"Bullet", CardRarity::Normal);
+	RegisterCard< BlameCard>(L"비난", L"자신에게 비난을 합니다.", L"Bullet", CardRarity::Normal);
 }
 
 void CardManager::UnRegisterCard()

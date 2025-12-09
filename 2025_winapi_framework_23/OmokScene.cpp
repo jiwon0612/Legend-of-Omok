@@ -12,6 +12,7 @@
 #include "WindowManager.h"
 #include "ResultWindow.h"
 #include "ResourceManager.h"
+#include "WindowAPIs.h"
 
 OmokScene::OmokScene()
 	: m_pBoard(nullptr)
@@ -55,6 +56,14 @@ void OmokScene::LateInit()
 void OmokScene::Update()
 {
 	Scene::Update();
+
+	if (GET_KEYDOWN(KEY_TYPE::T))
+	{
+		//::SendMessage(GET_SINGLE(WindowManager)->GetWindowAPIs(L"Sub")->GetHwnd(), WM_CLOSE, 0, 0);
+		//GET_SINGLE(WindowManager)->RemoveWindow(GET_SINGLE(WindowManager)->GetWindowAPIs(L"Sub"));
+		/*cout << GET_SINGLE(WindowManager)->m_windowAPIs.size() << '\n';
+		cout << GET_SINGLE(WindowManager)->m_windows.size() << '\n';*/
+	}
 	
 	// 게임이 끝났는지 체크
 	if (m_pBoard && m_pResultWindow)

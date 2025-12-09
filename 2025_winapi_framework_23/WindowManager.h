@@ -23,10 +23,17 @@ public:
 			return iter->second;
 		return nullptr;
 	}
+	SubWindow* GetSubWindow(wstring type)
+	{
+		auto iter = m_windows.find(type);
+		if (iter != m_windows.end())
+			return iter->second;
+		return nullptr;
+	}
 private:
-	vector<SubWindow*> m_windows;
-	HINSTANCE m_hInst;
 	unordered_map<wstring, WindowAPIs*> m_windowAPIs;
+	unordered_map<wstring, SubWindow*> m_windows;
+	HINSTANCE m_hInst;
 	POINT m_mousePos;
 };
 

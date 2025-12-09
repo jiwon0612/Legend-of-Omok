@@ -10,15 +10,20 @@ void WindowManager::Init(HINSTANCE _hInst)
 
 void WindowManager::Update()
 {
-	for (size_t i = 0; i < m_windows.size(); i++)
+	/*for (size_t i = 0; i < m_windows.size(); i++)
 	{
 		m_windows[i]->MessageLoop();
+	}*/
+
+	for (auto& window : m_windows)
+	{
+		window.second->MessageLoop();
 	}
 }
 
 void WindowManager::AddWindow(SubWindow* window)
 {
-	m_windows.push_back(window);
+	m_windows[window->GetType()] = window;
 	WindowAPIs* apis = new WindowAPIs(window->GetHwnd());
 	m_windowAPIs[window->GetType()] = apis;
 }
@@ -26,21 +31,26 @@ void WindowManager::AddWindow(SubWindow* window)
 void WindowManager::RemoveWindow(SubWindow* window)
 {
 	if (m_windowAPIs[window->GetType()] != nullptr)
+	{
 		SAFE_DELETE(m_windowAPIs[window->GetType()]);
+	}
 
 	m_windowAPIs.erase(window->GetType());
-	m_windows.erase(std::remove(m_windows.begin(), m_windows.end(), window), m_windows.end());
+
+	m_windows.erase(window->GetType());
+	SAFE_DELETE(window);
 }
 
 void WindowManager::RemoveAllWindow()
 {
-	for (auto& window : m_windows)
-	{
-		SAFE_DELETE(window);
-	}
 	for (auto& window : m_windowAPIs)
 	{
 		SAFE_DELETE(window.second);
+	}
+	for (auto window : m_windows)
+	{
+		//SAFE_DELETE(window);
+		RemoveWindow(window.second);
 	}
 	m_windowAPIs.clear();
 	m_windows.clear();

@@ -7,6 +7,8 @@
 #include "TitleScene.h"
 #include "Object.h"
 #include "Collider.h"
+#include "WindowManager.h"
+
 void SceneManager::PhysicsSyncColliders()
 {
 	for (UINT i = 0; i < (UINT)Layer::END; ++i)

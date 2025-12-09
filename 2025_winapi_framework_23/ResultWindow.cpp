@@ -2,6 +2,8 @@
 #include "ResultWindow.h"
 #include "InputManager.h"
 #include "SceneManager.h"
+#include "CardManager.h"
+#include "WindowManager.h"
 
 ResultWindow::ResultWindow()
 	: m_isVisible(false)
@@ -18,6 +20,8 @@ ResultWindow::~ResultWindow()
 void ResultWindow::SetWinner(StoneType winner)
 {
 	m_winner = winner;
+	GET_SINGLE(CardManager)->CardDelete();
+	GET_SINGLE(WindowManager)->RemoveAllWindow();
 }
 
 void ResultWindow::Show()

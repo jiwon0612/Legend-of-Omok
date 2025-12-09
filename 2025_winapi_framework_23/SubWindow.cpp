@@ -3,19 +3,24 @@
 #include "Resource.h"
 #include "Core.h"
 
-SubWindow::SubWindow(HINSTANCE _hInst, wstring type)
+SubWindow::SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size)
 {
 	m_hInst = _hInst;
 	m_type = type;
+	m_pos = pos;
+	m_size = size;
 	RegisterSubWindowClass();
 	CreateSubWindow();
 	ShowSubWindow();
+	cout << 'c' << '\n';
 }
 
 SubWindow::~SubWindow()
 {
+	cout << 'd' << '\n';
+	//cout << 'd' << '\n';
 	//exit(0);
-	//PostQuitMessage(0);
+	PostQuitMessage(0);
 }
 
 ATOM SubWindow::RegisterSubWindowClass()
@@ -43,8 +48,8 @@ void SubWindow::CreateSubWindow()
 {
 	m_hWnd = ::CreateWindowW(L"GameSub", L"SubWindow",
 		WS_POPUP | WS_BORDER | WS_CAPTION | WS_VISIBLE,
-		200, 200,
-		400, 800,
+		m_pos.x, m_pos.y,
+		m_size.x, m_size.y,
 		nullptr,
 		nullptr,
 		m_hInst,

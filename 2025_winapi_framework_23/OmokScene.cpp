@@ -30,8 +30,8 @@ void OmokScene::Init()
 void OmokScene::LateInit()
 {
 	// 보드 생성
-	SubWindow subWindow = SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub");
-	GET_SINGLE(WindowManager)->AddWindow(&subWindow);
+	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{200,200},{400,800});
+	GET_SINGLE(WindowManager)->AddWindow(subWindow);
 	m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pBoard->SetSize(Vec2(600.f, 600.f));

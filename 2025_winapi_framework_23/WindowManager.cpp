@@ -26,21 +26,26 @@ void WindowManager::AddWindow(SubWindow* window)
 void WindowManager::RemoveWindow(SubWindow* window)
 {
 	if (m_windowAPIs[window->GetType()] != nullptr)
+	{
 		SAFE_DELETE(m_windowAPIs[window->GetType()]);
+	}
 
 	m_windowAPIs.erase(window->GetType());
+
+	SAFE_DELETE(window);
 	m_windows.erase(std::remove(m_windows.begin(), m_windows.end(), window), m_windows.end());
 }
 
 void WindowManager::RemoveAllWindow()
 {
-	for (auto& window : m_windows)
-	{
-		SAFE_DELETE(window);
-	}
 	for (auto& window : m_windowAPIs)
 	{
 		SAFE_DELETE(window.second);
+	}
+	for (auto window : m_windows)
+	{
+		//SAFE_DELETE(window);
+		RemoveWindow(window);
 	}
 	m_windowAPIs.clear();
 	m_windows.clear();

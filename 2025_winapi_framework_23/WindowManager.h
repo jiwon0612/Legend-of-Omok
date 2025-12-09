@@ -23,10 +23,10 @@ public:
 			return iter->second;
 		return nullptr;
 	}
-private:
-	vector<SubWindow*> m_windows;
-	HINSTANCE m_hInst;
 	unordered_map<wstring, WindowAPIs*> m_windowAPIs;
+	vector<SubWindow*> m_windows;
+private:
+	HINSTANCE m_hInst;
 	POINT m_mousePos;
 };
 

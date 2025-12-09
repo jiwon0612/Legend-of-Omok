@@ -57,6 +57,8 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"IndiaInkImage", L"Texture\\IndiaInkImage.bmp");
 	LoadTexture(L"TestCard", L"Texture\\TestCard.bmp");
 	LoadTexture(L"CardImage",L"Texture\\CardImage.bmp");
+	LoadTexture(L"IndialnkIcon", L"Texture\\CardIcon\\IndialnkIcon.bmp");
+	LoadTexture(L"EarthquakeIcon", L"Texture\\CardIcon\\EarthquakeIcon.bmp");
 }
 void ResourceManager::RegisterGDI()
 {

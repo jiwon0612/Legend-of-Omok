@@ -36,7 +36,7 @@ void OmokScene::Init()
 void OmokScene::LateInit()
 {
 	// 보드 생성
-	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{200,200},{400,800});
+	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{200,200},{350,500});
 	GET_SINGLE(WindowManager)->AddWindow(subWindow);
 	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { 800,200 }, { 400,400 });
 	GET_SINGLE(WindowManager)->AddWindow(uiWindow);

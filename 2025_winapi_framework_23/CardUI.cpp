@@ -125,13 +125,20 @@ void CardUI::Render(HDC _hdc)
 		width = m_cardIconTex->GetWidth();
 		height = m_cardIconTex->GetHeight();
 
-		::BitBlt(_hdc
+		/*::BitBlt(_hdc
 			, (pos.x - size.x / 2)
 			, (pos.y - size.y / 2) + height / 2
-			, width
-			, height
+			, 64
+			, 47
 			, m_cardIconTex->GetTextureDC()
-			, 0, 0, SRCCOPY);
+			, 0, 0, SRCCOPY);*/
+		::StretchBlt(_hdc
+			, (int)(pos.x - size.x / 2 + 17)
+			, (int)(pos.y - size.y / 2 + 20)
+			, 64
+			, 47
+			, m_cardIconTex->GetTextureDC()
+			, 0, 0, width, height, SRCCOPY);
 	}
 }
 

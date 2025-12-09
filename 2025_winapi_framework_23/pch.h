@@ -41,8 +41,8 @@ using std::unordered_map;
 
 // 각종 define값
 #define PI 3.14159265358979f
-#define WINDOW_WIDTH 720
-#define WINDOW_HEIGHT 720
+#define WINDOW_WIDTH 720 - 70 * 2
+#define WINDOW_HEIGHT 720 - 70 * 2
 
 // 메모리 릭
 #ifdef _DEBUG

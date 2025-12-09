@@ -20,7 +20,7 @@ SubWindow::~SubWindow()
 	cout << 'd' << '\n';
 	//cout << 'd' << '\n';
 	//exit(0);
-	PostQuitMessage(0);
+	//PostQuitMessage(0);
 }
 
 ATOM SubWindow::RegisterSubWindowClass()

@@ -19,8 +19,8 @@ void SpamCloseButton::Update()
 		mousePos = GET_SINGLE(WindowManager)->GetMousePoint(m_windowType);
 		Vec2 pos = GetPos();
 		Vec2 size = GetSize();
-		if (mousePos.x >= pos.x && mousePos.x <= pos.x + size.x &&
-			mousePos.y >= pos.y && mousePos.y <= pos.y + size.y)
+		if (mousePos.x >= pos.x - size.x / 2 && mousePos.x <= pos.x + size.x / 2 &&
+			mousePos.y >= pos.y - size.y / 2 && mousePos.y <= pos.y + size.y / 2)
 		{
 			SubWindow* targetWindow = GET_SINGLE(WindowManager)->GetSubWindow(m_windowType);
 			if (targetWindow)
@@ -33,5 +33,7 @@ void SpamCloseButton::Update()
 
 void SpamCloseButton::Render(HDC _hdc)
 {
-	RECT_RENDER(_hdc, GetPos().x, GetPos().y, GetSize().x, GetSize().y, RGB(255, 0, 0));
+	GDISelector p(_hdc, PenType::RED);
+	GDISelector b(_hdc, BrushType::RED);
+	RECT_RENDER(_hdc, GetPos().x, GetPos().y, GetSize().x, GetSize().y);
 }

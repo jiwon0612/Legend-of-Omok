@@ -2,6 +2,9 @@
 #include "SubWindow.h"
 #include "Resource.h"
 #include "Core.h"
+#include<string>
+
+using std::string;
 
 SubWindow::SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size)
 {
@@ -17,11 +20,11 @@ SubWindow::SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size)
 
 SubWindow::~SubWindow()
 {
-	cout << 'd' << '\n';
+	cout << string().assign(m_type.begin(),m_type.end()) << '\n';
 	//cout << 'd' << '\n';
 	//exit(0);
 	//PostQuitMessage(0);	
-	::SendMessage(m_hWnd, WM_CLOSE, 0, 0);
+	//::SendMessage(m_hWnd, WM_CLOSE, 0, 0);
 }
 
 ATOM SubWindow::RegisterSubWindowClass()

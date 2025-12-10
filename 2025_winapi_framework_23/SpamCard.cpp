@@ -19,7 +19,11 @@ void SpamCard::Update()
 	if (!isSkill) return;
 	if (curPlayer != GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
 	{
-		if (spamUsed) return;
+		if (spamUsed) 
+		{
+			NextTurn();
+			return;
+		}
 		for (int i = 0; i < 7; ++i)
 		{
 			wstring randTexKey = GET_SINGLE(ResourceManager)->GetSpamTexture();
@@ -44,13 +48,6 @@ void SpamCard::Update()
 			closeButton->SetWindowType(spamKey);
 		}
 		spamUsed = true;
-	}
-
-	if (!spamUsed) return;
-
-	if (curPlayer == GET_SINGLE(BoardManager)->GetCurrentPlayer()) //턴 바뀜
-	{
-		NextTurn();
 	}
 }
 

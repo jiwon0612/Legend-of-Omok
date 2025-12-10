@@ -59,7 +59,7 @@ void BaseWindow::createWindow()
     int screenX = ::GetSystemMetrics(SM_CXSCREEN);
     int screenY = ::GetSystemMetrics(SM_CYSCREEN);
     int winposx = (screenX - WINDOW_WIDTH) / 2 +100;
-    int winposy = (screenY - WINDOW_HEIGHT) / 2 +100;
+    int winposy = (screenY - WINDOW_HEIGHT) / 2 +200;
 
     m_hWnd = ::CreateWindowW(L"GameP", L"Legend-of-Omok", WS_OVERLAPPEDWINDOW,
         winposx, winposy, WINDOW_WIDTH, WINDOW_HEIGHT, nullptr, nullptr, m_hInst, nullptr);

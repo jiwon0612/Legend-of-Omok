@@ -24,8 +24,8 @@ void BoardUI::Render(HDC _hdc)
 	if (stoneTexture)
 	{
 		// 돌 이미지 그리기
-		int stoneX = stoneTexture->GetWidth() / 2 + 190;
-		int stoneY = 0;
+		int stoneX = stoneTexture->GetWidth() / 2 + 190+120;
+		int stoneY = 10;
 		TransparentBlt(
 			_hdc,
 			stoneX, stoneY, stoneTexture->GetWidth(), stoneTexture->GetHeight(),

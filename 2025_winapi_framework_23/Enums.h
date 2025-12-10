@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 enum class Layer
 {
 	DEFAULT,
@@ -9,6 +9,8 @@ enum class Layer
 	ENEMY,
 	PROJECTILE,
 	UI,
+	BUTTON,
+	TEXT,
 	END
 };
 enum class PenType
@@ -54,7 +56,7 @@ enum class GameState
 enum class CardType
 {
 	None = 0,
-	Disturbanc, //¹æÇØ (¸Ô¹° »Ñ¸®±â...) //»ó´ë ÅÏ¿¡¸¸
-	Passive, //ÆĞ½Ãºê (³ë·¡º¯°æ...) //°ÔÀÓ ³»¿¡ Áö¼Ó
-	Active, //¿¢Æ¼ºê (ÀÚ½Å¿¡°Ô À¯¸®) //»ç¿ë ¼ø°£¸¸ 
+	Disturbanc, //ë°©í•´ (ë¨¹ë¬¼ ë¿Œë¦¬ê¸°...) //ìƒëŒ€ í„´ì—ë§Œ
+	Passive, //íŒ¨ì‹œë¸Œ (ë…¸ë˜ë³€ê²½...) //ê²Œì„ ë‚´ì— ì§€ì†
+	Active, //ì—‘í‹°ë¸Œ (ìì‹ ì—ê²Œ ìœ ë¦¬) //ì‚¬ìš© ìˆœê°„ë§Œ 
 };

@@ -110,6 +110,11 @@ void Scene::FlushEvent()
 	m_killObject.clear();
 
 	// 생성
+	for (SpawnObject spawnObj : m_spawnObject)
+	{
+		AddObject(spawnObj.obj, spawnObj.type);
+	}
+	m_spawnObject.clear();
 }
 
 void Scene::RequestDestroy(Object* obj)
@@ -135,7 +140,10 @@ void Scene::RemoveObject(Object* _obj)
 
 void Scene::RequestSpawn(Object* obj, Layer _type)
 {
-
+	SpawnObject spawnObj;
+	spawnObj.obj = obj;
+	spawnObj.type = _type;
+	m_spawnObject.push_back(spawnObj);
 }
 
 

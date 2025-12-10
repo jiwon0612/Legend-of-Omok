@@ -23,6 +23,7 @@
 #include "BlameCard.h"
 #include "RestCard.h"
 #include "ShakeCursorCard.h"
+#include "SpamCard.h"
 #pragma endregion
 
 void CardManager::Init()
@@ -149,7 +150,9 @@ void CardManager::RegisterCards()
 	RegisterCard<BlameCard>(L"비난", L"자신에게\n비난을 합니다.", L"BlameIcon", CardRarity::Normal);
 	RegisterCard<RestCard>(L"무승부로 하지 않을래...?", L"게임을\n초기화 합니다.", L"RestIcon", CardRarity::Normal);
 	RegisterCard<ShakeCursorCard>(L"수전증", L"마우스가\n심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Normal);
+
 	//21
+	RegisterCard<SpamCard>(L"스팸", L"화면에 스팸을 뿌립니다.", L"Bullet", CardRarity::Normal);
 }
 
 void CardManager::UnRegisterCard()

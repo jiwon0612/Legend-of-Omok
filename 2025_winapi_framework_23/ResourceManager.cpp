@@ -14,6 +14,7 @@ bool ResourceManager::Init()
 	if (!RegisterFontFile(L"Font\\TestFont.ttf"))
 		return false;
 	RegisterTexture();
+	LoadSpamTextures();
 	RegisterGDI();
 
 	FMOD::System_Create(&m_pSoundSystem);

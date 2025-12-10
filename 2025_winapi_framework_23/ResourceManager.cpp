@@ -13,6 +13,10 @@ bool ResourceManager::Init()
 
 	if (!RegisterFontFile(L"Font\\TestFont.ttf"))
 		return false;
+	if (!RegisterFontFile(L"Font\\a자막체.ttf"))
+		return false;
+	if (!RegisterFontFile(L"Font\\윤고딕330.ttf"))
+		return false;
 	RegisterTexture();
 	LoadSpamTextures();
 	RegisterGDI();
@@ -60,6 +64,7 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"TimerImage", L"Texture\\Timer.bmp");
 	LoadTexture(L"BrokenTimerImage", L"Texture\\BrokenTimer.bmp");
 	LoadTexture(L"FrozenTimerImage", L"Texture\\FrozenTimer.bmp");
+	LoadTexture(L"TimerBackground", L"Texture\\TimerBackground.bmp");
 	LoadTexture(L"BlackButton", L"Texture\\BlackButton.bmp");
 	LoadTexture(L"WhiteButton", L"Texture\\WhiteButton.bmp");
 	LoadTexture(L"WhiteStone", L"Texture\\WhiteStone.bmp");
@@ -101,6 +106,9 @@ void ResourceManager::RegisterGDI()
 
 	// ��Ʈ ���
 	RegisterFont(FontType::TITLE, L"TestFont", 0);
+	RegisterFont(FontType::MAIN, L"-윤고딕330", 0);
+	RegisterFont(FontType::UI, L"a자막체", 0);
+	RegisterFont(FontType::NUMBER, L"-윤고딕330", 30);
 }
 void ResourceManager::ReleaseGDI()
 {

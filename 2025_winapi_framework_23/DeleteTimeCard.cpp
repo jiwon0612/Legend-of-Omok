@@ -1,5 +1,6 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "DeleteTimeCard.h"
+#include "OmokTimer.h"
 
 DeleteTimeCard::DeleteTimeCard()
 {
@@ -23,9 +24,12 @@ void DeleteTimeCard::CardSkill()
     isSkill = true;
     curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
 
-    curPlayer = (curPlayer != StoneType::BLACK) ? StoneType::BLACK : StoneType::WHITE; //»ó´ë µ¹·Î ¹Ù²Ù±â
+    curPlayer = (curPlayer != StoneType::BLACK) ? StoneType::BLACK : StoneType::WHITE; //ìƒëŒ€ ëŒë¡œ ë°”ê¾¸ê¸°
 
     GET_SINGLE(BoardManager)->SetPlayerTime(curPlayer,
-        GET_SINGLE(BoardManager)->GetPlayerTime(curPlayer) - 20); //20ÃÊ °¨¼Ò
+        GET_SINGLE(BoardManager)->GetPlayerTime(curPlayer) - 20); //20ì´ˆ ê°ì†Œ
+
+    GET_SINGLE(BoardManager)->GetBoard()->GetTimer()->SetTimeSkillUsed(true);
+
     isSkill = false;
 }

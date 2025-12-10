@@ -96,6 +96,9 @@ void CardUI::Render(HDC _hdc)
 	LONG width = m_cardTex->GetWidth();
 	LONG height = m_cardTex->GetHeight();
 
+	int curX = (pos.x - size.x);
+	int curY = (pos.y - size.y);
+
 	/*::BitBlt(_hdc
 		, (int)(pos.x - size.x / 2)
 		, (int)(pos.y - size.y / 2)
@@ -120,12 +123,7 @@ void CardUI::Render(HDC _hdc)
 
 	if (m_isInit)
 	{
-		TextOut(_hdc, pos.x, pos.y, m_cardInfo->name.c_str(), m_cardInfo->name.length());
-		/*DrawText(_hdc, m_cardInfo->name.c_str(), m_cardInfo->name.length(),
-			,
-			DT_CENTER | DT_VCENTER | DT_SINGLELINE);*/
-		TextOut(_hdc, pos.x, pos.y + 20, m_cardInfo->description.c_str(), m_cardInfo->description.length());
-
+		//¾ÆÀÌÄÜ
 		width = m_cardIconTex->GetWidth();
 		height = m_cardIconTex->GetHeight();
 
@@ -137,12 +135,59 @@ void CardUI::Render(HDC _hdc)
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, SRCCOPY);*/
 		::StretchBlt(_hdc
-			, (int)(pos.x - size.x / 2) - 29 + 17
-			, (int)(pos.y - size.y / 2) - 30 + 20
-			, (int)(size.x) +23 //+ 64 + 59
-			, (int)(size.y/2)//+ 47 + 28
+			, (int)(pos.x - size.x / 2) -12 //- 29 + 17
+			, (int)(pos.y - size.y / 2) -10 //- 30 + 20
+			, (int)(size.x) + 23 //+ 64 + 59
+			, (int)(size.y / 2)//+ 47 + 28
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, width, height, SRCCOPY);
+
+		//ÆùÆ®
+		SetBkMode(_hdc, TRANSPARENT);
+		SetTextColor(_hdc, RGB(0, 0, 0));
+
+		HFONT fontSet = CreateFont(
+			15 + (5*((size.x - 100)/50)), 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"¸¼Àº °íµñ"
+		);
+		HFONT font = (HFONT)SelectObject(_hdc, fontSet);
+
+
+		//TextOut(_hdc, (pos.x - size.x) + 50, (pos.y - size.y) + 50, m_cardInfo->name.c_str(), m_cardInfo->name.length());
+		RECT rect = {
+			(int)(pos.x) - 13 - 50 - (int)((size.x - 100) * 0.3f),
+			(int)(pos.y) + 80 - 75,
+			(int)(pos.x + size.x / 2) + 12 - (int)((size.x - 100) * 0.1f),
+			(int)(pos.y + size.y / 2) - 45 - (int)((size.x - 100) * 0.34f)
+		};
+
+		//ÀÌ¸§
+		DrawText(_hdc, m_cardInfo->name.c_str(), -1, &rect,
+			DT_CENTER | DT_VCENTER | DT_WORDBREAK);
+		/*DrawText(_hdc, m_cardInfo->name.c_str(), m_cardInfo->name.length(),
+			,
+			DT_CENTER | DT_VCENTER | DT_SINGLELINE);*/
+
+		//TextOut(_hdc, (pos.x - size.x), (pos.y - size.y) + 20, m_cardInfo->description.c_str(), m_cardInfo->description.length());
+		rect = {
+			(int)(pos.x) - 13 - 50 - (int)((size.x - 100) * 0.30f),
+			(int)(pos.y + size.y / 2) - 35 - (int)((size.x - 100) * 0.34f),
+			(int)(pos.x + size.x / 2) + 12 - (int)((size.x - 100) * 0.10f),
+			(int)(pos.y) + 105 + (int)((size.x - 100) * 0.44f)
+		};
+
+		//¼³¸í
+		DrawText(_hdc, m_cardInfo->description.c_str(), -1, &rect,
+			DT_CENTER | DT_VCENTER | DT_WORDBREAK);
+
+		fontSet = CreateFont(
+			70, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"¸¼Àº °íµñ"
+		);
+		font = (HFONT)SelectObject(_hdc, fontSet);
+
 	}
 }
 

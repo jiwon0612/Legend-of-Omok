@@ -1,4 +1,4 @@
-ï»¿#pragma region include
+#pragma region include
 #include "pch.h"
 #include "CardManager.h"
 #include "CardInfo.h"
@@ -128,26 +128,31 @@ void CardManager::CardDelete()
 
 void CardManager::RegisterCards()
 {
-	RegisterCard<IndiaInkCard>(L"ë¨¹ë¬¼", L"ìƒëŒ€ì˜ í™”ë©´ì— ë¨¹ë¬¼ì„ ë¿Œë¦°ë‹¤", L"IndialnkIcon", CardRarity::Normal);
-	/*RegisterCard<EarthquakeCard>(L"ì§€ì§„", L"ìƒëŒ€ì˜ í™”ë©´ì— ì§€ì§„ì„ ì´ë¥´í‚¨ë‹¤", L"EarthquakeIcon", CardRarity::Normal);
-	RegisterCard<PlaceMineCard>(L"ì§€ë¢°", L"ì§€ë¢°ë¥¼ ì„¤ì¹˜í•œë‹¤ ì§€ë¢°ê°€ ì„¤ì¹˜ëœ ì¹¸ì—ëŠ” ëŒì„ ë‘˜ìˆ˜ ì—†ë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<TimeStopCard>(L"íƒ€ì´ë¬´ìŠ¤í† ë¿Œ", L"ì‹œê°„ì„ ë©ˆì¶˜ë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<DeleteTimeCard>(L"ì‹œê°„ ì‚­ì œ", L"ì‹œê°„ì„ ì‚­ì œí•œë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<ReplaceRandomStoneSkill>(L"ëŒ êµì²´", L"ëŒì„ êµì²´í•œë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<RerollCard>(L"ë¦¬ë¡¤", L"ì¹´ë“œë¥¼ ë‹¤ì‹œ ë½‘ëŠ”ë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<BlindAllStonesCard>(L"ëˆˆê°€ë¦¬ê¸°", L"ëª¨ë“  ëŒì„ ë¸”ë¼ì¸ë“œ ìƒíƒœë¡œ ë§Œë“ ë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<OneMoreCard>(L"í•œë²ˆ ë”!", L"í•œë²ˆ ë” ëŒì„ ë†“ì„ ìˆ˜ ìˆë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<PeaceCard>(L"í‰í™”ì˜ ì‹œê°„", L"ì´ë²ˆ í„´ í›„ ìƒëŒ€ í„´ê³¼ ë‚´ í„´ ê° í•œ ë²ˆ ì”© ì¹´ë“œê°€ ìƒì„±ë˜ì§€ ì•ŠëŠ”ë‹¤.", L"Bullet", CardRarity::Normal);
-	RegisterCard<OneMinusCard>(L"ì¹´ë“œ ëºê¸°!", L"ìƒëŒ€ì˜ ì¹´ë“œë¥¼ í•˜ë‚˜ ëºëŠ”ë‹¤", L"Bullet", CardRarity::Normal);
-	RegisterCard<SoundChange>(L"ìŒì•… ë³€ê²½!", L"ëœë¤ìœ¼ë¡œ ìŒì•…ì„ ë³€ê²½í•œë‹¤.", L"Bullet", CardRarity::Normal);
-	RegisterCard<StopMusicCard>(L"ê³ ë…í•œ ì‹œê°„", L"ëª¨ë“  ìŒì•…ì„ ë©ˆì¶˜ë‹¤.", L"Bullet", CardRarity::Normal);
-	RegisterCard<ClapCard>(L"ë§¤ìš° ì¶•í•˜!", L"ë°•ìˆ˜ì†Œë¦¬ë¥¼!", L"Bullet", CardRarity::Normal);
-	RegisterCard<DummyCard>(L"ë”ë¯¸ ì¹´ë“œ!", L"ë†€ëê²Œë„ ì•„ë¬´ê²ƒë„ ì•ˆ í•©ë‹ˆë‹¤!", L"Bullet", CardRarity::Normal);
-	RegisterCard<SayHiCard>(L"ë°”ë¥¸ ì˜ˆì˜", L"ì•ˆë…•í•˜ì„¸ìš”!!!", L"Bullet", CardRarity::Normal);
-	RegisterCard<CheeringCard>(L"ì‘ì›!", L"ìƒëŒ€ë°©ì—ê²Œ ì‘ì›ì„ í•©ë‹ˆë‹¤.", L"Bullet", CardRarity::Normal);
-	RegisterCard<BlameCard>(L"ë¹„ë‚œ", L"ìì‹ ì—ê²Œ ë¹„ë‚œì„ í•©ë‹ˆë‹¤.", L"Bullet", CardRarity::Normal);
-	RegisterCard<RestCard>(L"íœ´ì‹", L"ê²Œì„ì„ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.", L"Bullet", CardRarity::Normal);*/
-	RegisterCard<SpamCard>(L"ìŠ¤íŒ¸", L"í™”ë©´ì— ìŠ¤íŒ¸ì„ ë¿Œë¦½ë‹ˆë‹¤.", L"Bullet", CardRarity::Normal);
+	RegisterCard<IndiaInkCard>(L"¸Ô¹°", L"»ó´ëÅÏ¿¡\n¸Ô¹°À» »Ñ¸³´Ï´Ù.", L"IndialnkIcon", CardRarity::Normal);
+	RegisterCard<EarthquakeCard>(L"ÁöÁø", L"»ó´ëÅÏ¿¡\nÁöÁøÀ» ÀÏÀ¸Åµ´Ï´Ù", L"EarthquakeIcon", CardRarity::Normal);
+	RegisterCard<PlaceMineCard>(L"Áö·Ú", L"Áö·Ú¸¦ ¼³Ä¡ÇÏ¸ç,\nÁö·Ú°¡ ÀÖ´Â ÀÚ¸®¿¡´Â\nµ¹À» µÑ ¼ö ¾ø½À´Ï´Ù.", L"PlaceMineIcon", CardRarity::Normal);
+	RegisterCard<TimeStopCard>(L"Å¸ÀÌ¹«½ºÅä»Ñ", L"»ç¿ë Áï½Ã\nº»ÀÎÀÇ ½Ã°£À» ¸ØÃä´Ï´Ù.", L"TimeStopIcon", CardRarity::Normal);
+	RegisterCard<DeleteTimeCard>(L"½Ã°£ »èÁ¦", L"»ó´ëÀÇ ½Ã°£À»\n20ÃÊ °¡Á® °©´Ï´Ù.", L"DeleteTimeIcon", CardRarity::Normal);
+	RegisterCard<ReplaceRandomStoneSkill>(L"¸Å¼ö.", L"»ó´ëÀÇ µ¹À»\n·£´ıÇÏ°Ô ¸Å¼öÇÕ´Ï´Ù.", L"ReplaceRandomStoneIcon", CardRarity::Normal);
+	RegisterCard<RerollCard>(L"¸®·Ñ", L"Ä«µå¸¦ ´Ù½Ã\n»Ì½À´Ï´Ù.", L"RerollIcon", CardRarity::Normal);
+	RegisterCard<BlindAllStonesCard>(L"´«°¡¸®±â", L"»ó´ë ÅÏ¿¡\n¸ğµç µ¹À» ¼û±é´Ï´Ù.", L"BlindAllStonesIcon", CardRarity::Normal);
+	RegisterCard<OneMoreCard>(L"ÇÑ¹ø ´õ!", L"ÇÑ¹ø ´õ µ¹À»\n³õÀ» ¼ö ÀÖ½À´Ï´Ù.", L"OneMoreIcon", CardRarity::Normal);
+	RegisterCard<PeaceCard>(L"ÆòÈ­ÀÇ ½Ã°£", L"ÀÌ¹ø ÅÏ ÈÄ »ó´ë\nÅÏ°ú ³» ÅÏ °¢ ÇÑ ¹ø ¾¿\nÄ«µå°¡ »ı¼ºµÇÁö ¾Ê½À´Ï´Ù.", L"PeaceIcon", CardRarity::Normal);
+
+	//11
+	RegisterCard<OneMinusCard>(L"Ä«µå »¯±â!", L"»ó´ëÀÇ Ä«µå¸¦\nÇÏ³ª »¯½À´Ï´Ù.", L"OneMinusIcon", CardRarity::Normal);
+	RegisterCard<SoundChange>(L"À½¾Ç º¯°æ!", L"·£´ıÀ¸·Î\nÀ½¾ÇÀ» º¯°æÇÕ´Ï´Ù.", L"SoundIcon", CardRarity::Normal);
+	RegisterCard<StopMusicCard>(L"°íµ¶ÇÑ ½Ã°£", L"¸ğµç À½¾ÇÀ»\n¸ØÃä´Ï´Ù.", L"StopMusicIcon", CardRarity::Normal);
+	RegisterCard<ClapCard>(L"¸Å¿ì ÃàÇÏ!", L"¹Ú¼ö¼Ò¸®¸¦\nµé·ÁÁİ´Ï´Ù.", L"ClapIcon", CardRarity::Normal);
+	RegisterCard<DummyCard>(L"´õ¹Ì Ä«µå!", L"³î¶ø°Ôµµ\n¾Æ¹«°Íµµ ¾È ÇÕ´Ï´Ù.", L"DummyIcon", CardRarity::Normal);
+	RegisterCard<SayHiCard>(L"¹Ù¸¥ ¿¹ÀÇ", L"¾È³çÇÏ¼¼¿ä!!!", L"SayHiIcon", CardRarity::Normal);
+	RegisterCard<CheeringCard>(L"ÀÀ¿ø!", L"»ó´ë¹æ¿¡°Ô\nÀÀ¿øÀ» ÇÕ´Ï´Ù.", L"CheerinIcon", CardRarity::Normal);
+	RegisterCard<BlameCard>(L"ºñ³­", L"ÀÚ½Å¿¡°Ô\nºñ³­À» ÇÕ´Ï´Ù.", L"BlameIcon", CardRarity::Normal);
+	RegisterCard<RestCard>(L"¹«½ÂºÎ·Î ÇÏÁö ¾ÊÀ»·¡...?", L"°ÔÀÓÀ»\nÃÊ±âÈ­ ÇÕ´Ï´Ù.", L"RestIcon", CardRarity::Normal);
+	RegisterCard<ShakeCursorCard>(L"¼öÀüÁõ", L"¸¶¿ì½º°¡\n½ÉÇÏ°Ô ¶·´Ï´Ù.", L"ShakeCursorIcon", CardRarity::Normal);
+
+	//21
+	RegisterCard<SpamCard>(L"½ºÆÔ", L"È­¸é¿¡ ½ºÆÔÀ» »Ñ¸³´Ï´Ù.", L"Bullet", CardRarity::Normal);
 }
 
 void CardManager::UnRegisterCard()

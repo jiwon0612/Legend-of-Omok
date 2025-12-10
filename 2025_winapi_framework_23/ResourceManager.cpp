@@ -70,16 +70,15 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"OneMoreIcon", L"Texture\\CardIcon\\OneMoreIcon.bmp");
 	LoadTexture(L"PeaceIcon", L"Texture\\CardIcon\\PeaceIcon.bmp");
 	LoadTexture(L"OneMinusIcon", L"Texture\\CardIcon\\OneMinusIcon.bmp");
-
-	//LoadTexture(L"SoundIcon", L"Texture\\CardIcon\\SoundIcon.bmp");
-	//LoadTexture(L"StopMusicIcon", L"Texture\\CardIcon\\StopMusicIcon.bmp");
-	//LoadTexture(L"ClapIcon", L"Texture\\CardIcon\\ClapIcon.bmp");
-	//LoadTexture(L"DummyIcon", L"Texture\\CardIcon\\DummyIcon.bmp");
-	//LoadTexture(L"SayHiIcon", L"Texture\\CardIcon\\SayHiIcon.bmp");
-	//LoadTexture(L"CheerinIcon", L"Texture\\CardIcon\\CheerinIcon.bmp");
-	//LoadTexture(L"BlameIcon", L"Texture\\CardIcon\\BlameIcon.bmp");
-	//LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
-	//LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
+	LoadTexture(L"SoundIcon", L"Texture\\CardIcon\\SoundIcon.bmp");
+	LoadTexture(L"StopMusicIcon", L"Texture\\CardIcon\\StopMusicIcon.bmp");
+	LoadTexture(L"ClapIcon", L"Texture\\CardIcon\\ClapIcon.bmp");
+	LoadTexture(L"DummyIcon", L"Texture\\CardIcon\\DummyIcon.bmp");
+	LoadTexture(L"SayHiIcon", L"Texture\\CardIcon\\SayHiIcon.bmp");
+	LoadTexture(L"CheerinIcon", L"Texture\\CardIcon\\CheerinIcon.bmp");
+	LoadTexture(L"BlameIcon", L"Texture\\CardIcon\\BlameIcon.bmp");
+	LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
+	LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
 }
 void ResourceManager::RegisterGDI()
 {

@@ -138,16 +138,15 @@ void CardManager::RegisterCards()
 	RegisterCard<OneMoreCard>(L"한번 더!", L"한번 더 돌을 놓을 수 있습니다.", L"OneMoreIcon", CardRarity::Normal);
 	RegisterCard<PeaceCard>(L"평화의 시간", L"이번 턴 후 상대 턴과 내 턴 각 한 번 씩 카드가 생성되지 않습니다.", L"PeaceIcon", CardRarity::Normal);
 	RegisterCard<OneMinusCard>(L"카드 뺏기!", L"상대의 카드를 하나 뺏습니다.", L"OneMinusIcon", CardRarity::Normal);
-
-	//RegisterCard<SoundChange>(L"음악 변경!", L"랜덤으로 음악을 변경합니다.", L"SoundIcon", CardRarity::Normal);
-	//RegisterCard<StopMusicCard>(L"고독한 시간", L"모든 음악을 멈춥니다.", L"StopMusicIcon", CardRarity::Normal);
-	//RegisterCard<ClapCard>(L"매우 축하!", L"박수소리를 들려줍니다.", L"ClapIcon", CardRarity::Normal);
-	//RegisterCard<DummyCard>(L"더미 카드!", L"놀랍게도 아무것도 안 합니다.", L"DummyIcon", CardRarity::Normal);
-	//RegisterCard<SayHiCard>(L"바른 예의", L"안녕하세요!!!", L"SayHiIcon", CardRarity::Normal);
-	//RegisterCard<CheeringCard>(L"응원!", L"상대방에게 응원을 합니다.", L"CheerinIcon", CardRarity::Normal);
-	//RegisterCard<BlameCard>(L"비난", L"자신에게 비난을 합니다.", L"BlameIcon", CardRarity::Normal);
-	//RegisterCard<RestCard>(L"휴식", L"게임을 초기화 합니다.", L"RestIcon", CardRarity::Normal);
-	//RegisterCard<ShakeCursorCard>(L"수전증", L"마우스가 심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Normal);
+	RegisterCard<SoundChange>(L"음악 변경!", L"랜덤으로 음악을 변경합니다.", L"SoundIcon", CardRarity::Normal);
+	RegisterCard<StopMusicCard>(L"고독한 시간", L"모든 음악을 멈춥니다.", L"StopMusicIcon", CardRarity::Normal);
+	RegisterCard<ClapCard>(L"매우 축하!", L"박수소리를 들려줍니다.", L"ClapIcon", CardRarity::Normal);
+	RegisterCard<DummyCard>(L"더미 카드!", L"놀랍게도 아무것도 안 합니다.", L"DummyIcon", CardRarity::Normal);
+	RegisterCard<SayHiCard>(L"바른 예의", L"안녕하세요!!!", L"SayHiIcon", CardRarity::Normal);
+	RegisterCard<CheeringCard>(L"응원!", L"상대방에게 응원을 합니다.", L"CheerinIcon", CardRarity::Normal);
+	RegisterCard<BlameCard>(L"비난", L"자신에게 비난을 합니다.", L"BlameIcon", CardRarity::Normal);
+	RegisterCard<RestCard>(L"무승부로 하지 않을래...?", L"게임을 초기화 합니다.", L"RestIcon", CardRarity::Normal);
+	RegisterCard<ShakeCursorCard>(L"수전증", L"마우스가 심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Normal);
 }
 
 void CardManager::UnRegisterCard()

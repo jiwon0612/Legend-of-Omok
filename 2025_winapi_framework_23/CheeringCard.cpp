@@ -53,7 +53,7 @@ void CheeringCard::Render(HDC _hdc)
     SetTextColor(_hdc, RGB(0, 0, 0));
 
     HFONT fontSet = CreateFont(
-        80, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+        60, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
         ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"¸¼Àº °íµñ"
     );
@@ -63,7 +63,8 @@ void CheeringCard::Render(HDC _hdc)
 
     for (int i = 1; i <= 4; ++i)
     {
-        RECT rect = { 0, WINDOW_HEIGHT / 2 + 200 - (i * 100), WINDOW_WIDTH, WINDOW_HEIGHT / 2 + 300 - (i * 100) };
+        //RECT rect = { 0, WINDOW_HEIGHT / 2 + 200 -(i*100), WINDOW_WIDTH, WINDOW_HEIGHT / 2 + 300 - (i * 100) };
+        RECT rect = { 0,150 - (i * 100), WINDOW_WIDTH, WINDOW_HEIGHT / 2 + 300 - (i * 100) };
 
         DrawText(_hdc, curText.c_str(), -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
     }

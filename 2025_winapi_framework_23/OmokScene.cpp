@@ -56,10 +56,12 @@ void OmokScene::LateInit()
 	GET_SINGLE(BoardManager)->Init(m_pBoard);
 
 	// 결과창 생성
-	m_pResultWindow = new ResultWindow;
+	/*m_pResultWindow = new ResultWindow;
 	m_pResultWindow->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pResultWindow->SetSize(Vec2(400.f, 300.f));
-	AddObject(m_pResultWindow, Layer::UI);
+	AddObject(m_pResultWindow, Layer::UI);*/
+
+	m_pResultWindow = Spawn<ResultWindow>(Layer::UI, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f), Vec2(400.f, 300.f));
 }
 
 void OmokScene::Update()

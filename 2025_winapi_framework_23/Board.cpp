@@ -27,12 +27,16 @@ Board::Board()
 		(WINDOW_HEIGHT - (BOARD_SIZE - 1) * m_cellSize) / 2.f);
 
 	GET_SINGLE(CardManager)->ShowCard(2, StoneType::BLACK);
-	m_timer = new OmokTimer();
+	/*m_timer = new OmokTimer();
 	m_timer->SetWindowType(L"UI");
-	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(m_timer, Layer::UI);
-	m_boardUI = new BoardUI();
+	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(m_timer, Layer::UI);*/
+	m_timer = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<OmokTimer>(Layer::UI, Vec2(0, 0), Vec2(0, 0));
+	m_timer->SetWindowType(L"UI");
+	/*m_boardUI = new BoardUI();
 	m_boardUI->SetWindowType(L"UI");
-	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(m_boardUI, Layer::UI);
+	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(m_boardUI, Layer::UI);*/
+	m_boardUI = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<BoardUI>(Layer::UI, Vec2(0, 0), Vec2(0, 0));
+	m_boardUI->SetWindowType(L"UI");
 }
 
 Board::~Board()

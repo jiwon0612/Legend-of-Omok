@@ -53,7 +53,7 @@ void BlameCard::Render(HDC _hdc)
     SetTextColor(_hdc, RGB(0, 0, 0));
 
     HFONT fontSet = CreateFont(
-        70, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+        65, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
         ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"¸¼Àº °íµñ"
     );

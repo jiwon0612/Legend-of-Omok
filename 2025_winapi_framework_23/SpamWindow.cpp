@@ -8,7 +8,6 @@ SpamWindow::~SpamWindow()
 	{
 		GET_SINGLE(SceneManager)->RequestDestroy(obj);
 	}
-	m_objects.clear();
 }
 
 void SpamWindow::AddObject(Object* obj)

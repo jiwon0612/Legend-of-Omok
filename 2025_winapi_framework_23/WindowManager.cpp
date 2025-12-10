@@ -43,15 +43,16 @@ void WindowManager::RemoveWindow(SubWindow* window)
 
 void WindowManager::RemoveAllWindow()
 {
-	for (auto& window : m_windowAPIs)
-	{
-		SAFE_DELETE(window.second);
-	}
 	for (auto window : m_windows)
 	{
-		//SAFE_DELETE(window);
-		RemoveWindow(window.second);
+		cout << '1' << '\n';
+		SAFE_DELETE(window.second);
+		//RemoveWindow(window.second);
 	}
+	/*for (auto& window : m_windowAPIs)
+	{
+		SAFE_DELETE(window.second);
+	}*/
 	m_windowAPIs.clear();
 	m_windows.clear();
 }

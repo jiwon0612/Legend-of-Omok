@@ -106,11 +106,15 @@ void CardUI::Render(HDC _hdc)
 	/*if (m_isHover)
 		RECT_RENDER(_hdc, pos.x, pos.y, size.x + m_outlineThickness / 2, size.y + m_outlineThickness / 2);*/
 
+	//화질 올리기
+	SetStretchBltMode(_hdc, HALFTONE);
+	SetBrushOrgEx(_hdc, 0, 0, nullptr); // HALFTONE 사용할 때 필수
+
 	::StretchBlt(_hdc
-		, (int)(pos.x - size.x / 2)
-		, (int)(pos.y - size.y / 2)
-		, (int)(size.x)
-		, (int)(size.y)
+		, (int)(pos.x - size.x / 2) - 40
+		, (int)(pos.y - size.y / 2) - 40
+		, (int)(size.x) + 80
+		, (int)(size.y) + 80
 		, m_cardTex->GetTextureDC()
 		, 0, 0, width, height, SRCCOPY);
 
@@ -133,10 +137,10 @@ void CardUI::Render(HDC _hdc)
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, SRCCOPY);*/
 		::StretchBlt(_hdc
-			, (int)(pos.x - size.x / 2 + 17)
-			, (int)(pos.y - size.y / 2 + 20)
-			, 64
-			, 47
+			, (int)(pos.x - size.x / 2) - 29 + 17
+			, (int)(pos.y - size.y / 2) - 30 + 20
+			, (int)(size.x) +23 //+ 64 + 59
+			, (int)(size.y/2)//+ 47 + 28
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, width, height, SRCCOPY);
 	}

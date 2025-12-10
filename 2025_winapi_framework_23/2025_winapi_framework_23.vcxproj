@@ -216,6 +216,7 @@
     <ClInclude Include="SayHiCard.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShakeCursorCard.h" />
     <ClInclude Include="SoundChange.h" />
     <ClInclude Include="SpamCard.h" />
     <ClInclude Include="SpamCloseButton.h" />
@@ -287,6 +288,7 @@
     <ClCompile Include="SayHiCard.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShakeCursorCard.cpp" />
     <ClCompile Include="SoundChange.cpp" />
     <ClCompile Include="SpamCard.cpp" />
     <ClCompile Include="SpamCloseButton.cpp" />

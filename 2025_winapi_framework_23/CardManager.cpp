@@ -1,4 +1,4 @@
-﻿#pragma region include
+#pragma region include
 #include "pch.h"
 #include "CardManager.h"
 #include "CardInfo.h"
@@ -22,14 +22,15 @@
 #include "CheeringCard.h"
 #include "BlameCard.h"
 #include "RestCard.h"
+#include "ShakeCursorCard.h"
 #include "SpamCard.h"
 #pragma endregion
 
 void CardManager::Init()
 {
-	m_cardStartPos = { 500, 500 };
+	m_cardStartPos = { 150, 800 };
 	m_cardPos = { 150, 150 };
-	m_cardOffset = { 0, 150 };
+	m_cardOffset = { 0, 280 };
 	//Card* card = GET_SINGLE(SceneManager)->GetCurScene()->Spawn<IndiaInkCard>(Layer::UI, m_cardStartPos, { 100.f,150.f });
 	//CardInfo* testCard1 = new CardInfo(L"TestName", L"TestDescription",
 	//	L"Bullet", CardRarity::Normal, card);

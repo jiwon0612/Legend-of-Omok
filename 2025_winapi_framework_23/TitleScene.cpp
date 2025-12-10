@@ -66,7 +66,8 @@ void TitleScene::Render(HDC _hdc)
 	HFONT oldFont = (HFONT)SelectObject(_hdc, titleFont);
 
 	wstring title = L"Legend of Omok";
-	RECT titleRect = { 0, WINDOW_HEIGHT / 2 - 100, WINDOW_WIDTH, WINDOW_HEIGHT / 2 };
+	//RECT titleRect = { 0, WINDOW_HEIGHT / 2 - 100, WINDOW_WIDTH, WINDOW_HEIGHT / 2 };
+	RECT titleRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT -100};
 	DrawText(_hdc, title.c_str(), -1, &titleRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 
 	SelectObject(_hdc, oldFont);
@@ -83,7 +84,8 @@ void TitleScene::Render(HDC _hdc)
 		oldFont = (HFONT)SelectObject(_hdc, guideFont);
 
 		wstring guide = L"Press SPACE to Start";
-		RECT guideRect = { 0, WINDOW_HEIGHT / 2 + 50, WINDOW_WIDTH, WINDOW_HEIGHT / 2 + 100 };
+		//RECT guideRect = { 0, WINDOW_HEIGHT / 2 + 50, WINDOW_WIDTH, WINDOW_HEIGHT / 2 + 100 };
+		RECT guideRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT +150 };
 		DrawText(_hdc, guide.c_str(), -1, &guideRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 
 		SelectObject(_hdc, oldFont);

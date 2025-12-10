@@ -57,9 +57,29 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"Jiwoo", L"Texture\\jiwoo.bmp");
 	LoadTexture(L"IndiaInkImage", L"Texture\\IndiaInkImage.bmp");
 	LoadTexture(L"TestCard", L"Texture\\TestCard.bmp");
+
+	//카드 이미지
 	LoadTexture(L"CardImage",L"Texture\\CardImage.bmp");
 	LoadTexture(L"IndialnkIcon", L"Texture\\CardIcon\\IndialnkIcon.bmp");
 	LoadTexture(L"EarthquakeIcon", L"Texture\\CardIcon\\EarthquakeIcon.bmp");
+	LoadTexture(L"PlaceMineIcon", L"Texture\\CardIcon\\PlaceMineIcon.bmp");
+	LoadTexture(L"TimeStopIcon", L"Texture\\CardIcon\\TimeStopIcon.bmp");
+	LoadTexture(L"DeleteTimeIcon", L"Texture\\CardIcon\\DeleteTimeIcon.bmp");
+	LoadTexture(L"ReplaceRandomStoneIcon", L"Texture\\CardIcon\\ReplaceRandomStoneIcon.bmp");
+	LoadTexture(L"RerollIcon", L"Texture\\CardIcon\\RerollIcon.bmp");
+	LoadTexture(L"BlindAllStonesIcon", L"Texture\\CardIcon\\BlindAllStonesIcon.bmp");
+	LoadTexture(L"OneMoreIcon", L"Texture\\CardIcon\\OneMoreIcon.bmp");
+	LoadTexture(L"PeaceIcon", L"Texture\\CardIcon\\PeaceIcon.bmp");
+	LoadTexture(L"OneMinusIcon", L"Texture\\CardIcon\\OneMinusIcon.bmp");
+	LoadTexture(L"SoundIcon", L"Texture\\CardIcon\\SoundIcon.bmp");
+	LoadTexture(L"StopMusicIcon", L"Texture\\CardIcon\\StopMusicIcon.bmp");
+	LoadTexture(L"ClapIcon", L"Texture\\CardIcon\\ClapIcon.bmp");
+	LoadTexture(L"DummyIcon", L"Texture\\CardIcon\\DummyIcon.bmp");
+	LoadTexture(L"SayHiIcon", L"Texture\\CardIcon\\SayHiIcon.bmp");
+	LoadTexture(L"CheerinIcon", L"Texture\\CardIcon\\CheerinIcon.bmp");
+	LoadTexture(L"BlameIcon", L"Texture\\CardIcon\\BlameIcon.bmp");
+	LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
+	LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
 }
 void ResourceManager::RegisterGDI()
 {

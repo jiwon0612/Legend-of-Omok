@@ -37,6 +37,7 @@ Board::Board()
 
 Board::~Board()
 {
+	cout << "di" << '\n';
 }
 
 void Board::Update()

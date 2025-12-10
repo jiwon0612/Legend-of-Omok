@@ -19,12 +19,12 @@ enum class PenType
 };
 enum class BrushType
 {
-	HOLLOW, RED, GREEN, END
+	HOLLOW, RED, GREEN, YELLOW, END
 };
 
 enum class FontType
 {
-	UI, TITLE, END
+	MAIN, UI, TITLE, NUMBER, END
 };
 
 enum class PlayMode

@@ -26,6 +26,8 @@ void ResultWindow::SetWinner(StoneType winner)
 
 void ResultWindow::Show()
 {
+	GET_SINGLE(CardManager)->UnRegisterCard();
+
 	m_isVisible = true;
 	m_animationTimer = 0.f;
 	m_scale = 0.f;
@@ -56,6 +58,7 @@ void ResultWindow::Update()
 	else if (GET_KEYDOWN(KEY_TYPE::ESC))
 	{
 		GET_SINGLE(SceneManager)->LoadScene(L"TitleScene");
+		//GET_SINGLE(CardManager)->UnRegisterCard();
 	}
 }
 

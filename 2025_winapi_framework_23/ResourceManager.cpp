@@ -57,6 +57,9 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"Jiwoo", L"Texture\\jiwoo.bmp");
 	LoadTexture(L"IndiaInkImage", L"Texture\\IndiaInkImage.bmp");
 	LoadTexture(L"TestCard", L"Texture\\TestCard.bmp");
+	LoadTexture(L"TimerImage", L"Texture\\Timer.bmp");
+	LoadTexture(L"WhiteStone", L"Texture\\WhiteStone.bmp");
+	LoadTexture(L"BlackStone", L"Texture\\BlackStone.bmp");
 
 	//카드 이미지
 	LoadTexture(L"CardImage",L"Texture\\CardImage.bmp");

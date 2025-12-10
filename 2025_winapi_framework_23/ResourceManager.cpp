@@ -197,6 +197,34 @@ void ResourceManager::LoadSpamTextures()
 {
 	LoadTexture(L"Spam_0", L"Texture\\Spam\\spam_0.bmp");
 	m_vecSpamTextures.push_back(L"Spam_0");
+	LoadTexture(L"Spam_1", L"Texture\\Spam\\spam_1.bmp");
+	m_vecSpamTextures.push_back(L"Spam_1");
+	LoadTexture(L"Spam_2", L"Texture\\Spam\\spam_2.bmp");
+	m_vecSpamTextures.push_back(L"Spam_2");
+	LoadTexture(L"Spam_3", L"Texture\\Spam\\spam_3.bmp");
+	m_vecSpamTextures.push_back(L"Spam_3");
+	LoadTexture(L"Spam_4", L"Texture\\Spam\\spam_4.bmp");
+	m_vecSpamTextures.push_back(L"Spam_4");
+	LoadTexture(L"Spam_5", L"Texture\\Spam\\spam_5.bmp");
+	m_vecSpamTextures.push_back(L"Spam_5");
+	LoadTexture(L"Spam_6", L"Texture\\Spam\\spam_6.bmp");
+	m_vecSpamTextures.push_back(L"Spam_6");
+	LoadTexture(L"Spam_7", L"Texture\\Spam\\spam_7.bmp");
+	m_vecSpamTextures.push_back(L"Spam_7");
+	LoadTexture(L"Spam_8", L"Texture\\Spam\\spam_8.bmp");
+	m_vecSpamTextures.push_back(L"Spam_8");
+	LoadTexture(L"Spam_9", L"Texture\\Spam\\spam_9.bmp");
+	m_vecSpamTextures.push_back(L"Spam_9");
+	LoadTexture(L"Spam_10", L"Texture\\Spam\\spam_10.bmp");
+	m_vecSpamTextures.push_back(L"Spam_10");
+	LoadTexture(L"Spam_11", L"Texture\\Spam\\spam_11.bmp");
+	m_vecSpamTextures.push_back(L"Spam_11");
+	LoadTexture(L"Spam_12", L"Texture\\Spam\\spam_12.bmp");
+	m_vecSpamTextures.push_back(L"Spam_12");
+	LoadTexture(L"Spam_13", L"Texture\\Spam\\spam_13.bmp");
+	m_vecSpamTextures.push_back(L"Spam_13");
+	LoadTexture(L"Spam_14", L"Texture\\Spam\\spam_14.bmp");
+	m_vecSpamTextures.push_back(L"Spam_14");
 }
 SoundInfo* ResourceManager::FindSound(const wstring& _key)
 {

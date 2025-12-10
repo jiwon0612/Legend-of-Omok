@@ -1,4 +1,4 @@
-#pragma region include
+﻿#pragma region include
 #include "pch.h"
 #include "CardManager.h"
 #include "CardInfo.h"

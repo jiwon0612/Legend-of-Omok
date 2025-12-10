@@ -41,7 +41,6 @@ void ShakeCursorCard::NextTurn()
 
 void ShakeCursorCard::Update()
 {
-    ShakeCursor();
     if (!isSkill) return;
 
     if (!isBlind &&

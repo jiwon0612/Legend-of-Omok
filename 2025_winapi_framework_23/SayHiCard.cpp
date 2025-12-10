@@ -33,13 +33,14 @@ void SayHiCard::Render(HDC _hdc)
     SetTextColor(_hdc, RGB(rand()%256, rand() % 256, rand() % 256));
 
     HFONT fontSet = CreateFont(
-        180, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+        130, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
         ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"∏º¿∫ ∞ÌµÒ"
     );
     HFONT font = (HFONT)SelectObject(_hdc, fontSet);
 
-    RECT rect = { 0, WINDOW_HEIGHT / 2 - 100, WINDOW_WIDTH, WINDOW_HEIGHT / 2 +100};
+    //RECT rect = { 0, WINDOW_HEIGHT / 2 - 100, WINDOW_WIDTH, WINDOW_HEIGHT / 2 +100};
+    RECT rect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
     DrawText(_hdc, L"æ»≥Á«œººø‰!", -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 }
 

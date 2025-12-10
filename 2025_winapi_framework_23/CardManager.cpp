@@ -103,6 +103,8 @@ void CardManager::ShuffleCard()
 {
 	for (int i = 0; i < (int)CardRarity::End; i++)
 	{
+		if (m_cardKeyList[(CardRarity)i].size() <= 1)
+			continue;
 		for (int j = 0; j < 100; j++)
 		{
 			int idx1, idx2;
@@ -169,6 +171,7 @@ void CardManager::RegisterCards()
 void CardManager::UnRegisterCard()
 {
 	//CardDelete();
+	cout << "CardManager Release\n";
 	for (auto& pair : m_cardInfoMap)
 	{
 		SAFE_DELETE(pair.second);

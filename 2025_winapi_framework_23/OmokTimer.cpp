@@ -1,7 +1,8 @@
 ﻿#include "pch.h"
 #include "OmokTimer.h"
 #include "ResourceManager.h"
-#include "Texture.h"
+#include "Texture.h" 
+#include "BoardManager.h"
 
 OmokTimer::OmokTimer()
 	: m_elapsedTime(0.f)
@@ -34,7 +35,21 @@ void OmokTimer::Update()
 
 void OmokTimer::Render(HDC _hdc)
 {
-    Texture* timerImage = GET_SINGLE(ResourceManager)->GetTexture(L"TimerImage");
+	int index = (m_currentPlayer == StoneType::BLACK) ? 0 : 1;
+
+    if (m_timeStopped)
+		timerImage = GET_SINGLE(ResourceManager)->GetTexture(L"FrozenTimerImage");
+    else if(playerTime[index] < 30 )
+    {
+		timerImage = GET_SINGLE(ResourceManager)->GetTexture(L"BrokenTimerImage");
+    }
+    else
+        timerImage = GET_SINGLE(ResourceManager)->GetTexture(L"TimerImage");
+
+    if (m_currentPlayer == StoneType::BLACK)
+		buttonImage = GET_SINGLE(ResourceManager)->GetTexture(L"BlackButton");
+    else
+		buttonImage = GET_SINGLE(ResourceManager)->GetTexture(L"WhiteButton");
 
     int x = static_cast<int>(GetPos().x)+50;
     int y = static_cast<int>(GetPos().y) +10;
@@ -49,6 +64,14 @@ void OmokTimer::Render(HDC _hdc)
         0, 0, w, h,
         RGB(255, 0, 255)
     );
+	// 버튼 이미지 그리기
+    TransparentBlt(
+        _hdc,
+        x, y, w, h,
+        buttonImage->GetTextureDC(),
+        0, 0, w, h,
+        RGB(255, 0, 255)
+	);
 
     // ---- 시간 문자열 ----
     wstring blackText = std::format(L"{:02}:{:02}",
@@ -96,9 +119,15 @@ void OmokTimer::TimeProcess()
 			playerTime[0] -= 1.f;
 		else
 			playerTime[1] -= 1.f;
-		if (playerTime[0] <= 0.f)
+        if (playerTime[0] <= 0.f)
+        {
 			m_gameState = GameState::WHITE_WIN;
-		else if (playerTime[1] <= 0.f)
+			GET_SINGLE(BoardManager)->GetBoard()->SetGameState(GameState::WHITE_WIN);
+        }
+        else if (playerTime[1] <= 0.f)
+        {
 			m_gameState = GameState::BLACK_WIN;
+			GET_SINGLE(BoardManager)->GetBoard()->SetGameState(GameState::BLACK_WIN);
+        }
 	}
 }

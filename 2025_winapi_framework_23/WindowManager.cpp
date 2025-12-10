@@ -49,10 +49,10 @@ void WindowManager::RemoveAllWindow()
 		SAFE_DELETE(window.second);
 		//RemoveWindow(window.second);
 	}
-	/*for (auto& window : m_windowAPIs)
+	for (auto& window : m_windowAPIs)
 	{
 		SAFE_DELETE(window.second);
-	}*/
+	}
 	m_windowAPIs.clear();
 	m_windows.clear();
 }

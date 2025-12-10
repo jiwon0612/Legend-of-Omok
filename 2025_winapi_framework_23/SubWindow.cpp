@@ -6,12 +6,13 @@
 
 using std::string;
 
-SubWindow::SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size)
+SubWindow::SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size, wstring title)
 {
 	m_hInst = _hInst;
 	m_type = type;
 	m_pos = pos;
 	m_size = size;
+	m_title = title;
 	RegisterSubWindowClass();
 	CreateSubWindow();
 	ShowSubWindow();
@@ -50,7 +51,7 @@ ATOM SubWindow::RegisterSubWindowClass()
 
 void SubWindow::CreateSubWindow()
 {
-	m_hWnd = ::CreateWindowW(L"GameSub", L"SubWindow",
+	m_hWnd = ::CreateWindowW(L"GameSub", m_title.c_str(),
 		WS_POPUP | WS_BORDER | WS_CAPTION | WS_VISIBLE,
 		m_pos.x, m_pos.y,
 		m_size.x, m_size.y,

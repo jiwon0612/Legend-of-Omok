@@ -2,7 +2,7 @@
 class SubWindow
 {
 public:
-	SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size);
+	SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size, wstring title);
 	virtual ~SubWindow();
 
 public:
@@ -20,5 +20,6 @@ private:
 	wstring m_type;
 	Vector2 m_size;
 	Vector2 m_pos;
+	wstring m_title;
 };
 

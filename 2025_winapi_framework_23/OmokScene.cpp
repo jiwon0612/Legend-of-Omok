@@ -42,9 +42,9 @@ void OmokScene::LateInit()
 	int winposy = (screenY - WINDOW_HEIGHT) / 2 + 100;
 
 	// 보드 생성
-	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{ winposx - 350 + 15,winposy+100},{350,WINDOW_HEIGHT + 40});
+	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{ winposx - 350 + 15,winposy+100},{350,WINDOW_HEIGHT + 40},L"CardManager");
 	GET_SINGLE(WindowManager)->AddWindow(subWindow);
-	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { winposx,winposy-90 }, { WINDOW_WIDTH,200 });
+	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { winposx,winposy-90 }, { WINDOW_WIDTH,200 }, L"UIWindow");
 	GET_SINGLE(WindowManager)->AddWindow(uiWindow);
 	/*m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));

@@ -32,13 +32,13 @@ void TimeManager::Update()
 		m_frameTime = 0.f;
 		m_frameCnt = 0;
 
-		wstring strDT = std::to_wstring(m_dT);
-		wstring strFPS = std::to_wstring(m_fps);
+		//wstring strDT = std::to_wstring(m_dT);
+		//wstring strFPS = std::to_wstring(m_fps);
 		//wstring str = L"FPS: " + strFPS + L" DT: " + strDT;
 		//::TextOut(GET_SINGLE(Core)->GetMainDC(), 0, 0, str.c_str(), str.length());
-		POINT mousepos = GET_MOUSEPOS;
-		wstring str = std::format(L"FPS: {0}, DT: {1:.6f}, Mouse: {2}, {3} ", m_fps, m_dT, mousepos.x, mousepos.y);
-		::SetWindowText(GET_SINGLE(Core)->GetHwnd(), str.c_str());
+		//POINT mousepos = GET_MOUSEPOS;
+		/*wstring str = std::format(L"FPS: {0}, DT: {1:.6f}, Mouse: {2}, {3} ", m_fps, m_dT, mousepos.x, mousepos.y);
+		::SetWindowText(GET_SINGLE(Core)->GetHwnd(), str.c_str());*/
 	}
 
 

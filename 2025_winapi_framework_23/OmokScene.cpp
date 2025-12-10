@@ -66,7 +66,7 @@ void OmokScene::Update()
 	if (GET_KEYDOWN(KEY_TYPE::T))
 	{
 		//::SendMessage(GET_SINGLE(WindowManager)->GetWindowAPIs(L"Sub")->GetHwnd(), WM_CLOSE, 0, 0);
-		//GET_SINGLE(WindowManager)->RemoveWindow(GET_SINGLE(WindowManager)->GetSubWindow(L"Sub"));
+		GET_SINGLE(WindowManager)->RemoveWindow(GET_SINGLE(WindowManager)->GetSubWindow(L"UI"));
 		/*cout << GET_SINGLE(WindowManager)->m_windowAPIs.size() << '\n';
 		cout << GET_SINGLE(WindowManager)->m_windows.size() << '\n';*/
 	}

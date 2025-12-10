@@ -24,7 +24,7 @@ SubWindow::~SubWindow()
 	//cout << 'd' << '\n';
 	//exit(0);
 	//PostQuitMessage(0);	
-	//::SendMessage(m_hWnd, WM_CLOSE, 0, 0);
+	::SendMessage(m_hWnd, WM_CLOSE, 0, 0);
 }
 
 ATOM SubWindow::RegisterSubWindowClass()

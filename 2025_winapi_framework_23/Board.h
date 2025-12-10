@@ -36,11 +36,12 @@ public:
 
 	void SetBlindAllStones(bool _blind);
 #pragma endregion
-
 	
 	// 좌표 변환
 	bool ScreenToBoard(Vec2 mousePos, int& outX, int& outY) const;
 	Vec2 BoardToScreen(int x, int y) const;
+
+	void SetGameState(GameState state) { m_gameState = state; }
 
 	// Getter
 	StoneType GetCurrentPlayer() const { return m_currentPlayer; }

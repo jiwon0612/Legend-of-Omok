@@ -24,6 +24,7 @@
 #include "RestCard.h"
 #include "ShakeCursorCard.h"
 #include "SpamCard.h"
+#include "MosaicCard.h"
 #pragma endregion
 
 void CardManager::Init()
@@ -152,7 +153,17 @@ void CardManager::RegisterCards()
 	RegisterCard<ShakeCursorCard>(L"수전증", L"마우스가\n심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Normal);
 
 	//21
-	RegisterCard<SpamCard>(L"스팸", L"화면에 스팸을 뿌립니다.", L"Bullet", CardRarity::Normal);
+	RegisterCard<SpamCard>(L"스팸", L"화면에\n스팸을 뿌립니다.", L"Bullet", CardRarity::Normal);
+
+
+
+
+
+
+
+
+	//모자이크는 이상하니 버리도록 하겠습니다.
+	//RegisterCard<MosaicCard>(L"모자이크", L"상대턴에\n화면이 모자이크\n처리 됩니다.", L"Bullet", CardRarity::Normal);
 }
 
 void CardManager::UnRegisterCard()

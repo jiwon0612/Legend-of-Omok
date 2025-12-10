@@ -42,21 +42,26 @@ void OmokScene::LateInit()
 	int winposy = (screenY - WINDOW_HEIGHT) / 2 + 100;
 
 	// 보드 생성
-	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{ winposx - 350 + 15,winposy},{350,WINDOW_HEIGHT + 40});
+	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{ winposx - 350 + 15,winposy+100},{350,WINDOW_HEIGHT + 40});
 	GET_SINGLE(WindowManager)->AddWindow(subWindow);
-	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { winposx + 580,winposy }, { 400,400 });
+	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { winposx,winposy-90 }, { WINDOW_WIDTH,200 });
 	GET_SINGLE(WindowManager)->AddWindow(uiWindow);
-	m_pBoard = new Board;
+	/*m_pBoard = new Board;
 	m_pBoard->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pBoard->SetSize(Vec2(600.f, 600.f));
 	GET_SINGLE(BoardManager)->Init(m_pBoard);
-	AddObject(m_pBoard, Layer::BOARD);
+	AddObject(m_pBoard, Layer::BOARD);*/
+
+	m_pBoard = Spawn<Board>(Layer::BOARD, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f), Vec2(600.f, 600.f));
+	GET_SINGLE(BoardManager)->Init(m_pBoard);
 
 	// 결과창 생성
-	m_pResultWindow = new ResultWindow;
+	/*m_pResultWindow = new ResultWindow;
 	m_pResultWindow->SetPos(Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f));
 	m_pResultWindow->SetSize(Vec2(400.f, 300.f));
-	AddObject(m_pResultWindow, Layer::UI);
+	AddObject(m_pResultWindow, Layer::UI);*/
+
+	m_pResultWindow = Spawn<ResultWindow>(Layer::UI, Vec2(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f), Vec2(400.f, 300.f));
 }
 
 void OmokScene::Update()

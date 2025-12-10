@@ -36,8 +36,8 @@ void OmokTimer::Render(HDC _hdc)
 {
     Texture* timerImage = GET_SINGLE(ResourceManager)->GetTexture(L"TimerImage");
 
-    int x = static_cast<int>(GetPos().x);
-    int y = static_cast<int>(GetPos().y);
+    int x = static_cast<int>(GetPos().x)+50;
+    int y = static_cast<int>(GetPos().y) +10;
     int w = timerImage->GetWidth();
     int h = timerImage->GetHeight();
 

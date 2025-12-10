@@ -58,6 +58,10 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"IndiaInkImage", L"Texture\\IndiaInkImage.bmp");
 	LoadTexture(L"TestCard", L"Texture\\TestCard.bmp");
 	LoadTexture(L"TimerImage", L"Texture\\Timer.bmp");
+	LoadTexture(L"BrokenTimerImage", L"Texture\\BrokenTimer.bmp");
+	LoadTexture(L"FrozenTimerImage", L"Texture\\FrozenTimer.bmp");
+	LoadTexture(L"BlackButton", L"Texture\\BlackButton.bmp");
+	LoadTexture(L"WhiteButton", L"Texture\\WhiteButton.bmp");
 	LoadTexture(L"WhiteStone", L"Texture\\WhiteStone.bmp");
 	LoadTexture(L"BlackStone", L"Texture\\BlackStone.bmp");
 

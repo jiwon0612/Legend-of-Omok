@@ -29,11 +29,11 @@ void SceneManager::Init()
 	m_curScene = nullptr;
 
 	// 씬 등록
-	RegisterScene(L"TitleScene", std::make_shared<TitleScene>());
-	RegisterScene(L"TestScene", std::make_shared<TestScene>());
-	RegisterScene(L"DevScene", std::make_shared<DevScene>());
-	RegisterScene(L"OmokScene", std::make_shared<OmokScene>());
-	RegisterScene(L"CardTestScene", std::make_shared<CardTestScene>());
+	RegisterScene(L"TitleScene", new TitleScene);
+	RegisterScene(L"TestScene", new TestScene);
+	RegisterScene(L"DevScene", new DevScene);
+	RegisterScene(L"OmokScene", new OmokScene);
+	RegisterScene(L"CardTestScene", new CardTestScene);
 
 
 	// 첫 씬 지정
@@ -67,7 +67,7 @@ void SceneManager::Render(HDC _hdc)
 	m_curScene->Render(_hdc);
 }
 
-void SceneManager::RegisterScene(const wstring& _name, std::shared_ptr<Scene> _scene)
+void SceneManager::RegisterScene(const wstring& _name, Scene* _scene)
 {
 	if (_name.empty() || _scene == nullptr)
 		return;
@@ -89,4 +89,13 @@ void SceneManager::LoadScene(const wstring& _name)
 		m_curScene->Init();
 		m_curScene->LateInit();
 	}
+}
+
+void SceneManager::UnRegisterScene()
+{
+	for (auto& scene : m_mapScenes)
+	{
+		SAFE_DELETE(scene.second);
+	}
+	m_mapScenes.clear();
 }

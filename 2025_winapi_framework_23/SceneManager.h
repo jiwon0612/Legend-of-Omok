@@ -18,15 +18,16 @@ public:
 			m_curScene->RequestDestroy(obj);
 	}
 public:
-	void RegisterScene(const wstring& _name, std::shared_ptr<Scene> _scene);
+	void RegisterScene(const wstring& _name, Scene* _scene);
 	void LoadScene(const wstring& _name);
+	void UnRegisterScene();
 public:
-	const std::shared_ptr<Scene>& GetCurScene() const
+	Scene* GetCurScene() const
 	{
 		return m_curScene;
 	}
 private:
 	// Scene* m_scene;
-	std::shared_ptr<Scene> m_curScene;
-	std::unordered_map<wstring, std::shared_ptr<Scene>> m_mapScenes;
+	Scene* m_curScene;
+	std::unordered_map<wstring, Scene*> m_mapScenes;
 };

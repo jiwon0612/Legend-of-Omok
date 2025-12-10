@@ -54,7 +54,7 @@ void CollisionManager::CheckReset()
 
 void CollisionManager::CollisionLayerUpdate(Layer _left, Layer _right)
 {
-	std::shared_ptr<Scene> pCurrentScene = GET_SINGLE(SceneManager)->GetCurScene();
+	Scene* pCurrentScene = GET_SINGLE(SceneManager)->GetCurScene();
 	const vector<Object*>& vecLeftLayer = pCurrentScene->GetLayerObjects(_left);
 	const vector<Object*>& vecRightLayer = pCurrentScene->GetLayerObjects(_right);
 	std::unordered_map<ULONGLONG, bool>::iterator iter;

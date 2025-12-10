@@ -52,6 +52,8 @@ void Core::CleanUp()
     GET_SINGLE(ResourceManager)->Release();
 	GET_SINGLE(CardManager)->UnRegisterCard();
     GET_SINGLE(WindowManager)->RemoveAllWindow();
+
+    GET_SINGLE(SceneManager)->UnRegisterScene();
 }
 
 

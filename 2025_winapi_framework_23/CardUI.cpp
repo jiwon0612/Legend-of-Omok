@@ -188,6 +188,8 @@ void CardUI::Render(HDC _hdc)
 		);
 		font = (HFONT)SelectObject(_hdc, fontSet);
 
+		::DeleteObject(fontSet);
+		::DeleteObject(font);
 	}
 }
 

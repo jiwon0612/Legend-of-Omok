@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 class SubWindow
 {
 public:
@@ -13,6 +13,7 @@ public:
 	int MessageLoop();
 	HWND GetHwnd() const { return m_hWnd; }
 	wstring GetType() const { return m_type; }
+	Vec2 GetSize() const { return m_size; }
 
 private:
 	HINSTANCE m_hInst;

@@ -267,6 +267,7 @@ void Board::SwitchTurn()
 {
 	isPlaced = false;
 	m_timer->SetTimeStopped(false);
+	m_timer->SetTimeSkillUsed(false);
 
 	if (m_blindStones)
 	{

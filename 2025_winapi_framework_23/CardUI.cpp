@@ -144,6 +144,7 @@ void CardUI::Render(HDC _hdc)
 
 		//ÆùÆ®
 		SetBkMode(_hdc, TRANSPARENT);
+
 		SetTextColor(_hdc, RGB(0, 0, 0));
 
 		HFONT fontSet = CreateFont(

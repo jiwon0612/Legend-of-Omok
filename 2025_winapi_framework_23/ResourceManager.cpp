@@ -306,6 +306,7 @@ void ResourceManager::RegisterSound()
 	LoadSound(L"BGM_03",L"Sound\\BGM_03.wav",true);
 	LoadSound(L"ClapEffect",L"Sound\\ClapEffect.wav",false);
 
+	LoadSound(L"SeleteCard", L"Sound\\SeleteCardSound.wav", false);
 	LoadSound(L"ShowCard", L"Sound\\ShowCardSound.wav", false);
 }
 

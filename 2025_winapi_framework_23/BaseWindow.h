@@ -17,3 +17,4 @@ private:
 	HWND	  m_hWnd;
 };
 
+	

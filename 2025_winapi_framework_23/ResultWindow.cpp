@@ -66,25 +66,16 @@ void ResultWindow::Render(HDC _hdc)
 	if (!m_isVisible)
 		return;
 
-	// 반투명 배경
+	// 배경
 	{
-		GDISelector brush(_hdc, BrushType::HOLLOW);
+		GDISelector brush(_hdc, BrushType::BLACK);
 		int prevBkMode = SetBkMode(_hdc, TRANSPARENT);
 		
-		HBRUSH dimBrush = CreateSolidBrush(RGB(0, 0, 0));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, dimBrush);
-		HPEN nullPen = (HPEN)GetStockObject(NULL_PEN);
-		HPEN oldPen = (HPEN)SelectObject(_hdc, nullPen);
-
+		GDISelector penSelector(_hdc, PenType::HOLLOW);
 		for (int i = 0; i < 3; ++i)
 		{
 			Rectangle(_hdc, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 		}
-		
-		SelectObject(_hdc, oldPen);
-		SelectObject(_hdc, oldBrush);
-		DeleteObject(dimBrush);
-		SetBkMode(_hdc, prevBkMode);
 	}
 
 	// 결과창 박스
@@ -99,31 +90,18 @@ void ResultWindow::Render(HDC _hdc)
 
 	// 그림자
 	{
-		HBRUSH shadowBrush = CreateSolidBrush(RGB(50, 50, 50));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, shadowBrush);
-		HPEN nullPen = (HPEN)GetStockObject(NULL_PEN);
-		HPEN oldPen = (HPEN)SelectObject(_hdc, nullPen);
+		GDISelector shadowBrushSelector(_hdc, BrushType::GRAY);
+		GDISelector nullPenSelector(_hdc, PenType::HOLLOW);
 		
 		Rectangle(_hdc, boxX + 10, boxY + 10, boxX + boxWidth + 10, boxY + boxHeight + 10);
-		
-		SelectObject(_hdc, oldPen);
-		SelectObject(_hdc, oldBrush);
-		DeleteObject(shadowBrush);
 	}
 
 	// 메인 박스
 	{
-		HBRUSH boxBrush = CreateSolidBrush(RGB(240, 240, 240));
-		HPEN boxPen = CreatePen(PS_SOLID, 3, RGB(100, 100, 100));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, boxBrush);
-		HPEN oldPen = (HPEN)SelectObject(_hdc, boxPen);
+		GDISelector boxBrushSelector(_hdc, BrushType::WHITE);
+		GDISelector boxPenSelector(_hdc, PenType::BLACK);
 		
 		Rectangle(_hdc, boxX, boxY, boxX + boxWidth, boxY + boxHeight);
-		
-		SelectObject(_hdc, oldPen);
-		SelectObject(_hdc, oldBrush);
-		DeleteObject(boxBrush);
-		DeleteObject(boxPen);
 	}
 
 	if (m_scale >= 0.8f)
@@ -131,16 +109,10 @@ void ResultWindow::Render(HDC _hdc)
 		int prevBkMode = SetBkMode(_hdc, TRANSPARENT);
 
 		// 승자 텍스트
-		int winnerFontSize = targetHeight / 8; // 폰트 크기 비율 조정
-		HFONT winnerFont = CreateFont(
-			winnerFontSize, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
-			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"맑은 고딕"
-		);
-		HFONT oldFont = (HFONT)SelectObject(_hdc, winnerFont);
+		GDISelector titleFontSelector(_hdc, FontType::TITLE);
 
 		wstring winnerText;
-		COLORREF winnerColor;
+		COLORREF winnerColor = NULL;
 
 		if (m_winner == StoneType::BLACK)
 		{
@@ -150,11 +122,6 @@ void ResultWindow::Render(HDC _hdc)
 		else if (m_winner == StoneType::WHITE)
 		{
 			winnerText = L"백 승리!";
-			winnerColor = RGB(100, 100, 100);
-		}
-		else
-		{
-			winnerText = L"무승부";
 			winnerColor = RGB(100, 100, 100);
 		}
 
@@ -169,17 +136,8 @@ void ResultWindow::Render(HDC _hdc)
 		};
 		DrawText(_hdc, winnerText.c_str(), -1, &winnerRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 
-		SelectObject(_hdc, oldFont);
-		DeleteObject(winnerFont);
-
 		// 안내 텍스트
-		int guideFontSize = targetHeight / 20; // 폰트 크기 비율 조정
-		HFONT guideFont = CreateFont(
-			guideFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"맑은 고딕"
-		);
-		oldFont = (HFONT)SelectObject(_hdc, guideFont);
+		GDISelector guideFontSelector(_hdc, FontType::GUIDE);
 
 		SetTextColor(_hdc, RGB(80, 80, 80));
 		
@@ -201,8 +159,6 @@ void ResultWindow::Render(HDC _hdc)
 		};
 		DrawText(_hdc, guide2.c_str(), -1, &guide2Rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 
-		SelectObject(_hdc, oldFont);
-		DeleteObject(guideFont);
 		SetTextColor(_hdc, prevTextColor);
 		SetBkMode(_hdc, prevBkMode);
 	}

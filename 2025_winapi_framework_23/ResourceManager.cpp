@@ -93,6 +93,7 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"BlameIcon", L"Texture\\CardIcon\\BlameIcon.bmp");
 	LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
 	LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
+	LoadTexture(L"SpamIcon", L"Texture\\CardIcon\\SpamIcon.bmp");
 	LoadTexture(L"CardImageRare", L"Texture\\CardImageRare.bmp");
 	LoadTexture(L"CardImageLegendary", L"Texture\\CardImageLegendary.bmp");
 }
@@ -102,13 +103,19 @@ void ResourceManager::RegisterGDI()
 	m_Brushs[(UINT)BrushType::HOLLOW] = (HBRUSH)::GetStockObject(HOLLOW_BRUSH);
 	m_Brushs[(UINT)BrushType::RED] = (HBRUSH)::CreateSolidBrush(RGB(255, 167, 167));
 	m_Brushs[(UINT)BrushType::GREEN] = (HBRUSH)::CreateSolidBrush(RGB(134, 229, 134));
+	m_Brushs[(UINT)BrushType::BLACK] = (HBRUSH)::CreateSolidBrush(RGB(0, 0, 0));
+	m_Brushs[(UINT)BrushType::GRAY] = (HBRUSH)::CreateSolidBrush(RGB(200, 200, 200));
+	m_Brushs[(UINT)BrushType::WHITE] = (HBRUSH)::CreateSolidBrush(RGB(255, 255, 255));
 
 	// PEN 
+	m_Pens[(UINT)PenType::HOLLOW] = (HPEN)::GetStockObject(NULL_PEN);
 	m_Pens[(UINT)PenType::RED] = ::CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 	m_Pens[(UINT)PenType::GREEN] = ::CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+	m_Pens[(UINT)PenType::BLACK] = ::CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
 
 	// ��Ʈ ���
-	RegisterFont(FontType::TITLE, L"TestFont", 0);
+	RegisterFont(FontType::TITLE, L"-윤고딕330", 70);
+	RegisterFont(FontType::GUIDE, L"a자막체", 30);
 	RegisterFont(FontType::MAIN, L"-윤고딕330", 0);
 	RegisterFont(FontType::UI, L"a자막체", 0);
 	RegisterFont(FontType::NUMBER, L"-윤고딕330", 30);
@@ -258,6 +265,8 @@ void ResourceManager::LoadSpamTextures()
 	m_vecSpamTextures.push_back(L"Spam_20");
 	LoadTexture(L"Spam_21", L"Texture\\Spam\\spam_21.bmp");
 	m_vecSpamTextures.push_back(L"Spam_21");
+
+	LoadTexture(L"CloseButton", L"Texture\\Spam\\CloseButton.bmp");
 }
 SoundInfo* ResourceManager::FindSound(const wstring& _key)
 {
@@ -306,6 +315,7 @@ void ResourceManager::RegisterSound()
 	LoadSound(L"BGM_03",L"Sound\\BGM_03.wav",true);
 	LoadSound(L"ClapEffect",L"Sound\\ClapEffect.wav",false);
 
+	LoadSound(L"SeleteCard", L"Sound\\SeleteCardSound.wav", false);
 	LoadSound(L"ShowCard", L"Sound\\ShowCardSound.wav", false);
 }
 

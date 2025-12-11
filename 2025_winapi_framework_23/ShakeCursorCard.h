@@ -18,5 +18,8 @@ private:
 	void ReallySkill();
 private:
 	bool isBlind;
+	float _timer;
+	float _shakeDelay;
+	bool _isRight;
 };
 

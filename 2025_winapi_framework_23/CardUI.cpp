@@ -69,6 +69,9 @@ void CardUI::Update()
 
 	if (m_isHover && GET_KEYDOWN(KEY_TYPE::LBUTTON) && !GetIsDead())
 	{
+		GET_SINGLE(ResourceManager)->Play(L"SeleteCard");
+		GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT,1.f);
+
 		GET_SINGLE(CardManager)->UseCard();
 		m_cardInfo->card->CardSkill();
 		//GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(this);

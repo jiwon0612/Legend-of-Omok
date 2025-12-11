@@ -1,5 +1,6 @@
 #pragma region include
 #include "pch.h"
+#include "ResourceManager.h"
 #include "CardManager.h"
 #include "CardInfo.h"
 #include "CardUI.h"
@@ -52,6 +53,9 @@ void CardManager::LateInit()
 
 void CardManager::ShowCard(int cnt,StoneType _curType)
 {
+	if (cnt <= 0)
+		return;
+
 	for (size_t i = 0; i < m_cardUIList.size(); i++)
 	{
 		GET_SINGLE(SceneManager)->GetCurScene()->RequestDestroy(m_cardUIList[i]);
@@ -83,6 +87,9 @@ void CardManager::ShowCard(int cnt,StoneType _curType)
 		ui->Init(GetCardInfo(m_cardKeyList[rarity][i]));
 		ui->MoveToPosition(ui->GetPos(), m_cardPos + m_cardOffset * i);
 	}
+
+	GET_SINGLE(ResourceManager)->Play(L"ShowCard");
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 }
 
 void CardManager::UseCard()

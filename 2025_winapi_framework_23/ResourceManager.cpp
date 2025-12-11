@@ -103,13 +103,19 @@ void ResourceManager::RegisterGDI()
 	m_Brushs[(UINT)BrushType::HOLLOW] = (HBRUSH)::GetStockObject(HOLLOW_BRUSH);
 	m_Brushs[(UINT)BrushType::RED] = (HBRUSH)::CreateSolidBrush(RGB(255, 167, 167));
 	m_Brushs[(UINT)BrushType::GREEN] = (HBRUSH)::CreateSolidBrush(RGB(134, 229, 134));
+	m_Brushs[(UINT)BrushType::BLACK] = (HBRUSH)::CreateSolidBrush(RGB(0, 0, 0));
+	m_Brushs[(UINT)BrushType::GRAY] = (HBRUSH)::CreateSolidBrush(RGB(200, 200, 200));
+	m_Brushs[(UINT)BrushType::WHITE] = (HBRUSH)::CreateSolidBrush(RGB(255, 255, 255));
 
 	// PEN 
+	m_Pens[(UINT)PenType::HOLLOW] = (HPEN)::GetStockObject(NULL_PEN);
 	m_Pens[(UINT)PenType::RED] = ::CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
 	m_Pens[(UINT)PenType::GREEN] = ::CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+	m_Pens[(UINT)PenType::BLACK] = ::CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
 
 	// ��Ʈ ���
-	RegisterFont(FontType::TITLE, L"TestFont", 0);
+	RegisterFont(FontType::TITLE, L"-윤고딕330", 70);
+	RegisterFont(FontType::GUIDE, L"a자막체", 30);
 	RegisterFont(FontType::MAIN, L"-윤고딕330", 0);
 	RegisterFont(FontType::UI, L"a자막체", 0);
 	RegisterFont(FontType::NUMBER, L"-윤고딕330", 30);

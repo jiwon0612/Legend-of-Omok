@@ -25,4 +25,6 @@ void TimeStopCard::CardSkill()
     curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
 	GET_SINGLE(BoardManager)->GetBoard()->GetTimer()->SetTimeStopped(true);
     isSkill = false;
+    GET_SINGLE(ResourceManager)->Play(L"TimeStopEffect");
+    GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 }

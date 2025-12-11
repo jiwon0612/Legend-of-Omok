@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Texture.h"
-#include "ResourceManager.h"
 #include "IndiaInkCard.h"
 
 IndiaInkCard::IndiaInkCard() :
@@ -20,7 +19,8 @@ void IndiaInkCard::ReallySkill()
 
     inkDuration = 10.f;
     inkElapsed = 0.f;
-
+    GET_SINGLE(ResourceManager)->Play(L"IndiaInkEffect");
+    GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
     m_inkPieces.clear();
 }
 void IndiaInkCard::NextTurn()

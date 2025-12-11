@@ -72,9 +72,9 @@ void CardManager::ShowCard(int cnt,StoneType _curType)
 		int value = rand() % 99 + 1;
 		CardRarity rarity;
 
-		if (value <= 10)
+		if (value <= 5)
 			rarity = CardRarity::Legendary;
-		else if (value <= 40)
+		else if (value <= 25)
 			rarity = CardRarity::Rare;
 		else
 			rarity = CardRarity::Normal;

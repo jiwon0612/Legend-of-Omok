@@ -32,6 +32,7 @@ void OmokScene::Init()
 
 	GET_SINGLE(ResourceManager)->Play(L"BGM_02");
 	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::BGM, 1.0);
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 }
 
 void OmokScene::LateInit()

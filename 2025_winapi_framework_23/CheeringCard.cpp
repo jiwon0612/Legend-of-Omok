@@ -20,6 +20,7 @@ CheeringCard::~CheeringCard()
 void CheeringCard::ReallySkill()
 {
     isDont = true;
+    GET_SINGLE(ResourceManager)->Play(L"CheeringEffect");
 }
 void CheeringCard::NextTurn()
 {

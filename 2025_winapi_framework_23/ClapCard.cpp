@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "ClapCard.h"
-#include "ResourceManager.h"
 
 ClapCard::ClapCard()
 {

@@ -50,6 +50,7 @@ void ShakeCursorCard::ShakeCursor()
 void ShakeCursorCard::ReallySkill()
 {
     isBlind = true;
+    GET_SINGLE(ResourceManager)->Play(L"ShakeCursorEffect");
 }
 
 void ShakeCursorCard::NextTurn()

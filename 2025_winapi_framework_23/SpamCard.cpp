@@ -30,12 +30,12 @@ void SpamCard::Update()
 			Texture* spamTex = GET_SINGLE(ResourceManager)->GetTexture(randTexKey);
 			Vec2 screenSize = Vec2(GetSystemMetrics(SM_CXSCREEN) - 400, GetSystemMetrics(SM_CYSCREEN) - 400);
 			Vec2 randPos = Vec2((float)(rand() % (int)screenSize.x), (float)(rand() % (int)screenSize.y));
-			Vec2 textureSize = Vec2((float)spamTex->GetWidth(), (float)spamTex->GetHeight());
+			Vec2 textureSize = Vec2((float)spamTex->GetWidth() + 15, (float)spamTex->GetHeight() + 30);
 
 			auto nowStamp = std::chrono::high_resolution_clock::now().time_since_epoch().count();
 			std::wstring spamKey = std::wstring(L"Spam") + std::to_wstring(nowStamp + i);
 
-			SpamWindow* spamWindow = new SpamWindow(GET_SINGLE(WindowManager)->GetHInstance(), spamKey, randPos, textureSize,L"ddd");
+			SpamWindow* spamWindow = new SpamWindow(GET_SINGLE(WindowManager)->GetHInstance(), spamKey, randPos, textureSize,L"스팸 광고");
 			GET_SINGLE(WindowManager)->AddWindow(spamWindow);
 
 			SpamImage* spamImage = new SpamImage(spamTex);

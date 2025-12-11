@@ -61,4 +61,6 @@ void SpamCard::NextTurn()
 {
 	isSkill = false;
 	spamUsed = false;
+
+	GET_SINGLE(ResourceManager)->Play(L"SpamEffect");
 }

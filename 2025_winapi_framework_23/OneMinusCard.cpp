@@ -15,6 +15,7 @@ void OneMinusCard::ReallySkill()
     isBlind = true;
     GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)
         ->GetShowCardCnt() - 1, curPlayer);
+    GET_SINGLE(ResourceManager)->Play(L"OneMinusEffect");
 }
 
 void OneMinusCard::NextTurn()

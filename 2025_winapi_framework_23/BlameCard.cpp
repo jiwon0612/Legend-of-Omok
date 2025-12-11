@@ -77,4 +77,5 @@ void BlameCard::CardSkill()
 
     int count = sizeof(blameText) / sizeof(blameText[0]);
     curNum = rand() % count;
+    GET_SINGLE(ResourceManager)->Play(L"BlameEffect");
 }

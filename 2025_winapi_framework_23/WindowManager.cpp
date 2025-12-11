@@ -17,6 +17,11 @@ void WindowManager::Update()
 
 	for (auto& window : m_windows)
 	{
+		if (m_windows.size() <= 0)
+			break;
+
+		if (window.second == nullptr)
+			continue;
 		window.second->MessageLoop();
 	}
 }

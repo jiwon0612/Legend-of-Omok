@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "ResourceManager.h"
 #include "Texture.h"
 bool ResourceManager::Init()
@@ -93,6 +93,7 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"BlameIcon", L"Texture\\CardIcon\\BlameIcon.bmp");
 	LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
 	LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
+	LoadTexture(L"SpamIcon", L"Texture\\CardIcon\\SpamIcon.bmp");
 	LoadTexture(L"CardImageRare", L"Texture\\CardImageRare.bmp");
 	LoadTexture(L"CardImageLegendary", L"Texture\\CardImageLegendary.bmp");
 }

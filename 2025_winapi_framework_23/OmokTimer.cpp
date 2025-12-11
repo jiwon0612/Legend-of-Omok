@@ -79,7 +79,7 @@ void OmokTimer::Render(HDC _hdc)
         x, y, w, h,
         timerImage->GetTextureDC(),
         0, 0, w, h,
-        RGB(255, 0, 255)
+        RGB(255, 203, 162)
     );
 	// 버튼 이미지 그리기
     TransparentBlt(
@@ -87,7 +87,7 @@ void OmokTimer::Render(HDC _hdc)
         x, y, w, h,
         buttonImage->GetTextureDC(),
         0, 0, w, h,
-        RGB(255, 0, 255)
+        RGB(255, 203, 162)
 	);
 
     // ---- 시간 문자열 ----

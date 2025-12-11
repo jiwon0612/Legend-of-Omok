@@ -19,7 +19,7 @@ CardUI::CardUI()
 	, m_defultSize(GetSize())
 	, m_outlineThickness(1.f)
 {
-	m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"CardImage");
+	//m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"CardImage");
 	SetScaleTweenSpeed(5);
 	SetMoveTweenSpeed(3);
 }
@@ -34,6 +34,18 @@ void CardUI::Init(CardInfo* _cardInfo)
 	m_cardInfo = _cardInfo;
 	m_cardIconTex = GET_SINGLE(ResourceManager)->GetTexture(m_cardInfo->iconName);
 	m_isInit = true;
+	switch (_cardInfo->cardRarity)
+	{
+	case CardRarity::Normal:
+		m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"CardImage");
+		break;
+	case CardRarity::Rare:
+		m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"CardImageRare");
+		break;
+	case CardRarity::Legendary:
+		m_cardTex = GET_SINGLE(ResourceManager)->GetTexture(L"CardImageLegendary");
+		break;
+	}
 }
 
 void CardUI::Update()
@@ -106,10 +118,10 @@ void CardUI::Render(HDC _hdc)
 		, height
 		, m_cardTex->GetTextureDC()
 		, 0, 0, SRCCOPY);*/
-	/*if (m_isHover)
-		RECT_RENDER(_hdc, pos.x, pos.y, size.x + m_outlineThickness / 2, size.y + m_outlineThickness / 2);*/
+		/*if (m_isHover)
+			RECT_RENDER(_hdc, pos.x, pos.y, size.x + m_outlineThickness / 2, size.y + m_outlineThickness / 2);*/
 
-	//화질 올리기
+			//화질 올리기
 	SetStretchBltMode(_hdc, HALFTONE);
 	SetBrushOrgEx(_hdc, 0, 0, nullptr); // HALFTONE 사용할 때 필수
 
@@ -135,8 +147,8 @@ void CardUI::Render(HDC _hdc)
 			, m_cardIconTex->GetTextureDC()
 			, 0, 0, SRCCOPY);*/
 		::StretchBlt(_hdc
-			, (int)(pos.x - size.x / 2) -12 //- 29 + 17
-			, (int)(pos.y - size.y / 2) -10 //- 30 + 20
+			, (int)(pos.x - size.x / 2) - 12 //- 29 + 17
+			, (int)(pos.y - size.y / 2) - 10 //- 30 + 20
 			, (int)(size.x) + 23 //+ 64 + 59
 			, (int)(size.y / 2)//+ 47 + 28
 			, m_cardIconTex->GetTextureDC()
@@ -148,9 +160,9 @@ void CardUI::Render(HDC _hdc)
 		SetTextColor(_hdc, RGB(0, 0, 0));
 
 		HFONT fontSet = CreateFont(
-			15 + (5*((size.x - 100)/50)), 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+			15 + (5 * ((size.x - 100) / 50)), 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
 			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"맑은 고딕"
+			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"a자막체"
 		);
 		HFONT font = (HFONT)SelectObject(_hdc, fontSet);
 
@@ -170,7 +182,7 @@ void CardUI::Render(HDC _hdc)
 			,
 			DT_CENTER | DT_VCENTER | DT_SINGLELINE);*/
 
-		//TextOut(_hdc, (pos.x - size.x), (pos.y - size.y) + 20, m_cardInfo->description.c_str(), m_cardInfo->description.length());
+			//TextOut(_hdc, (pos.x - size.x), (pos.y - size.y) + 20, m_cardInfo->description.c_str(), m_cardInfo->description.length());
 		rect = {
 			(int)(pos.x) - 13 - 50 - (int)((size.x - 100) * 0.30f),
 			(int)(pos.y + size.y / 2) - 35 - (int)((size.x - 100) * 0.34f),
@@ -185,7 +197,7 @@ void CardUI::Render(HDC _hdc)
 		fontSet = CreateFont(
 			70, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
 			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"맑은 고딕"
+			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"a자막체"
 		);
 		font = (HFONT)SelectObject(_hdc, fontSet);
 

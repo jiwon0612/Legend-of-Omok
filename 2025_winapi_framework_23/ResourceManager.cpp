@@ -93,6 +93,8 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"BlameIcon", L"Texture\\CardIcon\\BlameIcon.bmp");
 	LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
 	LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
+	LoadTexture(L"CardImageRare", L"Texture\\CardImageRare.bmp");
+	LoadTexture(L"CardImageLegendary", L"Texture\\CardImageLegendary.bmp");
 }
 void ResourceManager::RegisterGDI()
 {
@@ -303,6 +305,8 @@ void ResourceManager::RegisterSound()
 	LoadSound(L"BGM_02",L"Sound\\BGM_02.wav",true);
 	LoadSound(L"BGM_03",L"Sound\\BGM_03.wav",true);
 	LoadSound(L"ClapEffect",L"Sound\\ClapEffect.wav",false);
+
+	LoadSound(L"ShowCard", L"Sound\\ShowCardSound.wav", false);
 }
 
 wstring ResourceManager::GetSpamTexture()

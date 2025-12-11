@@ -136,14 +136,14 @@ void CardManager::RegisterCards()
 {
 	RegisterCard<IndiaInkCard>(L"먹물", L"상대턴에\n먹물을 뿌립니다.", L"IndialnkIcon", CardRarity::Rare);
 	RegisterCard<EarthquakeCard>(L"지진", L"상대턴에\n지진을 일으킵니다", L"EarthquakeIcon", CardRarity::Rare);
-	RegisterCard<PlaceMineCard>(L"지뢰", L"지뢰를 설치하며,\n지뢰가 있는 자리에는\n돌을 둘 수 없습니다.", L"PlaceMineIcon", CardRarity::Normal);
+	RegisterCard<PlaceMineCard>(L"지뢰", L"지뢰를 설치하며,\n지뢰가 있는 자리에는 돌을 둘 수 없습니다.", L"PlaceMineIcon", CardRarity::Normal);
 	RegisterCard<TimeStopCard>(L"타이무스토뿌", L"사용 즉시\n본인의 시간을 멈춥니다.", L"TimeStopIcon", CardRarity::Normal);
 	RegisterCard<DeleteTimeCard>(L"시간 삭제", L"상대의 시간을\n20초 가져 갑니다.", L"DeleteTimeIcon", CardRarity::Rare);
 	RegisterCard<ReplaceRandomStoneSkill>(L"매수.", L"상대의 돌을\n랜덤하게 매수합니다.", L"ReplaceRandomStoneIcon", CardRarity::Legendary);
 	RegisterCard<RerollCard>(L"리롤", L"카드를 다시\n뽑습니다.", L"RerollIcon", CardRarity::Rare);
 	RegisterCard<BlindAllStonesCard>(L"눈가리기", L"상대 턴에\n모든 돌을 숨깁니다.", L"BlindAllStonesIcon", CardRarity::Rare);
 	RegisterCard<OneMoreCard>(L"한번 더!", L"한번 더 돌을\n놓을 수 있습니다.", L"OneMoreIcon", CardRarity::Legendary);
-	RegisterCard<PeaceCard>(L"평화의 시간", L"이번 턴 후 상대\n턴과 내 턴 각 한 번 씩\n카드가 생성되지 않습니다.", L"PeaceIcon", CardRarity::Normal);
+	RegisterCard<PeaceCard>(L"평화의 시간", L"이번 턴 후 상대턴과 내 턴 각 한 번 씩 카드가 생성되지 않습니다.", L"PeaceIcon", CardRarity::Normal);
 
 	//11
 	RegisterCard<OneMinusCard>(L"카드 뺏기!", L"상대의 카드를\n하나 뺏습니다.", L"OneMinusIcon", CardRarity::Rare);
@@ -155,7 +155,7 @@ void CardManager::RegisterCards()
 	RegisterCard<CheeringCard>(L"응원!", L"상대방에게\n응원을 합니다.", L"CheerinIcon", CardRarity::Normal);
 	RegisterCard<BlameCard>(L"비난", L"자신에게\n비난을 합니다.", L"BlameIcon", CardRarity::Normal);
 	RegisterCard<RestCard>(L"무승부로 하지 않을래...?", L"게임을\n초기화 합니다.", L"RestIcon", CardRarity::Legendary);
-	RegisterCard<ShakeCursorCard>(L"수전증", L"마우스가\n심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Rare);
+	RegisterCard<ShakeCursorCard>(L"수전증", L"상대의 마우스가\n심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Rare);
 
 	//21
 	RegisterCard<SpamCard>(L"스팸", L"화면에 스팸을 뿌립니다.", L"SpamIcon", CardRarity::Rare);

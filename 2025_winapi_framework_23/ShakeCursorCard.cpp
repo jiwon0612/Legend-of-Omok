@@ -5,6 +5,7 @@ ShakeCursorCard::ShakeCursorCard()
     : isBlind(false)
 	, _timer(0)
 	, _shakeDelay(0.05f)
+	, _isRight(false)
 {
 }
 

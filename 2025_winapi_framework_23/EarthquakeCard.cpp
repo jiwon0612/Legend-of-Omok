@@ -20,6 +20,8 @@ void EarthquakeCard::ReallySkill()
 {
 	isShake = true;
 	_isShakeStart = false;
+	GET_SINGLE(ResourceManager)->Play(L"EarthquakeEffect");
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 }
 void EarthquakeCard::NextTurn()
 {

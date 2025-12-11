@@ -28,4 +28,6 @@ void RerollCard::CardSkill()
 	GET_SINGLE(CardManager)->ShowCard(GET_SINGLE(CardManager)
 		->GetShowCardCnt(), curPlayer);
 	isSkill = false;
+	GET_SINGLE(ResourceManager)->Play(L"RerollEffect");
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 }

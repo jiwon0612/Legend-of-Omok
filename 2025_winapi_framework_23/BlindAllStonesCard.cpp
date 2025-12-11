@@ -38,4 +38,6 @@ void BlindAllStonesCard::CardSkill()
 {
 	curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
 	isSkill = true;
+    GET_SINGLE(ResourceManager)->Play(L"BlindAllStonesEffect");
+    GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 }

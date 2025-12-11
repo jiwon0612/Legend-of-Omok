@@ -543,5 +543,7 @@ bool Board::PlaceMine(int x, int y)
 		return false;
 
 	m_mines[y][x] = true;
+	GET_SINGLE(ResourceManager)->Play(L"PlaceMineEffect");
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 	return true;
 }

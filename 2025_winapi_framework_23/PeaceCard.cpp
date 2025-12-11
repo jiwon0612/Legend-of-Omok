@@ -12,6 +12,8 @@ void PeaceCard::ReallySkill()
 {
     isPeace = true;
 	GET_SINGLE(CardManager)->CardDelete();
+    GET_SINGLE(ResourceManager)->Play(L"PeaceEffect");
+    GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
 }
 void PeaceCard::NextTurn()
 {

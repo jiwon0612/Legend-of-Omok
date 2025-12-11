@@ -90,8 +90,11 @@ LRESULT BaseWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     }
     break;
     case WM_DESTROY:
+    {
+        GET_SINGLE(WindowManager)->RemoveAllWindow();
         PostQuitMessage(0);
-        break;
+    }
+    break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }

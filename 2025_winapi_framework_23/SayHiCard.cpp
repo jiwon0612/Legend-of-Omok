@@ -49,4 +49,5 @@ void SayHiCard::CardSkill()
     isDont = false;
     isSkill = true;
     curPlayer = GET_SINGLE(BoardManager)->GetCurrentPlayer();
+    GET_SINGLE(ResourceManager)->Play(L"SayHiEffect");
 }

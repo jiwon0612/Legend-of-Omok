@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "BoardManager.h"
+#include "ResourceManager.h"
 
 class Card : public Object
 {

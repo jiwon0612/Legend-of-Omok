@@ -228,6 +228,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="MosaicCard.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TimeStopCard.h" />
     <ClInclude Include="TitleScene.h" />
@@ -299,6 +300,7 @@
     <ClCompile Include="SubWindow.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="MosaicCard.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TimeStopCard.cpp" />
     <ClCompile Include="TitleScene.cpp" />

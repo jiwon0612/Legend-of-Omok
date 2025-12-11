@@ -21,11 +21,16 @@ SubWindow::SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size, 
 
 SubWindow::~SubWindow()
 {
-	cout << string().assign(m_type.begin(),m_type.end()) << '\n';
-	//cout << 'd' << '\n';
-	//exit(0);
-	//PostQuitMessage(0);	
-	::SendMessage(m_hWnd, WM_CLOSE, 0, 0);
+	//cout << string().assign(m_type.begin(),m_type.end()) << '\n';
+	////cout << 'd' << '\n';
+	////exit(0);
+	////PostQuitMessage(0);	
+	//::SendMessage(m_hWnd, WM_CLOSE, 0, 0);
+	if (m_hWnd)
+	{
+		::DestroyWindow(m_hWnd);
+		m_hWnd = nullptr;
+	}
 }
 
 ATOM SubWindow::RegisterSubWindowClass()

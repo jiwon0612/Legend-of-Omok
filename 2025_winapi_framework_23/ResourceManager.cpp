@@ -317,6 +317,29 @@ void ResourceManager::RegisterSound()
 
 	LoadSound(L"SeleteCard", L"Sound\\SeleteCardSound.wav", false);
 	LoadSound(L"ShowCard", L"Sound\\ShowCardSound.wav", false);
+
+	//카드
+	LoadSound(L"IndiaInkEffect", L"Sound\\IndiaInkEffect.wav", false);
+	LoadSound(L"EarthquakeEffect", L"Sound\\EarthquakeEffect.wav", false);
+	LoadSound(L"PlaceMineEffect", L"Sound\\PlaceMineEffect.wav", false);
+	LoadSound(L"TimeStopEffect", L"Sound\\TimeStopEffect.wav", false);
+	LoadSound(L"DeleteTimeEffect", L"Sound\\DeleteTimeEffect.wav", false);
+	LoadSound(L"ReplaceRandomStoneEffect", L"Sound\\ReplaceRandomStoneEffect.wav", false);
+	LoadSound(L"RerollEffect", L"Sound\\RerollEffect.wav", false);
+	LoadSound(L"BlindAllStonesEffect", L"Sound\\BlindAllStonesEffect.wav", false);
+	LoadSound(L"OneMoreEffect", L"Sound\\OneMoreEffect.wav", false);
+	LoadSound(L"PeaceEffect", L"Sound\\PeaceEffect.wav", false);
+	LoadSound(L"OneMinusEffect", L"Sound\\OneMinusEffect.wav", false);
+	LoadSound(L"StopMusicEffect", L"Sound\\StopMusicEffect.wav", false);
+	LoadSound(L"SayHiEffect", L"Sound\\SayHiEffect.wav", false);
+	LoadSound(L"CheeringEffect", L"Sound\\CheeringEffect.wav", false);
+	LoadSound(L"BlameEffect", L"Sound\\BlameEffect.wav", false);
+	LoadSound(L"RestEffect", L"Sound\\RestEffect.wav", false);
+	LoadSound(L"ShakeCursorEffect", L"Sound\\ShakeCursorEffect.wav", false);
+	LoadSound(L"SpamEffect", L"Sound\\SpamEffect.wav", false);
+
+
+	LoadSound(L"EndBGM", L"Sound\\EndBGM.wav", true);
 }
 
 wstring ResourceManager::GetSpamTexture()

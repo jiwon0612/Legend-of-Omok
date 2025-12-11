@@ -70,6 +70,9 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"WhiteStone", L"Texture\\WhiteStone.bmp");
 	LoadTexture(L"BlackStone", L"Texture\\BlackStone.bmp");
 
+	LoadTexture(L"CardImageRare", L"Texture\\CardImageRare.bmp");
+	LoadTexture(L"CardImageLegendary", L"Texture\\CardImageLegendary.bmp");
+
 	//카드 이미지
 	LoadTexture(L"CardImage",L"Texture\\CardImage.bmp");
 	LoadTexture(L"CardBackground", L"Texture\\CardBackground.bmp");
@@ -94,8 +97,7 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
 	LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
 	LoadTexture(L"SpamIcon", L"Texture\\CardIcon\\SpamIcon.bmp");
-	LoadTexture(L"CardImageRare", L"Texture\\CardImageRare.bmp");
-	LoadTexture(L"CardImageLegendary", L"Texture\\CardImageLegendary.bmp");
+	LoadTexture(L"CreditsIcon", L"Texture\\CardIcon\\CreditsIcon.bmp");
 }
 void ResourceManager::RegisterGDI()
 {
@@ -337,6 +339,7 @@ void ResourceManager::RegisterSound()
 	LoadSound(L"RestEffect", L"Sound\\RestEffect.wav", false);
 	LoadSound(L"ShakeCursorEffect", L"Sound\\ShakeCursorEffect.wav", false);
 	LoadSound(L"SpamEffect", L"Sound\\SpamEffect.wav", false);
+	LoadSound(L"CreditsEffect", L"Sound\\CreditsEffect.wav", false);
 
 
 	LoadSound(L"EndBGM", L"Sound\\EndBGM.wav", true);

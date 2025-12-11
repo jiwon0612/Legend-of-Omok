@@ -16,7 +16,6 @@ SubWindow::SubWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size, 
 	RegisterSubWindowClass();
 	CreateSubWindow();
 	ShowSubWindow();
-	cout << 'c' << '\n';
 }
 
 SubWindow::~SubWindow()

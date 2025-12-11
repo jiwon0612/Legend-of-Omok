@@ -25,6 +25,7 @@
 #include "RestCard.h"
 #include "ShakeCursorCard.h"
 #include "SpamCard.h"
+#include "CreditsCard.h"
 #pragma endregion
 
 void CardManager::Init()
@@ -159,6 +160,7 @@ void CardManager::RegisterCards()
 
 	//21
 	RegisterCard<SpamCard>(L"스팸", L"화면에 스팸을 뿌립니다.", L"SpamIcon", CardRarity::Rare);
+	RegisterCard<CreditsCard>(L"크래딧", L"제작자들의 신상을 알 수 있습니다.", L"CreditsIcon", CardRarity::Normal);
 }
 
 void CardManager::UnRegisterCard()

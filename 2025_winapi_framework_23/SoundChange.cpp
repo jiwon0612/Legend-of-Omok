@@ -17,5 +17,5 @@ void SoundChange::CardSkill()
 	wstring key = L"BGM_0" + std::to_wstring(num);
 
 	GET_SINGLE(ResourceManager)->Play(key);
-	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::BGM, 1.0);
+	GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::BGM, 0.5);
 }

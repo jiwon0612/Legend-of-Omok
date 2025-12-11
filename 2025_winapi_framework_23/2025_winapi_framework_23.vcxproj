@@ -182,6 +182,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="CreditsCard.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="DeleteTimeCard.h" />
     <ClInclude Include="DevScene.h" />
@@ -257,6 +258,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="CreditsCard.cpp" />
     <ClCompile Include="DeleteTimeCard.cpp" />
     <ClCompile Include="DevScene.cpp" />
     <ClCompile Include="DummyCard.cpp" />

@@ -50,7 +50,6 @@ void WindowManager::RemoveAllWindow()
 {
 	for (auto window : m_windows)
 	{
-		cout << '1' << '\n';
 		SAFE_DELETE(window.second);
 		//RemoveWindow(window.second);
 	}

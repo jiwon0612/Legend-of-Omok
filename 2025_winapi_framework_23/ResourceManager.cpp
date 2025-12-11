@@ -259,6 +259,8 @@ void ResourceManager::LoadSpamTextures()
 	m_vecSpamTextures.push_back(L"Spam_20");
 	LoadTexture(L"Spam_21", L"Texture\\Spam\\spam_21.bmp");
 	m_vecSpamTextures.push_back(L"Spam_21");
+
+	LoadTexture(L"CloseButton", L"Texture\\Spam\\CloseButton.bmp");
 }
 SoundInfo* ResourceManager::FindSound(const wstring& _key)
 {

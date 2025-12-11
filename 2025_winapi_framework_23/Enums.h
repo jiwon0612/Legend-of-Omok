@@ -15,16 +15,16 @@ enum class Layer
 };
 enum class PenType
 {
-	RED, GREEN, END
+	HOLLOW, RED, GREEN, BLACK, END
 };
 enum class BrushType
 {
-	HOLLOW, RED, GREEN, YELLOW, END
+	HOLLOW, RED, GREEN, BLACK, GRAY, WHITE, END
 };
 
 enum class FontType
 {
-	MAIN, UI, TITLE, NUMBER, END
+	MAIN, UI, TITLE, GUIDE, NUMBER, END
 };
 
 enum class PlayMode

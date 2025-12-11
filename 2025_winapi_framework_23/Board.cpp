@@ -86,7 +86,6 @@ void Board::Update()
 					// 지뢰 설치 성공
 					m_mineMode = false;
 					m_isMineHovering = false;
-					// isPlaced는 그대로 유지 (착수했으면 true, 안 했으면 false)
 				}
 			}
 		}
@@ -163,15 +162,6 @@ bool Board::PlaceStone(int x, int y, StoneType player)
 	}
 	if (!IsValidMove(x, y))return false;
 
-	// 지뢰가 있는 곳인지 확인
-	if (m_mines[y][x])
-	{
-		// 지뢰 터짐! 착수 무효화
-		m_mines[y][x] = false;  // 지뢰 제거
-		SwitchTurn();  // 턴 넘기기
-		return false;  // 착수 실패
-	}
-
 	m_board[y][x] = player;
 
 	Vec2 stonePos = BoardToScreen(x, y);
@@ -213,11 +203,16 @@ bool Board::IsValidMove(int x, int y)
 	if (!IsInBounds(x, y))
 		return false;
 
-	//if (m_board[y][x] != StoneType::NONE && m_blindStones)
-	//{
-	//	SwitchTurn();
-	//	return false;
-	//}
+	// 지뢰가 있는 곳인지 확인
+	if (m_mines[y][x])
+	{
+		// 지뢰 터짐! 착수 무효화
+		GET_SINGLE(ResourceManager)->Play(L"PlaceMineEffect");
+		GET_SINGLE(ResourceManager)->Volume(SOUND_CHANNEL::EFFECT, 1);
+		m_mines[y][x] = false;  // 지뢰 제거
+		SwitchTurn();  // 턴 넘기기
+		return false;  // 착수 실패
+	}
 
 	return m_board[y][x] == StoneType::NONE;
 }

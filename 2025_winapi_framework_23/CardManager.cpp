@@ -24,7 +24,6 @@
 #include "RestCard.h"
 #include "ShakeCursorCard.h"
 #include "SpamCard.h"
-#include "MosaicCard.h"
 #pragma endregion
 
 void CardManager::Init()
@@ -39,9 +38,8 @@ void CardManager::Init()
 	//m_cardInfoMap[testCard1->name] = testCard1;
 	//m_cardKeyList[CardRarity::Normal].push_back(testCard1->name);
 
-	m_cardKeyList[CardRarity::Rare].push_back(L"test");
-	m_cardKeyList[CardRarity::Unique].push_back(L"test");
-	m_cardKeyList[CardRarity::Legendary].push_back(L"test");
+	/*m_cardKeyList[CardRarity::Rare].push_back(L"test");
+	m_cardKeyList[CardRarity::Legendary].push_back(L"test");*/
 
 	m_showCardCnt = 2;
 }
@@ -69,11 +67,9 @@ void CardManager::ShowCard(int cnt,StoneType _curType)
 		int value = rand() % 99 + 1;
 		CardRarity rarity;
 
-		if (value <= -1)
+		if (value <= 10)
 			rarity = CardRarity::Legendary;
-		else if (value <= -1)
-			rarity = CardRarity::Unique;
-		else if (value <= -1)
+		else if (value <= 40)
 			rarity = CardRarity::Rare;
 		else
 			rarity = CardRarity::Normal;
@@ -131,19 +127,19 @@ void CardManager::CardDelete()
 
 void CardManager::RegisterCards()
 {
-	RegisterCard<IndiaInkCard>(L"먹물", L"상대턴에\n먹물을 뿌립니다.", L"IndialnkIcon", CardRarity::Normal);
-	RegisterCard<EarthquakeCard>(L"지진", L"상대턴에\n지진을 일으킵니다", L"EarthquakeIcon", CardRarity::Normal);
+	RegisterCard<IndiaInkCard>(L"먹물", L"상대턴에\n먹물을 뿌립니다.", L"IndialnkIcon", CardRarity::Rare);
+	RegisterCard<EarthquakeCard>(L"지진", L"상대턴에\n지진을 일으킵니다", L"EarthquakeIcon", CardRarity::Rare);
 	RegisterCard<PlaceMineCard>(L"지뢰", L"지뢰를 설치하며,\n지뢰가 있는 자리에는\n돌을 둘 수 없습니다.", L"PlaceMineIcon", CardRarity::Normal);
 	RegisterCard<TimeStopCard>(L"타이무스토뿌", L"사용 즉시\n본인의 시간을 멈춥니다.", L"TimeStopIcon", CardRarity::Normal);
-	RegisterCard<DeleteTimeCard>(L"시간 삭제", L"상대의 시간을\n20초 가져 갑니다.", L"DeleteTimeIcon", CardRarity::Normal);
-	RegisterCard<ReplaceRandomStoneSkill>(L"매수.", L"상대의 돌을\n랜덤하게 매수합니다.", L"ReplaceRandomStoneIcon", CardRarity::Normal);
-	RegisterCard<RerollCard>(L"리롤", L"카드를 다시\n뽑습니다.", L"RerollIcon", CardRarity::Normal);
-	RegisterCard<BlindAllStonesCard>(L"눈가리기", L"상대 턴에\n모든 돌을 숨깁니다.", L"BlindAllStonesIcon", CardRarity::Normal);
-	RegisterCard<OneMoreCard>(L"한번 더!", L"한번 더 돌을\n놓을 수 있습니다.", L"OneMoreIcon", CardRarity::Normal);
+	RegisterCard<DeleteTimeCard>(L"시간 삭제", L"상대의 시간을\n20초 가져 갑니다.", L"DeleteTimeIcon", CardRarity::Rare);
+	RegisterCard<ReplaceRandomStoneSkill>(L"매수.", L"상대의 돌을\n랜덤하게 매수합니다.", L"ReplaceRandomStoneIcon", CardRarity::Legendary);
+	RegisterCard<RerollCard>(L"리롤", L"카드를 다시\n뽑습니다.", L"RerollIcon", CardRarity::Rare);
+	RegisterCard<BlindAllStonesCard>(L"눈가리기", L"상대 턴에\n모든 돌을 숨깁니다.", L"BlindAllStonesIcon", CardRarity::Rare);
+	RegisterCard<OneMoreCard>(L"한번 더!", L"한번 더 돌을\n놓을 수 있습니다.", L"OneMoreIcon", CardRarity::Legendary);
 	RegisterCard<PeaceCard>(L"평화의 시간", L"이번 턴 후 상대\n턴과 내 턴 각 한 번 씩\n카드가 생성되지 않습니다.", L"PeaceIcon", CardRarity::Normal);
 
 	//11
-	RegisterCard<OneMinusCard>(L"카드 뺏기!", L"상대의 카드를\n하나 뺏습니다.", L"OneMinusIcon", CardRarity::Normal);
+	RegisterCard<OneMinusCard>(L"카드 뺏기!", L"상대의 카드를\n하나 뺏습니다.", L"OneMinusIcon", CardRarity::Rare);
 	RegisterCard<SoundChange>(L"음악 변경!", L"랜덤으로\n음악을 변경합니다.", L"SoundIcon", CardRarity::Normal);
 	RegisterCard<StopMusicCard>(L"고독한 시간", L"모든 음악을\n멈춥니다.", L"StopMusicIcon", CardRarity::Normal);
 	RegisterCard<ClapCard>(L"매우 축하!", L"박수소리를\n들려줍니다.", L"ClapIcon", CardRarity::Normal);
@@ -151,21 +147,11 @@ void CardManager::RegisterCards()
 	RegisterCard<SayHiCard>(L"바른 예의", L"안녕하세요!!!", L"SayHiIcon", CardRarity::Normal);
 	RegisterCard<CheeringCard>(L"응원!", L"상대방에게\n응원을 합니다.", L"CheerinIcon", CardRarity::Normal);
 	RegisterCard<BlameCard>(L"비난", L"자신에게\n비난을 합니다.", L"BlameIcon", CardRarity::Normal);
-	RegisterCard<RestCard>(L"무승부로 하지 않을래...?", L"게임을\n초기화 합니다.", L"RestIcon", CardRarity::Normal);
-	RegisterCard<ShakeCursorCard>(L"수전증", L"마우스가\n심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Normal);
+	RegisterCard<RestCard>(L"무승부로 하지 않을래...?", L"게임을\n초기화 합니다.", L"RestIcon", CardRarity::Legendary);
+	RegisterCard<ShakeCursorCard>(L"수전증", L"마우스가\n심하게 떱니다.", L"ShakeCursorIcon", CardRarity::Rare);
 
 	//21
-	RegisterCard<SpamCard>(L"스팸", L"화면에\n스팸을 뿌립니다.", L"Bullet", CardRarity::Normal);
-
-
-
-
-
-
-
-
-	//모자이크는 이상하니 버리도록 하겠습니다.
-	//RegisterCard<MosaicCard>(L"모자이크", L"상대턴에\n화면이 모자이크\n처리 됩니다.", L"Bullet", CardRarity::Normal);
+	RegisterCard<SpamCard>(L"스팸", L"화면에 스팸을 뿌립니다.", L"Bullet", CardRarity::Rare);
 }
 
 void CardManager::UnRegisterCard()

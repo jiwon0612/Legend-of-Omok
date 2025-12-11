@@ -13,6 +13,7 @@
 #include "ResultWindow.h"
 #include "ResourceManager.h"
 #include "WindowAPIs.h"
+#include "SpamImage.h"
 
 OmokScene::OmokScene()
 	: m_pBoard(nullptr)
@@ -44,6 +45,9 @@ void OmokScene::LateInit()
 	// 보드 생성
 	SubWindow* subWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(),L"Sub",{ winposx - 350 + 15,winposy+100},{350,WINDOW_HEIGHT + 40},L"CardManager");
 	GET_SINGLE(WindowManager)->AddWindow(subWindow);
+	SpamImage* cardBackground = new SpamImage(GET_SINGLE(ResourceManager)->GetTexture(L"CardBackground"));
+	GET_SINGLE(SceneManager)->GetCurScene()->RequestSpawn(cardBackground, Layer::BACKGROUND);
+	cardBackground->SetWindowType(L"Sub");
 	SubWindow* uiWindow = new SubWindow(GET_SINGLE(WindowManager)->GetHInstance(), L"UI", { winposx,winposy-90 }, { WINDOW_WIDTH,200 }, L"UIWindow");
 	GET_SINGLE(WindowManager)->AddWindow(uiWindow);
 	/*m_pBoard = new Board;

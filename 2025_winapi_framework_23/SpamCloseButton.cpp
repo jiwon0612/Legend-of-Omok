@@ -3,6 +3,8 @@
 #include "WindowManager.h"
 #include "InputManager.h"
 #include "GDISelector.h"
+#include "ResourceManager.h"
+#include "Texture.h"
 
 SpamCloseButton::SpamCloseButton(wstring windowType, Vec2 position, Vec2 size)
 	: mousePos { 0, 0 }
@@ -33,7 +35,21 @@ void SpamCloseButton::Update()
 
 void SpamCloseButton::Render(HDC _hdc)
 {
-	GDISelector p(_hdc, PenType::RED);
-	GDISelector b(_hdc, BrushType::RED);
-	RECT_RENDER(_hdc, GetPos().x, GetPos().y, GetSize().x, GetSize().y);
+	Texture* buttonTexture = GET_SINGLE(ResourceManager)->GetTexture(L"CloseButton");
+	if (buttonTexture)
+	{
+		Vec2 pos = GetPos();
+		Vec2 size = GetSize();
+		BitBlt(
+			_hdc,
+			static_cast<int>(pos.x - size.x / 2),
+			static_cast<int>(pos.y - size.y / 2),
+			static_cast<int>(size.x),
+			static_cast<int>(size.y),
+			buttonTexture->GetTextureDC(),
+			0,
+			0,
+			SRCCOPY
+		);
+	}
 }

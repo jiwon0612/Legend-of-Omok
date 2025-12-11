@@ -135,7 +135,7 @@ void ResultWindow::Render(HDC _hdc)
 		HFONT winnerFont = CreateFont(
 			winnerFontSize, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
 			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"맑은 고딕"
+			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"-윤고딕330"
 		);
 		HFONT oldFont = (HFONT)SelectObject(_hdc, winnerFont);
 
@@ -177,7 +177,7 @@ void ResultWindow::Render(HDC _hdc)
 		HFONT guideFont = CreateFont(
 			guideFontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
 			DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"맑은 고딕"
+			ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"a자막체"
 		);
 		oldFont = (HFONT)SelectObject(_hdc, guideFont);
 

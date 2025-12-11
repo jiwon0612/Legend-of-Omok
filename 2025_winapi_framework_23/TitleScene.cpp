@@ -27,6 +27,11 @@ void TitleScene::Update()
 {
 	Scene::Update();
 
+	if (GET_KEYDOWN(KEY_TYPE::ESC))
+	{
+		PostQuitMessage(0);
+	}
+
 	// Space 키를 누르면 오목 씬으로 전환
 	if (GET_KEYDOWN(KEY_TYPE::SPACE))
 	{

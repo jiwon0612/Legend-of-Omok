@@ -72,6 +72,7 @@ void ResourceManager::RegisterTexture()
 
 	//카드 이미지
 	LoadTexture(L"CardImage",L"Texture\\CardImage.bmp");
+	LoadTexture(L"CardBackground", L"Texture\\CardBackground.bmp");
 	LoadTexture(L"IndialnkIcon", L"Texture\\CardIcon\\IndialnkIcon.bmp");
 	LoadTexture(L"EarthquakeIcon", L"Texture\\CardIcon\\EarthquakeIcon.bmp");
 	LoadTexture(L"PlaceMineIcon", L"Texture\\CardIcon\\PlaceMineIcon.bmp");

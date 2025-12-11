@@ -35,7 +35,7 @@ void SpamCard::Update()
 			auto nowStamp = std::chrono::high_resolution_clock::now().time_since_epoch().count();
 			std::wstring spamKey = std::wstring(L"Spam") + std::to_wstring(nowStamp + i);
 
-			SpamWindow* spamWindow = new SpamWindow(GET_SINGLE(WindowManager)->GetHInstance(), spamKey, randPos, textureSize);
+			SpamWindow* spamWindow = new SpamWindow(GET_SINGLE(WindowManager)->GetHInstance(), spamKey, randPos, textureSize,L"ddd");
 			GET_SINGLE(WindowManager)->AddWindow(spamWindow);
 
 			SpamImage* spamImage = new SpamImage(spamTex);

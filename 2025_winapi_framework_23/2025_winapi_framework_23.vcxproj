@@ -312,6 +312,7 @@
     <ResourceCompile Include="2025_winapi_framework_23.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Output\build\Resource\Texture\OmockGameIcon.ico" />
     <Image Include="2025_winapi_framework_23.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

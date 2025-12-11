@@ -218,6 +218,7 @@
     <ClInclude Include="SpamImage.h" />
     <ClInclude Include="SpamWindow.h" />
     <ClInclude Include="SpamCloseButton.h" />
+    <ClInclude Include="ShakeCursorCard.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2025_winapi_framework_23.rc">
@@ -229,6 +230,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="2025_winapi_framework_23.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="..\Output\build\Resource\Texture\OmockGameIcon.ico">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
@@ -377,5 +381,6 @@
     <ClCompile Include="SpamImage.cpp" />
     <ClCompile Include="SpamWindow.cpp" />
     <ClCompile Include="SpamCloseButton.cpp" />
+    <ClCompile Include="ShakeCursorCard.cpp" />
   </ItemGroup>
 </Project>

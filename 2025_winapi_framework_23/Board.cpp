@@ -49,9 +49,6 @@ void Board::Update()
 	if (m_gameState != GameState::PLAYING)
 		return;
 
-	if (GET_KEYDOWN(KEY_TYPE::R))
-		Reset();
-
 	POINT mousePos = GET_MOUSEPOS;
 	Vec2 mousePosVec(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
 
@@ -270,6 +267,7 @@ void Board::SwitchTurn()
 {
 	isPlaced = false;
 	m_timer->SetTimeStopped(false);
+	m_timer->SetTimeSkillUsed(false);
 
 	if (m_blindStones)
 	{

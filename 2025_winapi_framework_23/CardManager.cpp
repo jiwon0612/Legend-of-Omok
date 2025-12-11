@@ -171,7 +171,6 @@ void CardManager::RegisterCards()
 void CardManager::UnRegisterCard()
 {
 	//CardDelete();
-	cout << "CardManager Release\n";
 	for (auto& pair : m_cardInfoMap)
 	{
 		SAFE_DELETE(pair.second);

@@ -14,6 +14,7 @@ public:
 	void SetGameState(GameState _state) { m_gameState = _state; }
 	void SetTimeStopped(bool _stopped) { m_timeStopped = _stopped; }
 	void SetPlayerTime(StoneType type, float time) { playerTime[(int)type - 1] = time; }
+	void SetTimeSkillUsed(bool used) { m_timeSkillUsed = used; }
 
 	//getter
 	float GetPlayerTime(StoneType type) { return playerTime[(int)type - 1]; }
@@ -31,6 +32,7 @@ private:
 	float playerTime[2]; // 흑, 백 시간
 
 	bool m_timeStopped = false;
+	bool m_timeSkillUsed = false;
 	StoneType m_currentPlayer = StoneType::BLACK;
 	GameState m_gameState = GameState::PLAYING;
 

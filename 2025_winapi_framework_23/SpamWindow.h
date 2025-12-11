@@ -6,8 +6,8 @@ class SpamWindow :
     public SubWindow
 {
 public:
-	SpamWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size)
-		: SubWindow(_hInst, type, pos, size)
+	SpamWindow(HINSTANCE _hInst, wstring type, Vector2 pos, Vector2 size,wstring title)
+		: SubWindow(_hInst, type, pos, size, title)
 	{
 	}
 	virtual ~SpamWindow() override;

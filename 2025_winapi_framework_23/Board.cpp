@@ -315,6 +315,22 @@ void Board::ReplaceRandomStone()
 	Stone* newStone = new Stone(m_currentPlayer, Vec2(m_cellSize - 4.f, m_cellSize - 4.f), stonePos);
 	m_stones[ry][rx] = newStone;
 	GET_SINGLE(SceneManager)->GetCurScene()->AddObject(newStone, Layer::STONE);
+	// 승리 체크
+	if (CheckWin(rx, ry))
+	{
+		if (m_currentPlayer == StoneType::BLACK)
+		{
+			m_gameState = GameState::BLACK_WIN;
+			m_timer->SetGameState(m_gameState);
+			m_boardUI->SetGameState(m_gameState);
+		}
+		else
+		{
+			m_gameState = GameState::WHITE_WIN;
+			m_timer->SetGameState(m_gameState);
+			m_boardUI->SetGameState(m_gameState);
+		}
+	}
 }
 
 void Board::SetBlindAllStones(bool _blind)

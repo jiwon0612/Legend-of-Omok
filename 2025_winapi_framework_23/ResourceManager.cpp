@@ -93,6 +93,7 @@ void ResourceManager::RegisterTexture()
 	LoadTexture(L"BlameIcon", L"Texture\\CardIcon\\BlameIcon.bmp");
 	LoadTexture(L"RestIcon", L"Texture\\CardIcon\\RestIcon.bmp");
 	LoadTexture(L"ShakeCursorIcon", L"Texture\\CardIcon\\ShakeCursorIcon.bmp");
+	LoadTexture(L"SpamIcon", L"Texture\\CardIcon\\SpamIcon.bmp");
 }
 void ResourceManager::RegisterGDI()
 {

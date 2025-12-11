@@ -31,7 +31,7 @@ void BoardUI::Render(HDC _hdc)
 			stoneX, stoneY, stoneTexture->GetWidth(), stoneTexture->GetHeight(),
 			stoneTexture->GetTextureDC(),
 			0, 0, stoneTexture->GetWidth(), stoneTexture->GetHeight(),
-			RGB(255, 0, 255)
+			RGB(255, 203, 162)
 		);
 	}
 }
